@@ -1,13 +1,14 @@
 # Grupo 4 - Genki Sushi
 
-Este proyecto se trata de un ecommerce orientado a personas interesadas hacer pedidos online de gastronomia asiatica, haciendo foco principalmente en el sushi. Cuando comenzamos a planificar este proyecto nos propusimos lograr de una forma sencilla y rapida que el cliente pueda realizar un pedido de su comida favorita, como asi tambien facilitarle al dueño del emprendimiento la comunicación de su producto, publicación de ofertas y la gestion de los pedidos de forma ordenada. En esta aplicacion los usuarios registrados pueden navegar por los productos disponibles, armar un pedido a su gusto con los productos que prefiera o elegir alguna de las tablas armadas. En el futuro queremos expandir este desarrollo y lograr integrar un metodo de pago online, utilizar Google Maps para ubicar/validar la dirección del cliente, integrar un sistema de mensajeria para lograr una comunicación fluida con el cliente en cuanto a la entrega de su pedido y agregar un sistema de recompensas a modo de fidelización que ayude a incrementar la reincidencia de nuevos clientes.
+Este proyecto se trata de un ecommerce orientado a personas interesadas en hacer pedidos online de gastronomía asiática, haciendo foco principalmente en el sushi. Cuando comenzamos a planificar este proyecto nos propusimos lograr de una forma sencilla y rápida que el cliente pueda realizar un pedido de su comida favorita, como así tambien facilitarle al dueño del emprendimiento la comunicación de su producto, publicación de ofertas y la gestión de los pedidos de forma ordenada. En esta aplicación los usuarios registrados pueden navegar por los productos disponibles, armar un pedido a su gusto con los productos que prefiera o elegir alguna de las tablas armadas. En el futuro queremos expandir este desarrollo y lograr integrar un método de pago online, utilizar Google Maps para ubicar/validar la dirección del cliente, integrar un sistema de mensajería para lograr una comunicación fluida con el cliente en cuanto a la entrega de su pedido y agregar un sistema de recompensas a modo de fidelización que ayude a incrementar la reincidencia de nuevos clientes.
 
 
 
 ## Participantes
 
 ###### Cecilia Denaro
-Padre de familia, 3 hijos, trabajo muy duro como un esclavo en la planta nuclear de Springfield. Hace 20 años funde Compumundo Hiper Mega Red, pero finalmente fuimos comprados por Microsoft. Mis habilidades son comer hasta 10 rosquillas a la vez.
+Mamá biológica y del corazón. Bride to be, aunque hace mas de 15 años que estamos juntos. Tengo 35 años y el año próximo nos vamos a vivir a España. Me dedico a la venta de juguetes de manera online, desde hace unos meses comencé a trabajar de manera independiente; sumamente contenta de lo que logré en tan poco tiempo. 
+Qué me quiero llevar de este curso? conocimientos, experiencias, personas, la satisfacción de saber que no hay edad para aprender cosas nuevas.
 
 
 
