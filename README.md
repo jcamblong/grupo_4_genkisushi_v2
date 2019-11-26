@@ -26,7 +26,7 @@ Tengo 36 años y trabajo en el area de Ecommerce en una empresa de telecomunicac
 
 ## Instalacion
 
-```git clone https://github.com/alezvi/empty-project-example```
+```git clone https://github.com/jcamblong/grupo_4_genkisushi```
 
 
 
@@ -42,7 +42,9 @@ Ingresar a ```http://localhost/proyecto/index.html```
 
 -wireframe.cc
 -awwwards.com
-
+-NodeJS
+-Visual Studio Code
+-Express
 
 
 #### Referentes
