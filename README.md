@@ -45,6 +45,7 @@ Ingresar a ```http://localhost/proyecto/index.html```
 -NodeJS
 -Visual Studio Code
 -Express
+-Trello: https://trello.com/b/4tRRIQka/proyecto-dh-genki-sushi
 
 
 #### Referentes
