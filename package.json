@@ -1,0 +1,19 @@
+{
+  "name": "grupo_4_genkisushi",
+  "version": "1.0.0",
+  "description": "Proyecto integrador Digital House - Grupo 4",
+  "main": "app.js",
+  "scripts": {
+    "test": "index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcamblong/grupo_4_genkisushi.git"
+  },
+  "author": "Cecilia Denaro, Carolina Guzman, Jose Camblong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcamblong/grupo_4_genkisushi/issues"
+  },
+  "homepage": "https://github.com/jcamblong/grupo_4_genkisushi#readme"
+}
