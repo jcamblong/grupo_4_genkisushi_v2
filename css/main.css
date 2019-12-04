@@ -4,9 +4,67 @@
     box-sizing: border-box;
 }
 
-.contenedor-padre {
+
+.navegacion {
     background-color: black;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    overflow: hidden;
+    padding: 2%;
+}
+
+.navegacion div.menu {
+    float: left;
+    color: white;
+}
+
+.navegacion div.logo{
+    float: left;
+    position: relative;
+    left: 40%;
+}
+
+.navegacion div.lupa-log-cart{
+    display: inline-block;
+    float: left;
+    position: relative;
+    left: 60%;
+    color: white;
+    margin-top: 5px;
+}
+
+.main-nav ul li{
+    background-color:grey;
+    text-align: center;
+    list-style-type: none;
+    margin: 2px 0;
+    padding: 5px;
+}
+.main-nav a{
+    text-decoration: none;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+
+.main-footer {
+    overflow: hidden;
+    background-color: black;
+    margin: 5px;
+}
+
+.main-footer div {
+    float: left;
+}
+
+.redes-sociales i {
+    display: block;
+    position: relative;
+    color: whitesmoke;
+    margin: 15%;
+    padding: 3px;
+    right: -1200%;
+}
+
+.main-footer div img {
+    padding: 3px;
+    margin: 30%;
 }
