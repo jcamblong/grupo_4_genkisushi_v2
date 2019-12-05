@@ -8,13 +8,16 @@
 
 .main-header {
     width: 100%;
+	
 }
 
 .navegacion {
-    overflow: hidden;
+	overflow: hidden;
     width: 100%;
     height: 35px;
     background-color:rgba(0, 0, 0, 0.9);
+	/*fijo la barra principal*/
+	position:fixed;
 }
 
 .menu {
@@ -30,6 +33,8 @@
     float: left;
     position: absolute;
     right: 50%;
+	/*corro centro del eje x*/
+	transform: translate(50%);
     padding-top: 2px;
 }
 
@@ -55,7 +60,9 @@
 }
 
 .main-nav {
+	/*modifico position del menu de navegacion para que empiece abajo de la barra fija*/
     position: relative;
+	top:35px;
 }
 
 .main-nav ul li{
@@ -65,12 +72,22 @@
     margin: 2px 0;
     padding: 5px;
 }
+/*defino en forma más específica el a, digo que sea dentro del li ul del main-nav*/
+/*visualmente no cambia nada*/
+.main-nav ul li a{
+    text-decoration: none;
+    color: whitesmoke;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+/*
 .main-nav a{
     text-decoration: none;
     color: whitesmoke;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
 }
+*/
 
 
 .main-footer {
