@@ -2,9 +2,8 @@
   "name": "grupo_4_genkisushi",
   "version": "1.0.0",
   "description": "Proyecto integrador Digital House - Grupo 4",
-  "main": "app.js",
   "scripts": {
-    "test": "index"
+    "start": "nodemon ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -15,5 +14,11 @@
   "bugs": {
     "url": "https://github.com/jcamblong/grupo_4_genkisushi/issues"
   },
-  "homepage": "https://github.com/jcamblong/grupo_4_genkisushi#readme"
+  "homepage": "https://github.com/jcamblong/grupo_4_genkisushi#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "http-errors": "^1.7.3"
+  }
 }
