@@ -17,8 +17,11 @@
     <div class="row">
      
         <nav class="main-nav navbar navbar-expand-lg navbar-light bg-light col-12 ">
-            <a class="navbar-brand" href="#"><img src="./img/logo.png" width= 35px height= 35px alt="logo"></a>
-          
+         
+          <div class="menu col-4 col-sm-">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -34,22 +37,29 @@
                   <a class="nav-link" href="#">Nosotros</a>
                 </li>
               </ul>
-              <div class="user-icon text-center">
-                <a href="logo/logo">
-                  <img src="./img/user.png" width="30px" height="30px">
-                </a>
-              </div>
-              <div class="cart-icon text-center">
-                <a href="logo/logo">
-                  <img src="./img/cart.png" width="30px" height="30px">
-                </a>
-              </div>
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
+            </div>
+          </div>
+
+          <div class="logo col-4" >
+            <a class="navbar-brand" href="#"><img src="./img/logo.png" width= 50px height= 50px alt="logo"></a>
             </div>
 
+          <div class="iconos col-4">
+            <div class="user-icon">
+              <a href="logo/logo">
+                <i class="fas fa-user"></i>
+              </a>
+            </div>
+            <div class="cart-icon">
+              <a href="logo/logo">
+                <i class="fas fa-shopping-cart"></i>
+              </a>
+            </div>
+           <div class="search-icon">
+            <i class="fas fa-search"></i>
+           </div>
+            
+          </div>
           </nav>
 
 
@@ -88,10 +98,15 @@
   <!-- pie -->
  
       <div class="main-footer row">
-    <div class="logo-footer col-1 text-center">
+    <div class="logo-footer col-2">
       <img src="./img/logo.png" width=50px height=50px alt="logo">
     </div>
-    <div class="col-11">
+
+    <div class="footer-info col-8">
+      <p>© Copyright 2019 - Genki Sushi</p>
+    </div>
+
+    <div class="footer-redes col-2">
       <ul class="nav  justify-content-end">
         <li class="nav-item">
           <a class="nav-link active" href="#"><i class="fab fa-facebook-f"></i></a>
