@@ -30,6 +30,11 @@
     height: 600px;
 }
 
+.item-cart {
+    display: flex;
+    margin-top: 10px;
+}
+
 .detalle-cart h2{
     font-family: "Oswald",sans-serif !important;
 }
