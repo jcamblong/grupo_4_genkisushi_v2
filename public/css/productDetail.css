@@ -1,0 +1,30 @@
+.filtros-productos {
+    display: inline-block;
+    margin-top: 35px;
+    margin-left: 10px;
+}
+
+.filtros-productos li a {
+    text-decoration: none;
+    color: #273746;
+    font-size: 20px;
+    padding: 10px;
+}
+
+
+.productos {
+    display: flex;
+    margin-left: 20px;
+    padding: 10px;
+}
+h2 {
+    font-size: 45px;
+    border-bottom: solid lightgrey 2px;
+    margin-left: 30px;
+}
+.card {
+    border: none;
+}
+.price {
+    font-weight: bold;
+}
