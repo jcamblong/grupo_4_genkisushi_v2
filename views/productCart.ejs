@@ -15,55 +15,8 @@
 
 <body>
   <div class="container-fluid">
-      <div class="row">
-        
-        <nav class="main-nav navbar navbar-expand-lg navbar-light bg-light col-12 ">
-            
-          <div class="menu col-4 col-sm-">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="/productos">Productos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/productos">Ofertas</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Contacto</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Nosotros</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-  
-          <div class="logo col-4" >
-            <a class="navbar-brand" href="/"><img src="./img/logo.png" width= 50px height= 50px alt="logo"></a>
-            </div>
-  
-          <div class="iconos col-4">
-            <div class="user-icon">
-              <a href="/registro">
-                <i class="fas fa-user"></i>
-              </a>
-            </div>
-            <div class="cart-icon">
-              <a href="/carrito">
-                <i class="fas fa-shopping-cart"></i>
-              </a>
-            </div>
-            <div class="search-icon">
-            <i class="fas fa-search"></i>
-            </div>
-            
-          </div>
-        </nav>
-  
-      </div>
+    
+    <%- include('./partials/header') %> 
 
     <!-- Empieza Main -->
 
@@ -177,41 +130,10 @@
 
   <!-- pie -->
  
-  <div class="main-footer row">
-    <div class="logo-footer col-2">
-      <img src="./img/logo.png" width=50px height=50px alt="logo">
-    </div>
+  <%- include('./partials/footer') %>
 
-    <div class="footer-info col-8">
-      <p>© Copyright 2019 - Genki Sushi</p>
-    </div>
+  <%- include('./partials/scripts') %>
 
-    <div class="footer-redes col-2">
-      <ul class="nav  justify-content-end">
-        <li class="nav-item">
-        <a class="nav-link active" href="https://www.facebook.com/genkisushiAR/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fab fa-twitter"></i></a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="https://www.instagram.com/genkisushiar/" target="_blank"><i class="fab fa-instagram"></i></a>
-        </li>
-      </ul>
-    </div>      
-  </div>
- 
-
-
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
 </div>
 </body>
 
