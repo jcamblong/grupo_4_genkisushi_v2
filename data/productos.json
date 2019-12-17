@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1",
+        "name" : "Caro",
+        "price" : 10,
+        "category":"clasicos/Makis/fritos/Argentos/Especiales con Arroz/Especiales sin Arroz" ,
+        "type": "Niguiri/Sashimi/Geishas/Makis",
+        "image": "/img/demo1-1021605166-1.jpg" ,
+        "detail": "Pieza a base de arroz con Atún y wasabi"
+    },
+    { 
+        "id": "2",
+        "name" : "Ceci",
+        "price" : 10,
+        "category":"clasicos/Makis/fritos/Argentos/Especiales con Arroz/Especiales sin Arroz" ,
+        "type": "Niguiri/Sashimi/Geishas/Makis/Calientes/Entradas/Temaki/rolls",
+        "image": "/img/demo1-1021605166-1.jpg" ,
+        "detail": "Pieza a base de arroz con Atún y wasabi"
+    },
+    {
+        "id": "3",
+        "name" : "Philadelphia",
+        "price" : 10,
+        "category":"clasicos" ,
+        "type": "rolls",
+        "image": "/img/demo1-1021605166-1.jpg" ,
+        "detail": "Pieza a base de arroz con Atún y wasabi"
+    },    
+    {
+        "id": "3",
+        "name" : "Philadelphia",
+        "price" : 10,
+        "category":"clasicos" ,
+        "type": "rolls",
+        "image": "/img/demo1-1021605166-1.jpg" ,
+        "detail": "Pieza a base de arroz con Atún y wasabi"
+    }   
+]
