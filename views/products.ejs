@@ -39,14 +39,14 @@
           <h1 id="rolls">ROLLS</h1>
       </div>
 
-      <div class="main-products col-12">
+      <div class="main-products row row-cols-1 row-cols-md-4">
 
           <% products.forEach(function(products) { %>
             
           <%- include('partials/item', {products: products}); %>
     
           <% }); %>
-
+      
       </div>
     </div>
     </div>
