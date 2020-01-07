@@ -4,7 +4,9 @@
     margin: 15px 0px;
     
 }
-
+.nav-menu ul li {
+     
+}
 .nav-menu ul li a{
     text-decoration: none;
     color: grey;
@@ -19,6 +21,11 @@
 
 .card {
     border: none;
+}
+
+.card a {
+    text-decoration: none;
+    color: black;
 }
 
 .card-footer {
@@ -42,21 +49,4 @@ h1 {
 
  .precio {
     font-weight: bold;
-}
-
-.container.products-wrapper {
-    margin: 30px 30px;
-}
-
-.product-detail {
-    display: flex;
-    align-items: flex-end;
-}
-
-.product-detail-price {
-    font-size: 35px;
-}
-
-.product-detail-description p {
-    margin-top: 10px;
 }

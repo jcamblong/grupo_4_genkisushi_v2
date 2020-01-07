@@ -14,96 +14,38 @@
 
     <%- include('./partials/header') %> 
 
-<!-- Empieza Main -->
+<!-- Detalle de producto -->
 
-  <div class="main-body container-fluid">
-    <div class="productos row">
+    <div class="container products-wrapper">
 
-        <div class="nav-menu">
-            <ul>
-              <li>
-                <a href="#rolls">Rolls</a>
-              </li>
-              <li >
-                <a  href="#tablas">Nuestras Tablas</a>
-              </li>
-              <li >
-                <a  href="#">Niguiris</a>
-              </li>
-              <li >
-                <a  href="#">Sashimis</a>
-              </li>
-            </ul>
+      <div class="product-detail">
+        <div class="row">
+          <div class="col-8">
+            <img src="<%= product.image %>" alt="product image" class="product-detail-img">
           </div>
 
-      <div class="col-12 titulo-producto">
-          <h1 id="rolls">ROLLS</h1>
+          <div class="product-detail-text col-4">
+              <h2 class="product-detail-title"><%= product.name %></h2>
+                <p class="product-detail-price">
+                  <b>$ <%= product.price %></b>
+                </p>
+            <div class="product-detail-description">
+              <p><b>Detalle del producto:</b> <%= product.detail %></p>
+            </div>
+            <div class="btn-actions align-bottom">
+              <a href="#" class="btn btn-primary">COMPRAR AHORA</a>
+              <hr>  
+              <a href="/products/edit/<%= product.id %>" class="btn btn-info">EDITAR PRODUCTO</a>
+              <form action="/products/delete/<%= product.id %>" method="POST" style="display: inline-flex">
+                <button type="submit" class="btn btn-danger">ELIMINAR</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="main-products container-fluid">
-
-        <div class="card-deck">
-
-          <% products.forEach(function(products) { %>
-            
-          <%- include('partials/item', {products: products}); %>
-    
-          <% }); %>
-
-       </div>
-      </div>
-    
-      <div class="col-12 titulo-producto">
-        <h1 id="tablas">NUESTRAS TABLAS</h1>
-    </div>
-
-    <div class="main-products container-fluid">
-      <div class="card-deck">
-        <div class="card col-4">
-          <img src="/img/Salmon-20-piezas.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Tabla de Salmón</h5>
-            <p class="card-text">Incluye 20 piezas surtidas de Salmón</p>
-            <p class="card-text precio">$ 199.90</p>
-          </div>
-          <div class="card-footer">
-            <button type="button" class="btn btn-primary">Agregar al carrito
-            </button>
-          </div>
-        </div>
-        <div class="card col-4">
-          <img src="/img/combo-surtido-15.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Tabla Surtida</h5>
-            <p class="card-text">Incluye 15 piezas surtidas</p>
-            <p class="card-text precio">$ 199.90</p>
-          </div>
-          <div class="card-footer">
-            <button type="button" class="btn btn-primary">Agregar al carrito
-            </button>
-          </div>
-        </div>
-        <div class="card col-4">
-          <img src="/img/combo-premium.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Tabla Premium</h5>
-            <p class="card-text">Incluye 14 piezas de nuestras especialidades premium</p>
-            <p class="card-text precio">$ 199.90</p>
-          </div>
-          <div class="card-footer">
-            <button type="button" class="btn btn-primary">Agregar al carrito
-            </button>
-          </div>
-        </div>
       
-        </div>
-      </div>
+
     </div>
-    </div>
-
-
-  </div>
-
 
   <!-- pie -->
  

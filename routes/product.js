@@ -8,7 +8,7 @@ router.get('/agregar-producto', productController.productAdd);
 
 router.get('/carrito', productController.productCart);
 
-router.get('/detalle', productController.productDetail);
+router.get('/detalle/:id', productController.productDetail);
 
 module.exports = router;
 

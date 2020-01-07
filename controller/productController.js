@@ -12,11 +12,14 @@ let productController ={
         res.render('productAdd');
     },
     'productCart': function(req, res) {
-            res.render('productCart');
+        res.render('productCart');
     },
 
     'productDetail': function(req, res) {
-            res.render('productDetail',  {products: products});
+        let product = products.find(function (p) {
+			return p.id == req.params.id
+		})
+        res.render('productDetail',  {product: product});
     }
 };
 
