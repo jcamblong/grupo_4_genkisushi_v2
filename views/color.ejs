@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+</head>
+<body style="background-color: <%= color %>;">
+<%- include ('partials/header') %>
+
+<!-- Empieza Main -->
+<div>
+
+<form action="/color" method="POST">
+<label for="">Elegi un color</label>
+<select name="color" id="color">
+  <option value="blue">Azul</option>
+  <option value="yellow">Amarillo</option>
+  <option value="red">Rojo</option>
+  <option value="green">Verde</option>
+</select> <br>
+<label for="">Recordar el color?</label>
+<input type="checkbox" name="recordar" id="recordar"><BR>
+<input type="submit" name="envia" value="Enviar">
+</form>
+</div>
+
+
+<!-- pie -->
+ 
+  <%- include('./partials/footer') %>
+
+  <%- include('./partials/scripts') %>
+</body>
+</html>
