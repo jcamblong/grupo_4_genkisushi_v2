@@ -30,15 +30,15 @@ let usersController ={
 
         if(result.isEmpty() && typeof search == 'undefined'){
             let newUser = {
-                        "nombre": req.body.nombre, 
-                        "apellido":req.body.apellido, 
+                        "name": req.body.name, 
+                        "lastName":req.body.lastName, 
                         "email": req.body.email,
                         "password": bcrypt.hashSync(req.body.password, 10),
-                        "calle": req.body.calle,
-                        "altura": req.body.altura,
-                        "entreCalles": req.body.entreCalles,
-                        "localidad": req.body.localidad,
-                        "telefono": req.body.telefono
+                        "street": req.body.street,
+                        "stNumber": req.body.stNumber,
+                        "street2": req.body.street2,
+                        "city": req.body.city,
+                        "phone": req.body.phone
                         }
             users.push(newUser)
 
