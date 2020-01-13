@@ -24,7 +24,7 @@ let productController ={
 		products.push(newproduct);
 		products = JSON.stringify(products);
 		fs.writeFileSync(productsFilePath , products);
-		res.redirect('/products/create');
+		res.redirect('/productos/create');
 	},
     'productCart': function(req, res) {
         res.render('productCart');
