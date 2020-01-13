@@ -19,17 +19,17 @@
 
   <div class=container>
     <div class="main-body row">
-     <form action="/users/registro" method="POST">
+     <form action="/users/register" method="POST">
     
     <!---Agrego apellido y nombre--->
   
     <div class="form-group">
       <label for="inputName">Nombre</label>
-      <input type="text" class="form-control" id="inputNombre">
+      <input type="text" class="form-control" id="inputNombre" name="nombre">
     </div>
      <div class="form-group">
       <label for="inputApellido">Apellido</label>
-      <input type="text" class="form-control" id="inputApellido">
+      <input type="text" class="form-control" id="inputApellido" name="apellido">
     </div>
     
     <!-------------------------------------->
@@ -39,38 +39,41 @@
         <input type="email" class="form-control" id="inputEmail4" name="email">
       </div>
       <div class="form-group col-md-6">
-        <label for="inputPassword4">Password</label>
-        <input type="password" class="form-control" id="inputPassword4" name="password">
+        <label for="inputPassword4">Contraseña</label>
+        <input type="password" class="form-control" id="inputPassword4" name="password" placeholder="Entre 6 y 10 caracteres">
       </div>
     </div>
-    <div class="form-group">
-      <label for="inputAddress">Direccion</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="Nombre calle y altura">
+    <div class="form-row">
+    <div class="form-group col-md-8">
+      <label for="inputAddress">Domicilio</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="Calle" name="calle">
+    </div>
+    <div class="form-group col-md-4 d-flex align-items-end">
+      <input type="text" class="form-control" id="inputAddressNumber" placeholder="Altura" name="altura">
+    </div>
     </div>
     <div class="form-group">
-      <label for="inputAddress2">Entre calles...</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Calle 1 y calle2">
+      <label for="inputAddress2">Entre calles</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="Calle 1 y Calle 2" name="entreCalles">
     </div>
     <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputState">Localidad</label>
+        <select id="inputState" class="form-control">
+          <option selected>Ezeiza</option>
+          <option>Monte Grande</option>
+          <option>El Jaguel</option>
+          <option>Tristan Suarez</option>
+        </select>
+      </div>
       <div class="form-group col-md-6">
         <label for="inputCity">Barrio</label>
         <input type="text" class="form-control" id="inputCity">
       </div>
-      <div class="form-group col-md-4">
-        <label for="inputState">Localidad</label>
-        <select id="inputState" class="form-control">
-          <option selected>Choose...</option>
-          <option>...</option>
-        </select>
-      </div>
-      <div class="form-group col-md-2">
-        <label for="inputZip">Codigo</label>
-        <input type="text" class="form-control" id="inputZip">
-      </div>
     </div>
    
   
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <button type="submit" class="btn btn-primary">Registrarme</button>
   </form>
   
   </div>
