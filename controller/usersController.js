@@ -7,7 +7,7 @@ const usersFilePath = path.join(__dirname, '../data/users.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 let usersController ={
-    'form': function(req, res) {
+    'loginForm': function(req, res) {
         res.render('login');
     },
     'login': function(req, res){
@@ -17,7 +17,7 @@ let usersController ={
             res.send("Usuario logeado")  
         } else {res.render('login', {errors: result.errors, data: req.body})}
     },
-    'register': function(req, res) {
+    'registerForm': function(req, res) {
         res.render('register');
     },
     'saveUser': function(req, res) {
