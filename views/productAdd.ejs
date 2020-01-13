@@ -18,59 +18,60 @@
 
     <div class=container>
       <div class="main-body row">
-        <form>
-       
-       <!---Agrego apellido y nombre--->
-     
-       <div class="form-group">
-         <label for="inputName">Nombre</label>
-         <input type="text" class="form-control" id="inputNombre">
-       </div>
+
+        <form method="POST" action="/productos/create">
+
+          <div class="form-group">
+            <label for="inputName">Nombre</label>
+            <input type="text" class="form-control" id="inputNombre" name="name">
+          </div>
         
-     <div class="form-group">
-           <label for="inputState">Categoria</label>
-           <select id="inputState" class="form-control">
-             <option selected>Seleccionar...</option>
-             <option>...</option>
+          <div class="form-group">
+            <label for="inputState">Categoria</label>
+            <select id="inputState" class="form-control" name="category">
+              <option selected>Seleccionar...</option>
+              <option>...</option>
            </select>
-      </div>
-     
-      <div class="form-group">
-         <label for="TextareaDetalle">Detalle</label>
-         <textarea class="form-control" id="TextareaDetalle" rows="3"></textarea>
-      </div>
-     
-      <div class="form-group">
-           <label for="inputPrecio">Precio</label>
-           <input type="number" class="form-control" id="inputPrecio">
-       </div>
-     
-       <div class="form-group">
-         <label for="TextareaIngredientes">Ingredientes</label>
-         <textarea class="form-control" id="TextareaIngredientes" rows="3"></textarea>
-      </div>
-     
-       <div class="custom-file">
-         <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-         <label class="custom-file-label" for="validatedCustomFile">Agregar imagen...</label>
-         <div class="invalid-feedback">Example invalid custom file feedback</div>
-       </div>
-     
-       <button type="submit" class="btn btn-primary">Agregar Producto</button>
-     </form>
-     
-     </div>
-     </div>
-     
+          </div>
 
-
+          <div class="form-group">
+            <label for="inputState">Tipo</label>
+            <select id="inputState" class="form-control" name="type">
+              <option selected>Seleccionar...</option>
+              <option>...</option>
+           </select>
+          </div>
+     
+          <div class="form-group">
+            <label for="TextareaDetalle">Detalle</label>
+            <textarea class="form-control" id="TextareaDetalle" rows="3" name="detail"></textarea>
+          </div>
+     
+          <div class="form-group">
+            <label for="inputPrecio">Precio</label>
+            <input type="number" class="form-control" id="inputPrecio" name="price">
+          </div>
+     
+          <div class="form-group">
+            <label for="TextareaIngredientes">Ingredientes</label>
+            <textarea class="form-control" id="TextareaIngredientes" rows="3" name="ingredients"></textarea>
+          </div>
+     
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" name= "image" id="validatedCustomFile" required>
+            <label class="custom-file-label" for="validatedCustomFile">Agregar imagen...</label>
+            <div class="invalid-feedback">Example invalid custom file feedback</div>
+          </div>
+     
+          <button type="submit" class="btn btn-primary">Agregar Producto</button>
+        </form>
+     
+      </div>
+    </div>
+     
   <!-- pie -->
- 
   <%- include('./partials/footer') %>
-
-  <%- include('./partials/scripts') %>
-  
-</div>
+  <%- include('./partials/scripts') %> 
+  </div>
 </body>
-
 </html>

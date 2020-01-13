@@ -2,13 +2,20 @@ const express = require('express');
 const router = express.Router();
 let productController = require('../controller/productController.js');
 
-router.get('/', productController.index);
+/* GET - All products */
+router.get('/', productController.index); 
+/* GET - Product detail */
+router.get('/detalle/:id', productController.productDetail);
 
-router.get('/agregar-producto', productController.productAdd);
+/*** CREATE ONE PRODUCT ***/ 
+router.get('/create', productController.productAdd); /* GET - Form to create */
+router.post('/create', productController.store); /* POST - Store in DB */
+
+
+//
 
 router.get('/carrito', productController.productCart);
 
-router.get('/detalle/:id', productController.productDetail);
 
 module.exports = router;
 
