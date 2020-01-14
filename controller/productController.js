@@ -28,7 +28,58 @@ let productController ={
 	},
     'productCart': function(req, res) {
         res.render('productCart');
-    }   
+    },
+// Update - Form to edit GET | CGR
+	edit: (req, res) => {
+		let product = products.find(function (p) {
+			return p.id == req.params.id
+		})
+
+		res.render('productEdit', {product: product})
+	},
+
+	// Update - Method to update PUT| CGR
+	update: (req, res) => {
+		let products = fs.readFileSync(productsFilePath , {encoding: 'utf-8'});
+		products = JSON.parse(products);
+
+		let arrayIndex;
+
+		let product = products.find(function (p, index) {
+			if (p.id == req.params.id){
+				arrayIndex = index;
+				return true;
+			}
+			return false;
+		});
+
+		let editado = {
+			...product,
+			...req.body
+		};
+
+		products[arrayIndex] = editado;
+
+		fs.writeFileSync(productsFilePath, JSON.stringify(products));
+
+		res.redirect('/');
+
+	},
+
+	// Delete - Delete one product from DB DELETE | CGR
+	destroy : (req, res) => {
+        let products = fs.readFileSync(productsFilePath , {encoding: 'utf-8'});
+		products = JSON.parse(products);
+        
+        var filtered = products.filter(function(value, index, arr){
+                return value.id != req.params.id;
+                });
+
+        fs.writeFileSync(productsFilePath, JSON.stringify(filtered));
+
+		res.redirect('/');
+	}
+   
 };
 
 module.exports = productController;
