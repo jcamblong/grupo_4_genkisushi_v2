@@ -26,19 +26,18 @@ let usersController ={
             return user.email == req.body.email;
             })
 
-        console.log(result, search)
-
         if(result.isEmpty() && typeof search == 'undefined'){
             let newUser = {
-                        "name": req.body.name, 
-                        "lastName":req.body.lastName, 
+                        "name": req.body.name,
+                        "lastName":req.body.lastName,
                         "email": req.body.email,
                         "password": bcrypt.hashSync(req.body.password, 10),
                         "street": req.body.street,
                         "stNumber": req.body.stNumber,
                         "street2": req.body.street2,
                         "city": req.body.city,
-                        "phone": req.body.phone
+                        "phone": req.body.phone,
+                        "neighborhood": req.body.neighborhood
                         }
             users.push(newUser)
 
