@@ -1,28 +1,40 @@
 const express = require('express');
 const router = express.Router();
 let productController = require('../controller/productController.js');
+const path = require ('path');
+const multer = require ('multer');
+
+var storage = multer.diskStorage({
+	destination: function(req, file, cb){
+		cb(null, 'public/img')
+	},
+	filename: function(req,file,cb){
+		cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+	}
+})
+var upload = multer ({storage:storage})
 
 /* GET - All products */
 router.get('/', productController.index); 
 /* GET - Product detail */
-router.get('/detalle/:id', productController.productDetail);
+router.get('/detail/:id', productController.productDetail);
 
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create', productController.productAdd); /* GET - Form to create */
-router.post('/create', productController.store); /* POST - Store in DB */
+router.post('/create', upload.any(), productController.store); /* POST - Store in DB */
 
 
 //
 
 //EDIT Product by id | CGR
 router.get('/edit/:id', productController.edit);
-router.put('/edit/:id', productController.update);
+router.put('/edit/:id', upload.any(), productController.update);
 
 //DELETE Product by id  | CGR
 router.delete('/delete/:id', productController.destroy); 
 
 
-router.get('/carrito', productController.productCart);
+router.get('/cart', productController.productCart);
 
 
 module.exports = router;

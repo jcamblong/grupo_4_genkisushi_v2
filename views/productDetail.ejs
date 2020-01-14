@@ -21,7 +21,7 @@
       <div class="product-detail">
         <div class="row">
           <div class="col-8">
-            <img src="<%= product.image %>" alt="product image" class="product-detail-img">
+            <img src="/img/<%= product.image %>" alt="product image" class="product-detail-img">
           </div>
 
           <div class="product-detail-text col-4">
@@ -36,9 +36,10 @@
               <a href="#" class="btn btn-primary">COMPRAR AHORA</a>
               <hr>  
               <a href="/products/edit/<%= product.id %>" class="btn btn-info">EDITAR PRODUCTO</a>
-              <form action="/products/delete/<%= product.id %>" method="POST" style="display: inline-flex">
+              <form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST" style="display: inline-flex">
                 <button type="submit" class="btn btn-danger">ELIMINAR</button>
               </form>
+
             </div>
           </div>
         </div>

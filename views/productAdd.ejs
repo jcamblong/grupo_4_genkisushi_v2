@@ -19,7 +19,7 @@
     <div class=container>
       <div class="main-body row">
 
-        <form method="POST" action="/productos/create">
+        <form method="POST" action="/productos/create" enctype="multipart/form-data">
 
           <div class="form-group">
             <label for="inputName">Nombre</label>
@@ -50,11 +50,6 @@
           <div class="form-group">
             <label for="inputPrecio">Precio</label>
             <input type="number" class="form-control" id="inputPrecio" name="price">
-          </div>
-     
-          <div class="form-group">
-            <label for="TextareaIngredientes">Ingredientes</label>
-            <textarea class="form-control" id="TextareaIngredientes" rows="3" name="ingredients"></textarea>
           </div>
      
           <div class="custom-file">
