@@ -5,6 +5,9 @@ const cookieParser = require('cookie-parser');
 //const logger = require('morgan');
 const session = require('express-session');
 
+//para poder usar los metodos PUT Y DELETE | CGR
+const methodOverride = require('method-override');
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const productRouter = require('./routes/product');
@@ -28,6 +31,9 @@ app.use(session(
         secret:"Hola Kenyi"
       }
 ));
+
+//Para poder pisar el method="POST" en el formulario por PUT y  DELETE | CGR
+app.use(methodOverride("_method"));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
