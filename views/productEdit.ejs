@@ -19,7 +19,7 @@
     <div class=container>
       <div class="main-body row">
 
-        <form action="/productos/edit/<%= product.id %>?_method=PUT" method="POST">
+        <form action="/products/edit/<%= product.id %>?_method=PUT" method="POST">
 			
           <div class="form-group">
             <label for="inputName">Nombre</label>
@@ -47,14 +47,19 @@
             <input type="number" class="form-control" id="inputPrecio" name="price" placeholder="<%= product.price %>">
           </div>
      
-         //imagen     
+          <div class="col-8">
+            <img src="/img/<%= product.image %>" alt="product image" class="product-detail-img">
+          </div>  
+          
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" name= "image" id="validatedCustomFile" required>
+            <label class="custom-file-label" for="validatedCustomFile">Agregar imagen...</label>
+            <div class="invalid-feedback">Example invalid custom file feedback</div>
+          </div>
               
           <button type="submit" class="btn btn-primary">Guardar Producto</button>
         </form>
 
-		<form action="/productos/delete/<%= product.id %>?_method=DELETE" method="POST">
-			      <button type="submit" class="btn btn-danger">ELIMINAR</button>
-        </form>
 		
       </div>
     </div>

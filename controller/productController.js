@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
+
 const productsFilePath = path.join(__dirname, '../data/productos.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
@@ -17,10 +18,16 @@ let productController ={
     'productAdd': function(req, res) {
         res.render('productAdd');
     },
-    'store': function(req, res){
+    'store': function(req, res, next){
         let products = fs.readFileSync(productsFilePath , {encoding: 'utf-8'});
 		products = JSON.parse(products);
-		let newproduct = req.body;
+		let newproduct = {
+			id: products.length,
+			...req.body,
+			...{image: req.files[0].filename}
+		}
+		console.log(req.files);
+		
 		products.push(newproduct);
 		products = JSON.stringify(products);
 		fs.writeFileSync(productsFilePath , products);
@@ -30,7 +37,7 @@ let productController ={
         res.render('productCart');
     },
 // Update - Form to edit GET | CGR
-	edit: (req, res) => {
+	'edit': (req, res) => {
 		let product = products.find(function (p) {
 			return p.id == req.params.id
 		})
@@ -39,7 +46,7 @@ let productController ={
 	},
 
 	// Update - Method to update PUT| CGR
-	update: (req, res) => {
+	'update': (req, res, next) => {
 		let products = fs.readFileSync(productsFilePath , {encoding: 'utf-8'});
 		products = JSON.parse(products);
 
@@ -52,22 +59,25 @@ let productController ={
 			}
 			return false;
 		});
-
+		
+		console.log(req.body);
+		
 		let editado = {
 			...product,
-			...req.body
-		};
+			...req.body,
+/* 			...{image: req.files[0].filename}
+ */		};
 
 		products[arrayIndex] = editado;
 
 		fs.writeFileSync(productsFilePath, JSON.stringify(products));
 
-		res.redirect('/');
+		res.redirect('/products/detail/'+ req.params.id);
 
 	},
 
 	// Delete - Delete one product from DB DELETE | CGR
-	destroy : (req, res) => {
+	'destroy': (req, res) => {
         let products = fs.readFileSync(productsFilePath , {encoding: 'utf-8'});
 		products = JSON.parse(products);
         
@@ -77,7 +87,7 @@ let productController ={
 
         fs.writeFileSync(productsFilePath, JSON.stringify(filtered));
 
-		res.redirect('/');
+		res.redirect('/products');
 	}
    
 };
