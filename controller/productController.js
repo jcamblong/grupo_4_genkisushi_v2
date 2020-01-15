@@ -22,12 +22,10 @@ let productController ={
         let products = fs.readFileSync(productsFilePath , {encoding: 'utf-8'});
 		products = JSON.parse(products);
 		let newproduct = {
-			id: products.length,
-			...req.body,
-			...{image: req.files[0].filename}
-		}
-		console.log(req.files);
-		
+						id: products.length,
+						...req.body,
+						...{image: req.files[0].filename}
+						}		
 		products.push(newproduct);
 		products = JSON.stringify(products);
 		fs.writeFileSync(productsFilePath , products);

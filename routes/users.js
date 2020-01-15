@@ -2,6 +2,18 @@ var express = require('express');
 var router = express.Router();
 let usersController = require('../controller/usersController.js');
 let {check, validationResult, body} = require('express-validator');
+const path = require ('path');
+const multer = require ('multer');
+
+var storage = multer.diskStorage({
+	destination: function(req, file, cb){
+		cb(null, 'public/img/users')
+	},
+	filename: function(req,file,cb){
+		cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+	}
+})
+var upload = multer ({storage:storage})
 
 
 router.get('/login', usersController.loginForm);
@@ -14,7 +26,7 @@ router.post('/login', [
 
 router.get('/register', usersController.registerForm);
 
-router.post('/register', [
+router.post('/register', upload.any(), [
   check('name')
                 .isLength({min:1})
                 .withMessage('Debes ingresar tu nombre'),

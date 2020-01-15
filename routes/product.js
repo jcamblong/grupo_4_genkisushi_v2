@@ -14,17 +14,14 @@ var storage = multer.diskStorage({
 })
 var upload = multer ({storage:storage})
 
-/* GET - All products */
+//All products
 router.get('/', productController.index); 
-/* GET - Product detail */
+//Product detail
 router.get('/detail/:id', productController.productDetail);
 
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create', productController.productAdd); /* GET - Form to create */
 router.post('/create', upload.any(), productController.store); /* POST - Store in DB */
-
-
-//
 
 //EDIT Product by id | CGR
 router.get('/edit/:id', productController.edit);
@@ -33,7 +30,7 @@ router.put('/edit/:id', upload.any(), productController.update);
 //DELETE Product by id  | CGR
 router.delete('/delete/:id', productController.destroy); 
 
-
+//CART
 router.get('/cart', productController.productCart);
 
 

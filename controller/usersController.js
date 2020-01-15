@@ -20,7 +20,7 @@ let usersController ={
     'registerForm': function(req, res) {
         res.render('register');
     },
-    'saveUser': function(req, res) {
+    'saveUser': function(req, res, next) {
         let result = validationResult(req)
         let search = users.find(function(user){
             return user.email == req.body.email;
@@ -28,7 +28,11 @@ let usersController ={
 
         if(result.isEmpty() && typeof search == 'undefined'){
             let newUser = {
-                        "name": req.body.name,
+                        id: users.length,
+                        ...req.body,
+                        ...{image: req.files[0].filename}
+                        /*
+                         "name": req.body.name,
                         "lastName":req.body.lastName,
                         "email": req.body.email,
                         "password": bcrypt.hashSync(req.body.password, 10),
@@ -37,7 +41,7 @@ let usersController ={
                         "street2": req.body.street2,
                         "city": req.body.city,
                         "phone": req.body.phone,
-                        "neighborhood": req.body.neighborhood
+                        "neighborhood": req.body.neighborhood */
                         }
             users.push(newUser)
 

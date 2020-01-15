@@ -19,7 +19,7 @@
 
   <div class=container>
     <div class="main-body row">
-     <form action="/users/register" method="POST">
+     <form action="/users/register" method="POST" enctype="multipart/form-data">
     
       <% if (typeof errors !== 'undefined') {
         errors.map(function(error){ %>
@@ -86,6 +86,12 @@
         <label for="inputCity">Barrio</label>
         <input type="text" class="form-control" id="inputCity" name="neighborhood" value="<%= typeof data != 'undefined' ? data.neighborhood : '' %>">
       </div>
+    </div>
+
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" name= "image" id="validatedCustomFile">
+      <label class="custom-file-label" for="validatedCustomFile">Agregar imagen...</label>
+      <div class="invalid-feedback">Example invalid custom file feedback</div>
     </div>
    
   
