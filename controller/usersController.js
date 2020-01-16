@@ -57,6 +57,38 @@ let usersController ={
     'user': function(req, res) {
         res.render('user');
     },
+    'changePasswordForm': function(req, res) {
+        res.render('changePassword');
+    },
+
+    'changePassword': function(req, res, next) {
+        let result = validationResult(req);
+        let arrayIndex;
+        console.log(req.body);
+        let user = users.find(function (p, index) {
+            if (p.email == req.body.email){
+                arrayIndex = index;
+				return true;
+			}
+			return false;
+        });
+        
+        if (result.isEmpty()){
+            
+        let usuarioEditado = {
+            ...user,
+			...{password: bcrypt.hashSync(req.body.password, 10)},
+         };
+
+         users[arrayIndex] = usuarioEditado;
+
+         
+         fs.writeFileSync('./data/users.json', JSON.stringify(users));
+
+         res.redirect('/users/login');
+        }        
+        else {res.render('changePassword', {errors: result.errors, data: req.body})}
+    },
 
 };
 

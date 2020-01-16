@@ -61,4 +61,27 @@ router.post('/register', upload.any(), [
 
 router.get('/user', logged, usersController.user);
 
+//Edit password 
+router.get('/changePassword', usersController.changePasswordForm);
+router.put('/changePassword',[
+  check('email')
+                .isEmail()
+                .withMessage('Email invallido'),
+  check('password')
+                .isLength({min:6, max:10})
+                .withMessage('El password debe tener entre 6 y 10 caracteres')
+                .custom((value,{req, loc, path}) => {
+                if (value !== req.body.repeatPassword) {
+                // trow error if passwords do not match
+                throw new Error("Las contraseñas no coinciden");
+                } else { return value }
+                }),
+  check('repeatPassword')
+                .isLength({min:1})
+                .withMessage('Debe confirmar la contraseña'),
+] 
+, usersController.changePassword);
+
+
+
 module.exports = router;
