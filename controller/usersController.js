@@ -54,11 +54,47 @@ let usersController ={
           
         } else {res.render('register', {errors: result.errors, data: req.body})}
     },
-    'user': function(req, res) {
-        res.render('user');
+    'user': function(req, res){
+        res.render ('users', {users: users});
+    },
+    'userDetail': function(req, res) {
+        let user = users.find(function (u) {
+            return u.id == req.params.id
+        })
+        res.render('user', {user: user});
+    },
+    'editUser': function(req, res){
+        let user = users.find(function (u) {
+            return u.id == req.params.id
+        })
+        res.render('editUser', {user: user});
+    },
+    'updateUser': function(req, res, next){
+        let users = fs.readFileSync(usersFilePath, {encoding: 'utf-8'});
+        users = JSON.parse(users);
+
+        let arrayUser;
+
+        let user = users.find(function(u, user){
+            if(u.id == req.params.id){
+                arrayUser = user;
+                return true;
+            }
+            return false;
+        });
+
+        let update = {
+            ...user,
+            ...req.body
+        };
+
+        users[arrayUser] = update;
+
+        fs.writeFileSync(usersFilePath, JSON.stringify(users));
+        res.redirect ('/users/user' + req.params.id); 
     },
     'changePasswordForm': function(req, res) {
-        res.render('changePassword');
+        res.render('/users/changePassword');
     },
 
     'changePassword': function(req, res, next) {
@@ -87,7 +123,7 @@ let usersController ={
 
          res.redirect('/users/login');
         }        
-        else {res.render('changePassword', {errors: result.errors, data: req.body})}
+        else {res.render('/users/changePassword', {errors: result.errors, data: req.body})}
     },
 
 };

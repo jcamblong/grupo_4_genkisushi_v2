@@ -16,13 +16,14 @@ var storage = multer.diskStorage({
 })
 var upload = multer ({storage:storage})
 
-
+//LOGIN
 router.get('/login', usersController.loginForm);
 
 router.post('/login', [
   check('email').isEmail().withMessage('El email ingresado no es valido')
 ], usersController.login);
 
+//REGISTRO
 router.get('/register', usersController.registerForm);
 
 router.post('/register', upload.any(), [
@@ -59,11 +60,35 @@ router.post('/register', upload.any(), [
                 .withMessage('Formato: Codigo de area sin cero + Numeros sin espacios ni guiones')
 ], usersController.saveUser);
 
-router.get('/user', logged, usersController.user);
+router.get('/user', logged, usersController.user); //   VER ESTO!!!!
 
-//Edit password 
-router.get('/changePassword', usersController.changePasswordForm);
-router.put('/changePassword',[
+//PERFIL USUARIO
+router.get('/:id', usersController.userDetail);
+
+//edit user
+router.get('/editUser/:id', usersController.editUser)
+router.put('/editUser/:id',upload.any(), [
+  check('name')
+                .isLength({min:1})
+                .withMessage('Debes ingresar tu nombre'),
+  check('lastName')
+                .isLength({min:1})
+                .withMessage('Debes ingresar tu apellido'),
+  check('street')
+                .isLength({min:1})
+                .withMessage('Debes ingresar un calle'),
+  check('stNumber')
+                .isLength({min:1})
+                .withMessage('Debes ingresar un altura'),
+  check('phone')
+                .isNumeric()
+                .isLength({min:10, max:10})
+                .withMessage('Formato: Codigo de area sin cero + Numeros sin espacios ni guiones')
+], usersController.updateUser);  
+
+//Edit password - agregué id (cd)
+router.get('/changePassword/:id', usersController.changePasswordForm);
+router.put('/changePassword/:id',[
   check('email')
                 .isEmail()
                 .withMessage('Email invallido'),
@@ -81,6 +106,9 @@ router.put('/changePassword',[
                 .withMessage('Debe confirmar la contraseña'),
 ] 
 , usersController.changePassword);
+
+
+
 
 
 

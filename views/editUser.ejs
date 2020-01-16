@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <%- include('./partials/head') %>
+
+  <link rel="stylesheet" href="/css/register.css">
+  
+</head>
+
+<body>
+  <div class="container-fluid">
+
+    <%- include('./partials/header') %>  
+
+
+    <!-- Empieza Main -->
+
+  <div class=container>
+    <div class="main-body row">
+     <form action="/users/editUser<%= user.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+    
+      <% if (typeof errors !== 'undefined') {
+        errors.map(function(error){ %>
+        <ul>
+            <li style="color:red; margin-left:30px"><%= error.msg %></li>
+        </ul>
+    <% }) } %>
+  
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputName">Nombre</label>
+      <input type="text" class="form-control" id="inputNombre" name="name" value="<%= typeof data != 'undefined' ? data.name : '' %>">
+    </div>
+     <div class="form-group col-md-6">
+      <label for="inputApellido">Apellido</label>
+      <input type="text" class="form-control" id="inputApellido" name="lastName" value="<%= typeof data != 'undefined' ? data.lastName : '' %>">
+    </div>
+    </div>
+    
+    <!-------------------------------------->
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Telefono</label>
+        <input type="text" class="form-control" id="inputPhone4" name="phone" placeholder="Cod. de area + Nro sin 15" value="<%= typeof data != 'undefined' ? data.phone : '' %>">
+      </div>
+    </div>
+    <div class="form-row">
+    <div class="form-group col-md-8">
+      <label for="inputAddress">Domicilio</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="Calle" name="street" value="<%= typeof data != 'undefined' ? data.street : '' %>">
+    </div>
+    <div class="form-group col-md-4 d-flex align-items-end">
+      <input type="text" class="form-control" id="inputAddressNumber" placeholder="Altura" name="stNumber" value="<%= typeof data != 'undefined' ? data.stNumber : '' %>">
+    </div>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress2">Entre calles</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="Calle 1 y Calle 2" name="street2" value="<%= typeof data != 'undefined' ? data.street2 : '' %>">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputState">Localidad</label>
+        <select id="inputState" class="form-control" name="city">
+          <option selected>Ezeiza</option>
+          <option>Monte Grande</option>
+          <option>El Jaguel</option>
+          <option>Tristan Suarez</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputCity">Barrio</label>
+        <input type="text" class="form-control" id="inputCity" name="neighborhood" value="<%= typeof data != 'undefined' ? data.neighborhood : '' %>">
+      </div>
+    </div>
+
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" name= "image" id="validatedCustomFile">
+      <label class="custom-file-label" for="validatedCustomFile">Agregar imagen...</label>
+      <div class="invalid-feedback">Example invalid custom file feedback</div>
+    </div>
+   
+  
+    <button type="submit" class="btn btn-primary">EDITAR</button>
+  </form>
+  
+  </div>
+  </div>
+
+
+  <!-- pie -->
+ 
+  <%- include('./partials/footer') %>
+  <%- include('./partials/scripts') %>
+
+</div>
+</body>
+
+</html>

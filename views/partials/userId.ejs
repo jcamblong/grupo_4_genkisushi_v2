@@ -1,0 +1,17 @@
+<div class="card" style="width: 18rem;">
+  <img src="/img/users/<%= user.image %>" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><%= user.name %> <%= user.lastName %></h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">TELEFONO <%= user.phone %></li>
+    <li class="list-group-item">DOMICILIO <%= user.street %> <%= user.stNumber %></li>
+    <li class="list-group-item">ENTRE CALLES <%= user.street2 %></li>
+    <li class="list-group-item">LOCALIDAD <%= user.city %></li>
+    <li class="list-group-item">BARRIO <%= user.neighborhood %></li>
+  </ul>
+  <div class="card-body">
+    <a href="users/changePassword/<%= user.id %>" class="card-link">EDITAR EMAIL Y CONTRASEÑA</a>
+    <a href="users/editUser/<%= user.id %>" class="card-link">EDITAR PERFIL</a>
+  </div>
+</div>
