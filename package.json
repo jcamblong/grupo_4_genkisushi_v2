@@ -7,7 +7,7 @@
     "start": "nodemon ./bin/www"
   },
   "nodemonConfig": {
-    "ignore": ["data/*","public/*"]
+    "ignore": ["data/*", "public/*"]
 },
   "repository": {
     "type": "git",

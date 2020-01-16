@@ -19,7 +19,7 @@
 
   <div class=container>
     <div class="main-body row">
-     <form action="/users/editUser<%= user.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+     <form action="/users/edituser?_method=PUT" method="POST" enctype="multipart/form-data">
     
       <% if (typeof errors !== 'undefined') {
         errors.map(function(error){ %>
@@ -28,14 +28,14 @@
         </ul>
     <% }) } %>
   
-    <div class="form-row">
+    <div class="form-row"> 
     <div class="form-group col-md-6">
       <label for="inputName">Nombre</label>
-      <input type="text" class="form-control" id="inputNombre" name="name" value="<%= typeof data != 'undefined' ? data.name : '' %>">
+      <input type="text" class="form-control" id="inputNombre" name="name" value="<%= typeof user != 'undefined' ? user.name : '' %>">
     </div>
      <div class="form-group col-md-6">
       <label for="inputApellido">Apellido</label>
-      <input type="text" class="form-control" id="inputApellido" name="lastName" value="<%= typeof data != 'undefined' ? data.lastName : '' %>">
+      <input type="text" class="form-control" id="inputApellido" name="lastName" value="<%= typeof user != 'undefined' ? user.lastName : '' %>">
     </div>
     </div>
     
@@ -43,21 +43,21 @@
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="inputPassword4">Telefono</label>
-        <input type="text" class="form-control" id="inputPhone4" name="phone" placeholder="Cod. de area + Nro sin 15" value="<%= typeof data != 'undefined' ? data.phone : '' %>">
+        <input type="text" class="form-control" id="inputPhone4" name="phone" placeholder="Cod. de area + Nro sin 15" value="<%= typeof user != 'undefined' ? user.phone : '' %>">
       </div>
     </div>
     <div class="form-row">
     <div class="form-group col-md-8">
       <label for="inputAddress">Domicilio</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="Calle" name="street" value="<%= typeof data != 'undefined' ? data.street : '' %>">
+      <input type="text" class="form-control" id="inputAddress" placeholder="Calle" name="street" value="<%= typeof user != 'undefined' ? user.street : '' %>">
     </div>
     <div class="form-group col-md-4 d-flex align-items-end">
-      <input type="text" class="form-control" id="inputAddressNumber" placeholder="Altura" name="stNumber" value="<%= typeof data != 'undefined' ? data.stNumber : '' %>">
+      <input type="text" class="form-control" id="inputAddressNumber" placeholder="Altura" name="stNumber" value="<%= typeof user != 'undefined' ? user.stNumber : '' %>">
     </div>
     </div>
     <div class="form-group">
       <label for="inputAddress2">Entre calles</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Calle 1 y Calle 2" name="street2" value="<%= typeof data != 'undefined' ? data.street2 : '' %>">
+      <input type="text" class="form-control" id="inputAddress2" placeholder="Calle 1 y Calle 2" name="street2" value="<%= typeof user != 'undefined' ? user.street2 : '' %>">
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
@@ -71,7 +71,7 @@
       </div>
       <div class="form-group col-md-6">
         <label for="inputCity">Barrio</label>
-        <input type="text" class="form-control" id="inputCity" name="neighborhood" value="<%= typeof data != 'undefined' ? data.neighborhood : '' %>">
+        <input type="text" class="form-control" id="inputCity" name="neighborhood" value="<%= typeof user != 'undefined' ? user.neighborhood : '' %>">
       </div>
     </div>
 

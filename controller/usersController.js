@@ -24,10 +24,17 @@ let usersController ={
                 req.session.loggedin = bcrypt.compareSync(password, search.password);
                 req.session.username = username;
                 
-                res.redirect('/users/user')
-              } else {res.render('login', {errors: 'Credenciales incorrectas'})}
+                res.redirect('/users/user') 
+              } else {res.render('login', {errors: [{
+                  msg:'Credenciales incorrectas'}]})}
            
         } else {res.render('login', {errors: result.errors, data: req.body})}
+    },
+    'logout': function(req, res){
+        req.session.loggedin = false;
+        req.session.username = '';
+
+        res.redirect('../')
     },
     'registerForm': function(req, res) {
         res.render('register');
@@ -40,9 +47,18 @@ let usersController ={
 
         if(result.isEmpty() && typeof search == 'undefined'){
             let newUser = {
-                        id: users.length,
-                        ...req.body,
-                        ...{image: req.files[0].filename}
+                        "id": users.length,
+                        "name": req.body.name,
+                        "lastName":req.body.lastName,
+                        "email": req.body.email,
+                        "password": bcrypt.hashSync(req.body.password, 10),
+                        "street": req.body.street,
+                        "stNumber": req.body.stNumber,
+                        "street2": req.body.street2,
+                        "city": req.body.city,
+                        "phone": req.body.phone,
+                        "neighborhood": req.body.neighborhood,
+                        "image": req.files[0].filename
                         }
             newUser.password = bcrypt.hashSync(req.body.password, 10)
             users.push(newUser)
@@ -55,7 +71,11 @@ let usersController ={
         } else {res.render('register', {errors: result.errors, data: req.body})}
     },
     'user': function(req, res){
-        res.render ('users', {users: users});
+        let user = users.find(function(user){
+            return user.email == req.session.username;
+            })
+        
+        res.render ('user', {user: user});
     },
     'userDetail': function(req, res) {
         let user = users.find(function (u) {
@@ -65,44 +85,79 @@ let usersController ={
     },
     'editUser': function(req, res){
         let user = users.find(function (u) {
-            return u.id == req.params.id
+            return u.email == req.session.username
         })
         res.render('editUser', {user: user});
     },
     'updateUser': function(req, res, next){
-        let users = fs.readFileSync(usersFilePath, {encoding: 'utf-8'});
-        users = JSON.parse(users);
 
-        let arrayUser;
-
-        let user = users.find(function(u, user){
-            if(u.id == req.params.id){
-                arrayUser = user;
-                return true;
-            }
-            return false;
+        let result = validationResult(req);
+        let arrayIndex;
+        let user = users.find(function (p, index) {
+            if (p.email == req.session.username){
+                arrayIndex = index;
+				return true;
+			}
+			return false;
         });
+        
+        if (result.isEmpty()){
+            
+        let usuarioEditado;        
 
-        let update = {
+        if(req.files.length != 0){
+
+            usuarioEditado = {
             ...user,
-            ...req.body
-        };
+			...{                        
+                "name": req.body.name,
+                "lastName":req.body.lastName,
+                "street": req.body.street,
+                "stNumber": req.body.stNumber,
+                "street2": req.body.street2,
+                "city": req.body.city,
+                "phone": req.body.phone,
+                "neighborhood": req.body.neighborhood,
+                },
+            ...{image: req.files[0].filename}
+            }
+        } else {
+            usuarioEditado = {
+                ...user,
+                ...{                        
+                    "name": req.body.name,
+                    "lastName":req.body.lastName,
+                    "street": req.body.street,
+                    "stNumber": req.body.stNumber,
+                    "street2": req.body.street2,
+                    "city": req.body.city,
+                    "phone": req.body.phone,
+                    "neighborhood": req.body.neighborhood,
+                    },
+                }
+            }
 
-        users[arrayUser] = update;
 
-        fs.writeFileSync(usersFilePath, JSON.stringify(users));
-        res.redirect ('/users/user' + req.params.id); 
+         console.log(user, usuarioEditado);
+         
+
+         users[arrayIndex] = usuarioEditado;
+
+         
+         fs.writeFileSync('./data/users.json', JSON.stringify(users));
+
+         res.redirect('/users/user');
+        }
     },
     'changePasswordForm': function(req, res) {
-        res.render('/users/changePassword');
+        res.render('changePassword');
     },
 
     'changePassword': function(req, res, next) {
         let result = validationResult(req);
         let arrayIndex;
-        console.log(req.body);
         let user = users.find(function (p, index) {
-            if (p.email == req.body.email){
+            if (p.email == req.session.username){
                 arrayIndex = index;
 				return true;
 			}
@@ -120,6 +175,8 @@ let usersController ={
 
          
          fs.writeFileSync('./data/users.json', JSON.stringify(users));
+         req.session.loggedin = false;
+         req.session.username = '';
 
          res.redirect('/users/login');
         }        

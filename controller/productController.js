@@ -13,6 +13,8 @@ let productController ={
         let product = products.find(function (p) {
 			return p.id == req.params.id
 		})
+		console.log(product);
+		
         res.render('productDetail',  {product: product});
     },
     'productAdd': function(req, res) {
@@ -21,6 +23,9 @@ let productController ={
     'store': function(req, res, next){
         let products = fs.readFileSync(productsFilePath , {encoding: 'utf-8'});
 		products = JSON.parse(products);
+
+		console.log(req.body);
+		
 		let newproduct = {
 						id: products.length,
 						...req.body,
@@ -29,7 +34,7 @@ let productController ={
 		products.push(newproduct);
 		products = JSON.stringify(products);
 		fs.writeFileSync(productsFilePath , products);
-		res.redirect('/productos/create');
+		res.redirect('/products/create');
 	},
     'productCart': function(req, res) {
         res.render('productCart');
@@ -45,8 +50,6 @@ let productController ={
 
 	// Update - Method to update PUT| CGR
 	'update': (req, res, next) => {
-		let products = fs.readFileSync(productsFilePath , {encoding: 'utf-8'});
-		products = JSON.parse(products);
 
 		let arrayIndex;
 
@@ -57,14 +60,23 @@ let productController ={
 			}
 			return false;
 		});
+			
+		let editado;
 		
-		console.log(req.body);
-		
-		let editado = {
+		console.log(req.files)
+
+		if(req.files.length != 0){ 
+			editado = {
 			...product,
 			...req.body,
-/* 			...{image: req.files[0].filename}
- */		};
+			...{image: req.files[0].filename}
+			}
+		} else {
+			editado = {
+				...product,
+				...req.body
+				}
+			}
 
 		products[arrayIndex] = editado;
 

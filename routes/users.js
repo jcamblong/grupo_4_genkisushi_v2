@@ -5,6 +5,8 @@ let {check, validationResult, body} = require('express-validator');
 const path = require ('path');
 const multer = require ('multer');
 const logged = require('../middlewares/loggedMiddleware')
+const loggedRedirect = require('../middlewares/loggedRedirectMiddleware')
+
 
 var storage = multer.diskStorage({
 	destination: function(req, file, cb){
@@ -17,14 +19,17 @@ var storage = multer.diskStorage({
 var upload = multer ({storage:storage})
 
 //LOGIN
-router.get('/login', usersController.loginForm);
+router.get('/login', loggedRedirect, usersController.loginForm);
 
 router.post('/login', [
   check('email').isEmail().withMessage('El email ingresado no es valido')
 ], usersController.login);
 
+router.get('/logout', usersController.logout);
+
+
 //REGISTRO
-router.get('/register', usersController.registerForm);
+router.get('/register', loggedRedirect, usersController.registerForm);
 
 router.post('/register', upload.any(), [
   check('name')
@@ -63,11 +68,10 @@ router.post('/register', upload.any(), [
 router.get('/user', logged, usersController.user); //   VER ESTO!!!!
 
 //PERFIL USUARIO
-router.get('/:id', usersController.userDetail);
 
 //edit user
-router.get('/editUser/:id', usersController.editUser)
-router.put('/editUser/:id',upload.any(), [
+router.get('/editUser', logged, usersController.editUser)
+router.put('/editUser',upload.any(), [
   check('name')
                 .isLength({min:1})
                 .withMessage('Debes ingresar tu nombre'),
@@ -86,12 +90,9 @@ router.put('/editUser/:id',upload.any(), [
                 .withMessage('Formato: Codigo de area sin cero + Numeros sin espacios ni guiones')
 ], usersController.updateUser);  
 
-//Edit password - agregué id (cd)
-router.get('/changePassword/:id', usersController.changePasswordForm);
-router.put('/changePassword/:id',[
-  check('email')
-                .isEmail()
-                .withMessage('Email invallido'),
+//Edit password (cd)
+router.get('/changePassword', logged, usersController.changePasswordForm);
+router.put('/changePassword',[
   check('password')
                 .isLength({min:6, max:10})
                 .withMessage('El password debe tener entre 6 y 10 caracteres')
