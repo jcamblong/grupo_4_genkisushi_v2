@@ -12,9 +12,21 @@ let usersController ={
     },
     'login': function(req, res){
         let result = validationResult(req)
+        let username = req.body.email;
+        let password = req.body.password;
 
         if(result.isEmpty()){
-            res.send("Usuario logeado")  
+            let search = users.find(function(user){
+                return user.email == req.body.email;
+                })
+                        
+            if(typeof search != 'undefined'){
+                req.session.loggedin = bcrypt.compareSync(password, search.password);
+                req.session.username = username;
+                
+                res.redirect('/users/user')
+              } else {res.render('login', {errors: 'Credenciales incorrectas'})}
+           
         } else {res.render('login', {errors: result.errors, data: req.body})}
     },
     'registerForm': function(req, res) {
@@ -31,18 +43,8 @@ let usersController ={
                         id: users.length,
                         ...req.body,
                         ...{image: req.files[0].filename}
-                        /*
-                         "name": req.body.name,
-                        "lastName":req.body.lastName,
-                        "email": req.body.email,
-                        "password": bcrypt.hashSync(req.body.password, 10),
-                        "street": req.body.street,
-                        "stNumber": req.body.stNumber,
-                        "street2": req.body.street2,
-                        "city": req.body.city,
-                        "phone": req.body.phone,
-                        "neighborhood": req.body.neighborhood */
                         }
+            newUser.password = bcrypt.hashSync(req.body.password, 10)
             users.push(newUser)
 
             let usersJSON = JSON.stringify(users)

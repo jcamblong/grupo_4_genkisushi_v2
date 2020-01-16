@@ -4,6 +4,7 @@ let usersController = require('../controller/usersController.js');
 let {check, validationResult, body} = require('express-validator');
 const path = require ('path');
 const multer = require ('multer');
+const logged = require('../middlewares/loggedMiddleware')
 
 var storage = multer.diskStorage({
 	destination: function(req, file, cb){
@@ -19,9 +20,7 @@ var upload = multer ({storage:storage})
 router.get('/login', usersController.loginForm);
 
 router.post('/login', [
-  check('email').isEmail().withMessage('El email ingresado no es valido'),
-  check('password').isLength({min:6, max:10}).withMessage('La contraseña debe tener entre 6 y 10 caracteres'),
-
+  check('email').isEmail().withMessage('El email ingresado no es valido')
 ], usersController.login);
 
 router.get('/register', usersController.registerForm);
@@ -60,6 +59,6 @@ router.post('/register', upload.any(), [
                 .withMessage('Formato: Codigo de area sin cero + Numeros sin espacios ni guiones')
 ], usersController.saveUser);
 
-router.get('/user', usersController.user);
+router.get('/user', logged, usersController.user);
 
 module.exports = router;
