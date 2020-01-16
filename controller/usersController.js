@@ -51,7 +51,11 @@ let usersController ={
             res.redirect('/users/login')
           
         } else {res.render('register', {errors: result.errors, data: req.body})}
-    }
+    },
+    'user': function(req, res) {
+        res.render('user');
+    },
+
 };
 
 module.exports = usersController;
