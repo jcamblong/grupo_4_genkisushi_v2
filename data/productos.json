@@ -5,7 +5,7 @@
         "price" : 10,
         "category":"Clásicos" ,
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Salmón, Queso, Palta"
     },
     {
@@ -14,7 +14,7 @@
         "price" : 10,
         "category":"Clásicos",
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Philadelphia y Salmón"
     },
     {
@@ -23,7 +23,7 @@
         "price" : 10,
         "category":"Clásicos",
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Atún, Mayonesa, Queso y Ciboulette"
     },
     {
@@ -32,7 +32,7 @@
         "price" : 10,
         "category":"Clásicos",
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Langostino, Palta, Queso, cubierto con Salmón"
     },
     {
@@ -41,7 +41,7 @@
         "price" : 10,
         "category":"Clásicos" ,
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Kanikama, Queso, Palta"
     },
     {
@@ -50,7 +50,7 @@
         "price" : 10,
         "category":"Clásicos" ,
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Salmón cocido, Miel, Jengibre"
     },
     {
@@ -59,7 +59,7 @@
         "price" : 10,
         "category":"Clásicos" ,
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Salmón, Queso, Verdeo, Tamago y Salmón Ahumado"
     },
     {
@@ -68,7 +68,7 @@
         "price" : 10,
         "category":"Makis" ,
         "type": "Makis",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Salmón"
     }, 
     {
@@ -77,7 +77,7 @@
         "price" : 10,
         "category":"Makis" ,
         "type": "Makis",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Salmón, Queso, Palta"
     }, 
     {
@@ -86,7 +86,7 @@
         "price" : 10,
         "category":"Makis" ,
         "type": "Makis",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Kanikama, Queso, Palta"
     }, 
     { 
@@ -95,7 +95,7 @@
         "price" : 10,
         "category":"Fritos" ,
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Salmón, Palta, Queso, Kanikama + Salsa Dulce"
     },
     { 
@@ -104,7 +104,7 @@
         "price" : 10,
         "category":"Fritos",
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Salmón, Provenzal, Cheddar + Salsa (Sin Arroz)"
     },
     { 
@@ -113,7 +113,7 @@
         "price" : 10,
         "category":"Fritos" ,
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Mozzarella, Salmón Ahumado Panizado + Salsa de Albahaca"
     },
     { 
@@ -122,7 +122,7 @@
         "price" : 10,
         "category":"Argentos" ,
         "type": "Calientes",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Bondiola sarteneada con Criolla"
     },
     { 
@@ -131,7 +131,7 @@
         "price" : 10,
         "category":"Argentos" ,
         "type": "Calientes",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Bondiola cocida con Cebolla"
     },
     { 
@@ -140,7 +140,7 @@
         "price" : 10,
         "category":"Argentos" ,
         "type": "Calientes",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Bastones de Milanesa con Vegetales y Queso gratinado"
     },
     { 
@@ -149,7 +149,7 @@
         "price" : 10,
         "category":"Argentos" ,
         "type": "Calientes",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Pollo Teriyaki y Queso cubierto con Tamago"
     },
     { 
@@ -158,7 +158,7 @@
         "price" : 10,
         "category":"Especiales sin Arroz" ,
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Salmón, Queso, Verdeo envuelto en Tamago"
     },
     { 
@@ -167,7 +167,7 @@
         "price" : 10,
         "category":"Especiales sin Arroz" ,
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Palmitos, Salmón envuelto en Tamago y Queso + Praliné"
     },
     { 
@@ -176,7 +176,7 @@
         "price" : 10,
         "category":"Especiales sin Arroz" ,
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Relleno de Queso, Palmitps y Salmón, envuelto en Tamago + Salsa de Maracuyá y Batata"
     },
     { 
@@ -185,7 +185,7 @@
         "price" : 10,
         "category":"Especiales sin Arroz" ,
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Langostinos en tempura, Verdeo, Queso envuelto en Tamago cubierto con Salsa de Mango y Batata"
     },
     { 
@@ -194,7 +194,7 @@
         "price" : 10,
         "category":"Especiales con Arroz" ,
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Salmón frito, Queso semi cubierto con Palta y Salsa de Frutos Rojos"
     },
     { 
@@ -203,7 +203,7 @@
         "price" : 10,
         "category":"Especiales con Arroz" ,
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Langostinos apanados fritos con Queso + Salsa Futurama"
     },
     { 
@@ -212,7 +212,7 @@
         "price" : 10,
         "category":"Especiales con Arroz" ,
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Langostinos apanados cubierto con Salmón + Guacamole"
     },
     { 
@@ -221,7 +221,7 @@
         "price" : 10,
         "category":"Especiales con Arroz" ,
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Langostinos apanados, Palta, Ciboulette"
     },
     { 
@@ -230,7 +230,7 @@
         "price" : 10,
         "category":"Especiales con Arroz" ,
         "type": "Rolls",
-        "image": "/img/demo1-1021605166-1.jpg" ,
+        "image": "demo1-1021605166-1.jpg" ,
         "detail": "Salmón y Mango semi cubierto con Queso y lluvia de Praliné de Almendras"
     }  
 ]
