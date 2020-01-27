@@ -7,8 +7,11 @@
     "start": "nodemon ./bin/www"
   },
   "nodemonConfig": {
-    "ignore": ["data/*", "public/*"]
-},
+    "ignore": [
+      "data/*",
+      "public/*"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jcamblong/grupo_4_genkisushi.git"

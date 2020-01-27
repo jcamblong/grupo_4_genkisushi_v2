@@ -1,7 +1,12 @@
 .login-form {
-    width: 300px;
-    margin: 0 auto;
+    width: 400px;
+    margin: 20px auto;
+    padding: 30px;
     font-family: Tahoma, Geneva, sans-serif;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
 }
 .login-form h1 {
     text-align: center;
@@ -26,4 +31,8 @@
     cursor: pointer;
     font-weight: bold;
     color: #ffffff;
+}
+
+form p {
+    margin-top: 20px;
 }
