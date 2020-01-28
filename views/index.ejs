@@ -5,10 +5,11 @@
 
   <%- include('./partials/head') %>
 
+
+
 </head>
 
 <body>
-  <div class="container-fluid">
 
       <%- include('./partials/header') %>  
 
@@ -55,14 +56,25 @@
       </a>
     </div>
 
-  </div>
-
-
   <!-- pie -->
  
 <%- include('./partials/footer') %>
 
 <%- include('./partials/scripts') %>
+
+<script>
+  $(function() {
+    $(".toggle").on("click", function() {
+        if ($(".item").hasClass("active")) {
+            $(".item").removeClass("active");
+            $(this).find("a").html("<i class='fas fa-bars'></i>");
+        } else {
+            $(".item").addClass("active");
+            $(this).find("a").html("<i class='fas fa-times'></i>");
+        }
+    });
+  });
+  </script>
 
 </div>
 </body>
