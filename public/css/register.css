@@ -4,8 +4,17 @@
     margin: 15px 0px;
 }
 
-.ct-register form button {
-    margin: 15px 0px;
+input[type="submit"] {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ca3e47;
+    border: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: #ffffff;
 }
 
 .main-body.row {
@@ -15,4 +24,11 @@
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
+}
+.main-body h1 {
+    text-align: center;
+    color: #4d4d4d;
+    font-size: 26px;
+    padding: 15px 0 30px 0;
+    letter-spacing: 1px;
 }

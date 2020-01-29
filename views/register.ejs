@@ -15,10 +15,12 @@
 
 
     <!-- Empieza Main -->
-  <div class="ct-register">
+  
+  <div class="ct-register"> 
     <div class="main-body row">
+        
      <form action="/users/register" method="POST" enctype="multipart/form-data">
-    
+      <h1>Formulario de Registro</h1>
       <% if (typeof errors !== 'undefined') {
         errors.map(function(error){ %>
         <ul>
@@ -39,7 +41,7 @@
     
     <!-------------------------------------->
     <div class="form-row">
-    <div class="form-group col-md-6">
+      <div class="form-group col-md-6">
         <label for="inputEmail4">Email</label>
         <input type="email" class="form-control" id="inputEmail4" name="email" value="<%= typeof data != 'undefined' ? data.email : '' %>">
       </div>
@@ -58,7 +60,7 @@
       </div>
     </div>
     <div class="form-row">
-    <div class="form-group col-md-8">
+      <div class="form-group col-md-8">
       <label for="inputAddress">Domicilio</label>
       <input type="text" class="form-control" id="inputAddress" placeholder="Calle" name="street" value="<%= typeof data != 'undefined' ? data.street : '' %>">
     </div>
@@ -92,7 +94,7 @@
       <div class="invalid-feedback">Example invalid custom file feedback</div>
     </div>
   
-    <button type="submit" class="btn btn-primary">Registrarme</button>
+    <input type="submit">
   </form>
   
   </div>

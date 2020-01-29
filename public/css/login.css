@@ -2,7 +2,6 @@
     width: 400px;
     margin: 20px auto;
     padding: 30px;
-    font-family: Tahoma, Geneva, sans-serif;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     -webkit-border-radius: 10px 10px 10px 10px;
@@ -24,15 +23,22 @@
 }
 .login-form input[type="submit"] {
     width: 100%;
-    padding: 15px;
-    background-color: #535b63;
+    padding: 10px;
+    background-color: #ca3e47;
     border: 0;
     box-sizing: border-box;
     cursor: pointer;
-    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 1px;
     color: #ffffff;
 }
 
 form p {
     margin-top: 20px;
+}
+
+.card-link {
+    color: #ca3e47;
+    letter-spacing: 1px;
+    font-weight: lighter;
 }
