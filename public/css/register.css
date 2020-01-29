@@ -1,4 +1,18 @@
-.ct-container {
+.ct-register {
     display: flex;
     justify-content: center;
+    margin: 15px 0px;
+}
+
+.ct-register form button {
+    margin: 15px 0px;
+}
+
+.main-body.row {
+    margin: 20px;
+    padding: 20px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
 }
