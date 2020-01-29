@@ -35,7 +35,6 @@ nav a {
 }
 nav a:hover {
     text-decoration: underline;
-    background-color: rgb(56, 56, 221);
 }
 .logo a:hover {
     text-decoration: none;
