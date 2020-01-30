@@ -16,7 +16,7 @@ body {
 /* NAV */
 nav {
     background: #333;
-    padding: 5px 20px;
+    padding: 0px 20px;
     margin: 0;
 }
 .menu {
@@ -35,9 +35,6 @@ nav a {
 }
 nav a:hover {
     color: #ca3e47;
-    text-decoration: none;
-}
-.logo a:hover {
     text-decoration: none;
 }
 .menu li {
