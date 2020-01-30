@@ -32,7 +32,7 @@
               <p><b>Detalle del producto:</b> <%= product.detail %></p>
             </div>
             <div class="btn-actions align-bottom">
-              <a href="#" class="btn btn-primary">COMPRAR AHORA</a>
+              <a href="/products/cart" class="btn btn-primary">AGREGAR AL CARRITO</a>
               <hr>  
               <a href="/products/edit/<%= product.id %>" class="btn btn-info">EDITAR PRODUCTO</a>
               <form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST" style="display: inline-flex">

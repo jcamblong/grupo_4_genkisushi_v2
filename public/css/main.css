@@ -14,10 +14,11 @@ body {
 }
 
 /* NAV */
-nav {
+.nav-uno {
     background: #333;
     padding: 0px 20px;
     margin: 0;
+    border-bottom: 1px solid rgba(255,255,255, .5);
 }
 .menu {
     display: flex;

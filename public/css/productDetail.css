@@ -1,18 +1,3 @@
-.nav-menu ul {
-    display: flex;
-    list-style-type: none;
-    margin: 15px 0px;
-    
-}
-
-.nav-menu ul li a{
-    text-decoration: none;
-    color: grey;
-    font-size: 18px;
-    padding: 15px;
-    align-items: center;  
-    
-}
 .card-deck .card {
     margin-bottom: 15px;
 }
