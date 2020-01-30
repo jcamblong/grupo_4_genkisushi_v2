@@ -8,7 +8,7 @@ module.exports = (sequelize, dataTypes) => {
                 allowNull: false
             }, 
             name: {
-                type: dataTypes.VARCHAR(45),
+                type: dataTypes.STRING(45),
                 allowNull: false
             }, 
         }, 

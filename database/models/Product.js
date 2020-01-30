@@ -7,10 +7,10 @@ module.exports = (sequelize, dataTypes) => {
                 autoIncrement: true,
                 allowNull: false}, 
             name: {
-                type: dataTypes.VARCHAR(50),
+                type: dataTypes.STRING(50),
                 allowNull: false}, 
             detail: {
-                type: dataTypes.VARCHAR(255),
+                type: dataTypes.STRING(255),
                 allowNull: true}, 
             type_id: {
                 type: dataTypes.INTEGER}, 
