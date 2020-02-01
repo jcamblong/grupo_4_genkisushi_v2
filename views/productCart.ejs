@@ -14,116 +14,103 @@
     <%- include('./partials/header') %> 
 
     <!-- Empieza Main -->
+    <div class="contenedor-padre">
 
-  <div class="main-body container-fluid">
-
-    <div class="h1-cart row  align-items-center">
-      <div class="col-12">
-          <h1>Carrito</h1>
-      </div>
-    </div>
-
-    <div class="contenedor-cart row">
-
-      <div class="detalle-cart col-8">
-        <h2>Resumen de compra</h2>
-        <div class="item-cart col-9">
-            <div class="img-cart col-2">
-              <img class="align-middle" src="/img/demo1-1021251770-1.jpg" alt="Item1" width="80px" height="80px">
-            </div>
-            <div class="item-detalle col-5">
-              <h4>Producto 1</h4>
-              <p>Detalle de producto 1.</p>
-            </div>
-            <div class="item-unidades col-1">
-              <h4>1</h4>
-            </div>
-            <div class="item-precio col-2">
-              <h4>$49.99</h4>
-            </div>
-            <div class="item-remover col-2">
-              <button type="button" class="btn btn-danger">Quitar</button>
-            </div>
-         </div>
-
-        <div class="item-cart col-9">
-          <div class="img-cart col-2">
-            <img class="align-middle" src="/img/demo1-1021580475-1.jpg" alt="Item1" width="80px" height="80px">
-          </div>
-          <div class="item-detalle col-5">
-            <h4>Producto 2</h4>
-            <p>Detalle de producto 2</p>
-          </div>
-          <div class="item-unidades col-1">
-            <h4>1</h4>
-          </div>
-          <div class="item-precio col-2">
-            <h4>$49.99</h4>
-          </div>
-          <div class="item-remover col-2">
-            <button type="button" class="btn btn-danger">Quitar</button>
-          </div>
-      </div>
-
-      <div class="item-cart col-9">
-        <div class="img-cart col-2">
-          <img class="align-middle" src="/img/demo1-1021605166-1.jpg" alt="Item1" width="80px" height="80px">
-        </div>
-        <div class="item-detalle col-5">
-          <h4>Producto 3</h4>
-          <p>Detalle de producto 3</p>
-        </div>
-        <div class="item-unidades col-1">
-          <h4>1</h4>
-        </div>
-        <div class="item-precio col-2">
-          <h4>$49.99</h4>
-        </div>
-        <div class="item-remover col-2">
-          <button type="button" class="btn btn-danger">Quitar</button>
-        </div>
-    </div>
-
-    <div class="item-cart col-9">
-      <div class="img-cart col-2">
-        <img class="align-middle" src="/img/demo1-1030050117-1.jpg" alt="Item1" width="80px" height="80px">
-      </div>
-      <div class="item-detalle col-5">
-        <h4>Producto 4</h4>
-        <p>Detalle de producto 4</p>
-      </div>
-      <div class="item-unidades col-1">
-        <h4>1</h4>
-      </div>
-      <div class="item-precio col-2">
-        <h4>$49.99</h4>
-      </div>
-      <div class="item-remover col-2">
-        <button type="button" class="btn btn-danger">Quitar</button>
-      </div>
-  </div>
-      </div>
-
-      <div class="resumen-cart col-3">
-        <div>            
-          <h2>Total</h2>
-          <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Codigo de descuento" aria-label="Codigo de descuento" aria-describedby="button-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Aplicar</button>
+        <div class="cart">
+          <h1>TU PEDIDO</h1>
+    
+            <div class= "pedido-1">
+              <div class="imagen">
+                <img src="/img/combo-premium.jpg" alt="" height= "150px">
+              </div>
+              <div class="descripcion">
+                <div class="producto ">
+                  <h2 class="col-12">Tabla de Salmón</h2>
+                  <p>Descripcion: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, aut.</p>
+                </div>
+                <div class="cantidad">
+                    <form>
+                        <p>QUERES MODIFICAR LA CANTIDAD?</p>
+                        <div>
+                          <input type="radio" id="contactChoice1"
+                           name="contact" value="email">
+                          <label for="contactChoice1">8 PIEZAS</label>
+                          <input type="radio" id="contactChoice2"
+                           name="contact" value="phone" checked>
+                          <label for="contactChoice2">16 PIEZAS</label>
+                          <input type="radio" id="contactChoice3"
+                           name="contact" value="tel">
+                          <label for="contactChoice3">32 PIEZAS</label>
+                        </div>
+                      </form>  
+                <div class="eliminar-precio">
+                    <button type="button" class="btn btn-danger">x</button>
+                    <span>$1699</span>
+                </div>
+                </div>
               </div>
             </div>
-          <h5>DESCUENTOS: $0.00</h5>
-          <h5>SUBTOTAL: $49.99</h5>
-          <h5>TOTAL: $49.99</h5>
+    
+            <div class= "pedido-2">
+                <div class="imagen">
+                  <img src="/img/demo1-1030239026-1.jpg" alt="" height= "150px">
+                </div>
+                <div class="descripcion">
+                  <div class="producto ">
+                    <h2 class="col-12">New York Phila</h2>
+                    <p>Descripcion: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, aut.</p>
+                  </div>
+                  <div class="cantidad">
+                      <form>
+                          <p>QUERES MODIFICAR LA CANTIDAD?</p>
+                          <div>
+                            <input type="radio" id="contactChoice1"
+                             name="contact" value="email" checked>
+                            <label for="contactChoice1">8 PIEZAS</label>
+                        
+                            <input type="radio" id="contactChoice2"
+                             name="contact" value="phone">
+                            <label for="contactChoice2">16 PIEZAS</label>
+                          </div>
+                        </form>  
+                  <div class="eliminar-precio">
+                      <button type="button" class="btn btn-danger">x</button>
+                      <span>$699</span>
+                  </div>
+                  </div>
+                </div>
+              </div>
         </div>
+    
+        <div class="resumen">
+          <h3>RESUMEN DE COMPRA</h3>
+          <div class="datos">
+            <div class="subtotal">
+              <h4>SUBTOTAL</h4>
+              <p>$ 2398</p>
+            </div>
+            <div class="envio">
+              <h4>ENVIO</h4>
+              <p>$ 0</p>
+            </div>
+            <div class="promocion">
+              <h4>Código Promocional</h4>
+              <form>
+              <input type="text" name="codigo" placeholder="Ingresa tu código">
+              <input type="submit" value="Aplicar">
+              </form>
+            </div>
+            <div class="total">
+              <h4>TOTAL</h4>
+              <p>$ 2398</p>
+            </div>
+            <button>FINALIZAR COMPRA</button>
+          </div>
       </div>
+      </div>
+  
 
-    </div>
-
-  </div>
-
-  <!-- pie -->
+    <!-- pie -->
  
   <%- include('./partials/footer') %>
 

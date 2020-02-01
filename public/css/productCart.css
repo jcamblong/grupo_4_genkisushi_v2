@@ -1,69 +1,145 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700&display=swap');
 
-.main-body {
-    margin: 0;
-    padding: 0;
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
 }
 
-.h1-cart {
-    height: 100px;
+body {
+  font-family: Roboto Condensed;
+  color: gray;
+}
+
+.contenedor-padre { 
+  display: flex;
+  background-color: rgb(231, 231, 231);
+  margin: 20px;
+  padding: 50px 100px;
+}
+
+h1 {
+  width: 100%;
+  font-size: 22px;
+  border-bottom: 1px solid gray;
+  align-self: flex-start;
+  padding-bottom: 10px;
+}
+.cart {
+  margin: 10px;
+  flex: 2 1 auto;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+}
+.pedido-1, .pedido-2{
+  display: flex;
+  border-bottom: 1px solid gray;
+}
+  .imagen {
+    padding: 30px;
+    margin: auto;
+  }
+  .descripcion {
     display: flex;
-    margin-top: 10px;
-}
-
-.h1-cart div h1{
-    text-align: center;
-    font-family: Roboto Condensed !important;
-}
-
-.contenedor-cart {
-    height: 600px;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .producto {
     display: flex;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.detalle-cart {
-    height: 600px;
-}
-
-.item-cart {
-    display: flex;
-    margin-top: 20px;
-    border-bottom: 2px black solid;
-}
-
-.img-cart {
-    display: flex;
+    flex-flow: row wrap;
     align-items: center;
-}
+    padding-bottom: 10px;
+  }
+    .producto h2 {
+      font-size: 20px;
+      padding: 0;
+    }
+    .producto p {
+      font-size: 16px;
+    }
+  .cantidad {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    font-size: 14px;
+  }
+    
 
-.detalle-cart h2{
-    font-family: Roboto Condensed!important;
-}
+    .btn-danger{
+      color: red;
+      background-color: transparent;
+      border-color: transparent;
+    }
+  
+.resumen {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 10px;
+  padding: 20px;
+  background-color: white;
+  flex-basis: 800px;
 
-.resumen-cart {
-    background-color: grey;
-    height: 350px;
-    border: 3px black solid;
+}
+  .resumen h3 {
+    width: 100%;
+    font-size: 16px;
+    border-bottom: 1px solid gray;
+    align-self: flex-start;
+    padding-bottom: 10px;
+  }
+  .datos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+    .datos h4, p {
+      font-size: 14px;
+    }
+    .datos .subtotal, .envio, .total, .promocion {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      
+    }
+      .promocion {
+        display: flex;
+        align-items: center;
+      }
+      .promocion form {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .promocion input[type="text"] {
+          border: 1px solid gray;
+          padding: 5px;
+          font-size: 12px;
+      }
+      .promocion input[type="submit"] {
+          background-color: black;
+          color: #fff;
+          cursor: pointer;
+          border: 0;
+          padding: 0.625rem 0.9375rem;
+          font-size: 12px;
+      }
+        .total {
+          display: flex;
+          margin-top: 30px;
+          border-top: 1px solid gray;
+          padding-top: 10px;
+          
+        }
+    .datos button {
+    width: 100%;
     padding: 10px;
-    margin-left: 30px;
-}
+    background-color: black;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #ffffff;
+  }
 
-.resumen-cart h2{
-    text-align: center;
-    font-family: Roboto Condensed!important;
-    margin-bottom: 50px;
-    margin-top:10px;
-}
-
-.resumen-cart h5{
-    font-family: Roboto Condensed !important;
-    margin-top:10px;
-    border-bottom: 1px black solid;
-}
-
-.btn-outline-secondary {
-    color: white;
-    border-color: white;
-}
