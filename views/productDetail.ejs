@@ -14,37 +14,45 @@
     <%- include('./partials/header') %> 
 
 <!-- Detalle de producto -->
+<div class="contenedor-padre">
 
-    <div class="container products-wrapper">
-
-      <div class="product-detail">
-        <div class="row">
-          <div class="col-8">
-            <img src="/img/<%= product.image %>" alt="product image" class="product-detail-img">
-          </div>
-
-          <div class="product-detail-text col-4">
-              <h2 class="product-detail-title"><%= product.name %></h2>
-                <p class="product-detail-price">
-                  <b>$ <%= product.price %></b>
-                </p>
-            <div class="product-detail-description">
-              <p><b>Detalle del producto:</b> <%= product.detail %></p>
-            </div>
-
-            <div class="btn-actions align-bottom">
-              <a href="/products/cart" class="btn btn-primary">AGREGAR AL CARRITO</a>
-              <hr>  
-              <a href="/products/edit/<%= product.id %>" class="btn btn-info">EDITAR PRODUCTO</a>
-              <form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST" style="display: inline-flex">
-                <button type="submit" class="btn btn-danger">ELIMINAR</button>
-              </form>
-
-            </div>
-          </div>
+  <h1><%= product.name %></h1>
+  <div class="imagen">
+    <img src="/img/<%= product.image %>" alt="imagen-producto" width="250px" height="200px">
+  </div>
+  <div class="info">
+    <p class="descripcion">Descripción: <%= product.detail %></p>
+    <form>
+      <p>¿Qué Cantidad?</p>
+      <div class="seleccion"> 
+        <div class="seleccion-1">
+          <input type="radio" id="contactChoice1"
+          name="contact" value="email">
+          <label for="contactChoice1">8 PIEZAS ⎮ $ 499</label>
+        </div>
+        <div class="seleccion-2">
+          <input type="radio" id="contactChoice2"
+          name="contact" value="phone" checked>
+          <label for="contactChoice2">16 PIEZAS ⎮ $ 799</label>
+        </div>
+        <div class="seleccion-3">
+        <input type="radio" id="contactChoice3"
+        name="contact" value="tel">
+        <label for="contactChoice3">32 PIEZAS ⎮ $ 999</label>
         </div>
       </div>
-    </div>
+    </form> 
+   
+    <a href= "/products/cart" class="añadir">AÑADIR AL CARRITO</a>
+
+      <div class="edicion">
+        <a href="/products/edit/<%= product.id %>" class="editar">EDITAR PRODUCTO</a>
+          <form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST">
+            <button type="submit" class="eliminar">ELIMINAR</button>
+          </form>
+      </div>
+  </div> 
+</div>
 
   <!-- pie -->
  

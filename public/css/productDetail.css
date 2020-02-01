@@ -1,47 +1,100 @@
-.card-deck .card {
-    margin-bottom: 15px;
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
 }
 
-.card {
-    border: none;
+body {
+  font-family: Roboto Condensed;
+  color: gray;
 }
 
-.card-footer {
-    background-color: white;
-    border-top: none;
-    margin-bottom: 10px;
+.contenedor-padre { 
+  display: flex;
+  align-self: center;
+  flex-wrap: wrap;
+  background-color: rgb(231, 231, 231);
+  margin: 20px;
+  padding: 50px 30px;
+  width: 50%;
 }
 
 h1 {
-    margin-top: 15px;
-    padding: 10px;
-    border-bottom: solid lightgray 1px;
-    position: relative;
+  width: 100%;
+  font-size: 22px;
+  border-bottom: 1px solid gray;
+  align-self: flex-start;
+  padding-bottom: 10px;
 }
 
-.btn-primary {
- 
-    background-color:#008080 ;
-    border-color: #008080;
+.imagen {
+    flex: 1 1 auto;
+    margin: auto;
 }
 
- .precio {
-    font-weight: bold;
+.info {
+  display: flex;
+  flex-direction: column;
+  flex: 3 1 auto;
+  justify-content: center;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.descripcion {
+  font-size: 16px;
+  padding-bottom: 20px;
+}
+.seleccion {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
 }
 
-.container.products-wrapper {
-    margin: 30px 30px;
+.añadir {
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-align: center;
 }
 
-.product-detail {
+.edicion {
     display: flex;
-    align-items: flex-end;
+    margin-top: 20px;
+    justify-content: flex-start;
+}
+.editar{
+    padding: 10px;
+    background-color: green;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin-right: 10px;
+}
+.eliminar {
+    padding: 10px;
+    background-color: red;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #ffffff;
+
 }
 
-.product-detail-price {
-    font-size: 35px;
+.editar:hover, .añadir:hover{
+    text-decoration: none;
+    color: #ffffff;
 }
 
-.product-detail-description p {
-    margin-top: 10px;
-}
