@@ -5,17 +5,28 @@ module.exports = (sequelize, dataTypes) => {
                 type: dataTypes.INTEGER,
                 primaryKey: true,
                 autoIncrement: true,
-                allowNull: false}, 
+                allowNull: false
+            }, 
             name: {
                 type: dataTypes.STRING(50),
-                allowNull: false}, 
+                allowNull: false
+            }, 
             detail: {
                 type: dataTypes.STRING(255),
-                allowNull: true}, 
+                allowNull: true
+            }, 
             type_id: {
-                type: dataTypes.INTEGER}, 
+                type: dataTypes.INTEGER
+            }, 
             category_id: {
-                type: dataTypes.INTEGER}
+                type: dataTypes.INTEGER
+            },
+            created_at: {
+                type: dataTypes.DATE
+            },
+            updated_at: {
+                type: dataTypes.DATE
+            }
         }, 
         {
             tableName: 'products',
