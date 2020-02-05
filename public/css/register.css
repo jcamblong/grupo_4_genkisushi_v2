@@ -65,6 +65,14 @@ form input, select{
     align-items: flex-end;
 }
 
+#street {
+    flex: 2.5;
+}
+
+#stNumber {
+    flex: 1;
+}
+
 .input-group {
     padding: 5px;
     display: flex;
