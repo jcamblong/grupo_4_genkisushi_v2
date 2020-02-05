@@ -54,6 +54,12 @@ nav a:hover {
     background-color: #ca3e47;
     border: 1px solid #ca3e47;
 }
+
+.item.button a:hover{
+    background-color: #ca3e47;
+    border: 1px solid #ca3e47;
+}
+
 .item {
     width: 100%;
     text-align: center;
@@ -188,8 +194,8 @@ footer input[type="submit"] {
     }
     .button a {
         padding: 7.5px 15px;
-        background: teal;
-        border: 1px #006d6d solid;
+        background: #ca3e47;
+        border: 1px #ca3e47 solid;
     }
     .button.secondary a {
         background: transparent;    
@@ -198,11 +204,12 @@ footer input[type="submit"] {
         text-decoration: none;
     }
     .button:not(.secondary) a:hover {
-        background: #006d6d;
-        border-color: #005959;
+        background: #333;
+        border-color: #ca3e47;
+        color: white;
     }
     .button.secondary a:hover {
-        color: #ddd;
+        color: white   ;
     }
     .ft-main {
         justify-content: space-around;

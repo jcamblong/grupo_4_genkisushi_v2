@@ -17,6 +17,15 @@
     color: #ffffff;
 }
 
+form input, select{
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #dddddd;
+    margin-bottom: 15px;
+    box-sizing:border-box;
+    border-radius: 0 5px 5px 0;
+}
+
 .main-body.row {
     margin: 20px;
     padding: 20px;
@@ -25,10 +34,46 @@
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
 }
+
 .main-body h1 {
     text-align: center;
     color: #4d4d4d;
     font-size: 26px;
     padding: 15px 0 30px 0;
     letter-spacing: 1px;
+}
+
+.input-row {
+    display: flex;
+}
+
+#street2 {
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-end;
+}
+
+#avatar {
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.input-group {
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 50%;
+    align-items: flex-end;
+}
+
+.input-group label {
+    padding: 5px;
 }

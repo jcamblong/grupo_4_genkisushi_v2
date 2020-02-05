@@ -19,85 +19,89 @@
   <div class="ct-register"> 
     <div class="main-body row">
         
-     <form action="/users/register" method="POST" enctype="multipart/form-data">
-      <h1>Formulario de Registro</h1>
-      <% if (typeof errors !== 'undefined') {
+      <form action="/users/register" method="POST" enctype="multipart/form-data">
+        <h1>Formulario de Registro</h1>
+        <% if (typeof errors !== 'undefined') {
         errors.map(function(error){ %>
         <ul>
-            <li style="color:red; margin-left:30px"><%= error.msg %></li>
+          <li style="color:red; margin-left:30px"><%= error.msg %></li>
         </ul>
-    <% }) } %>
+        <% }) } %>
   
-    <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputName">Nombre</label>
-      <input type="text" class="form-control" id="inputNombre" name="name" value="<%= typeof data != 'undefined' ? data.name : '' %>">
-    </div>
-     <div class="form-group col-md-6">
-      <label for="inputApellido">Apellido</label>
-      <input type="text" class="form-control" id="inputApellido" name="lastName" value="<%= typeof data != 'undefined' ? data.lastName : '' %>">
-    </div>
-    </div>
-    
-    <!-------------------------------------->
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">Email</label>
-        <input type="email" class="form-control" id="inputEmail4" name="email" value="<%= typeof data != 'undefined' ? data.email : '' %>">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputPassword4">Telefono</label>
-        <input type="text" class="form-control" id="inputPhone4" name="phone" placeholder="Cod. de area + Nro sin 15" value="<%= typeof data != 'undefined' ? data.phone : '' %>">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-          <label for="inputEmail4">Contraseña</label>
-          <input type="password" class="form-control" id="inputPassword4" name="password" placeholder="Entre 6 y 10 caracteres">
-        </div>
-        <div class="form-group col-md-6 d-flex align-items-end">
-          <input type="password" class="form-control" id="inputPassword4" name="repeatPassword" placeholder="Repetir contraseña">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-8">
-      <label for="inputAddress">Domicilio</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="Calle" name="street" value="<%= typeof data != 'undefined' ? data.street : '' %>">
-    </div>
-    <div class="form-group col-md-4 d-flex align-items-end">
-      <input type="text" class="form-control" id="inputAddressNumber" placeholder="Altura" name="stNumber" value="<%= typeof data != 'undefined' ? data.stNumber : '' %>">
-    </div>
-    </div>
-    <div class="form-group">
-      <label for="inputAddress2">Entre calles</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Calle 1 y Calle 2" name="street2" value="<%= typeof data != 'undefined' ? data.street2 : '' %>">
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputState">Localidad</label>
-        <select id="inputState" class="form-control" name="city">
-          <option selected>Ezeiza</option>
-          <option>Monte Grande</option>
-          <option>El Jaguel</option>
-          <option>Tristan Suarez</option>
-        </select>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputCity">Barrio</label>
-        <input type="text" class="form-control" id="inputCity" name="neighborhood" value="<%= typeof data != 'undefined' ? data.neighborhood : '' %>">
-      </div>
-    </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label for="name">Nombre</label>
+            <input type="text" class="form-control" id="inputName" name="name" value="<%= typeof data != 'undefined' ? data.name : '' %>">
 
-    <div class="custom-file">
-      <input type="file" class="custom-file-input" name= "image" id="validatedCustomFile">
-      <label class="custom-file-label" for="validatedCustomFile">Agregar imagen...</label>
-      <div class="invalid-feedback">Example invalid custom file feedback</div>
+          </div>
+          <div class="input-group">
+            <label for="lastName">Apellido</label>
+            <input type="text" class="form-control" id="inputLastName" name="lastName" value="<%= typeof data != 'undefined' ? data.lastName : '' %>">
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="inputEmail" name="email" value="<%= typeof data != 'undefined' ? data.email : '' %>">
+          </div>
+          <div class="input-group">
+            <label for="phone">Telefono</label>
+            <input type="text" class="form-control" id="inputPhone" name="phone" placeholder="Cod. de area + Nro sin 15" value="<%= typeof data != 'undefined' ? data.phone : '' %>">
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="input-group">
+            <label for="password">Contraseña</label>
+            <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Entre 6 y 10 caracteres">
+          </div>
+          <div class="input-group">
+            <input type="password" class="form-control" id="inputPassword2" name="repeatPassword" placeholder="Repetir contraseña">
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="input-group">
+            <label for="street">Domicilio</label>
+            <input type="text" class="form-control" id="inputStreet" placeholder="Calle" name="street" value="<%= typeof data != 'undefined' ? data.street : '' %>">
+          </div>
+          <div class="input-group">
+            <input type="text" class="form-control" id="inputStNumber" placeholder="Altura" name="stNumber" value="<%= typeof data != 'undefined' ? data.stNumber : '' %>">
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="input-group" id="street2">
+            <label for="inputStreet2">Entre calles</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Calle 1 y Calle 2" name="street2" value="<%= typeof data != 'undefined' ? data.street2 : '' %>">
+          </div>
+        </div>
+
+        <div class="input-row">
+          <div class="input-group">
+            <label for="city">Localidad</label>
+            <select id="inputCity" class="form-control" name="city">
+              <option selected>Ezeiza</option>
+              <option>Monte Grande</option>
+              <option>El Jaguel</option>
+              <option>Tristan Suarez</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="inputNeighborhood">Barrio</label>
+            <input type="text" class="form-control" id="inputNeighborhood" name="neighborhood" value="<%= typeof data != 'undefined' ? data.neighborhood : '' %>">
+          </div>
+        </div>
+
+        <div class="input-group" id="avatar">
+          <label class="custom-file-label" for="image">Avatar</label>
+          <input type="file" class="custom-file-input" name= "image" id="validatedCustomFile">
+        </div>
+      
+        <input type="submit">
+      </form>
     </div>
-  
-    <input type="submit">
-  </form>
-  
-  </div>
   </div>
 
   <!-- pie -->
