@@ -8,8 +8,8 @@ COMMIT;
   `name` VARCHAR(50) NOT NULL,
   `quantity` TINYINT(100) NULL,
   `price` DECIMAL(6,2) NOT NULL,
-  `created_at` DATETIME,
-  `updated_at` DATETIME,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC));
   
@@ -18,24 +18,24 @@ COMMIT;
 CREATE TABLE `grupo_4_genkisushi`.`categories` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
-  `created_at` DATETIME,
-  `updated_at` DATETIME,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) );
   
   CREATE TABLE `grupo_4_genkisushi`.`payment_methods` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `type` VARCHAR(45) NOT NULL,
-  `created_at` DATETIME,
-  `updated_at` DATETIME,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) );
   
   CREATE TABLE `grupo_4_genkisushi`.`roles` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
-  `created_at` DATETIME,
-  `updated_at` DATETIME,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) );
   
@@ -44,16 +44,16 @@ CREATE TABLE `grupo_4_genkisushi`.`categories` (
   `code_number` VARCHAR(45) NOT NULL,
   `discount` DECIMAL,
   `due_date` DATETIME,
-  `created_at` DATETIME,
-  `updated_at` DATETIME,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) );
 
   CREATE TABLE `grupo_4_genkisushi`.`order_statuses` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
-  `created_at` DATETIME,
-  `updated_at` DATETIME,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) );
 
@@ -63,16 +63,16 @@ CREATE TABLE `grupo_4_genkisushi`.`users` (
   `first_name` VARCHAR(50) NOT NULL,
   `last_name` VARCHAR(50) NOT NULL,
   `role_id` INT unsigned NOT NULL,
-  `email` VARCHAR(100) NOT NULL,
-  `password` VARCHAR(60) NULL,
+  `email` VARCHAR(100) NOT NULL UNIQUE,
+  `password` VARCHAR(60) NOT NULL,
   `phone` VARCHAR(45) NULL,
   `city` VARCHAR(45) NULL,
   `street_name` VARCHAR(45) NULL,
   `street_number` VARCHAR(45) NULL,
   `cross_street_name` VARCHAR(45) NULL,
   `neighborhood` VARCHAR(45) NULL,
-  `created_at` DATETIME,
-  `updated_at` DATETIME,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`role_id`) REFERENCES `roles`(`id`)
 	ON DELETE CASCADE
@@ -89,8 +89,8 @@ CREATE TABLE `grupo_4_genkisushi`.`products` (
   `detail` VARCHAR(255) NULL,
   `type_id` INT UNSIGNED NOT NULL,
   `category_id` INT UNSIGNED NOT NULL, 
-  `created_at` DATETIME,
-  `updated_at` DATETIME,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`type_id`) REFERENCES `product_types`(`id`)
 	ON DELETE CASCADE
@@ -112,8 +112,8 @@ CREATE TABLE `grupo_4_genkisushi`.`products` (
   `order_status_id` INT UNSIGNED NOT NULL,
   `cupon_id` INT UNSIGNED NOT NULL,
   `purchase_total` DECIMAL,
-  `created_at` DATETIME,
-  `updated_at` DATETIME,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
 	ON DELETE CASCADE
@@ -136,8 +136,8 @@ CREATE TABLE `grupo_4_genkisushi`.`products` (
   `product_id` INT UNSIGNED NOT NULL,
   `quantity` INT,
   `purchase_price` DECIMAL,
-  `created_at` DATETIME,
-  `updated_at` DATETIME,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`order_id`) REFERENCES `orders`(`id`)
 	ON DELETE CASCADE
