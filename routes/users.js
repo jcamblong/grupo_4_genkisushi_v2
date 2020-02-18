@@ -29,7 +29,7 @@ router.get('/logout', usersController.logout);
 
 
 //REGISTRO
-router.get('/register', loggedRedirect, usersController.registerForm);
+router.get('/register', loggedRedirect, usersController.create);
 
 router.post('/register', upload.any(), [
   check('name')
@@ -63,7 +63,7 @@ router.post('/register', upload.any(), [
                 .isNumeric()
                 .isLength({min:10, max:10})
                 .withMessage('Formato: Codigo de area sin cero + Numeros sin espacios ni guiones')
-], usersController.saveUser);
+], usersController.store);
 
 router.get('/user', logged, usersController.user); //   VER ESTO!!!!
 

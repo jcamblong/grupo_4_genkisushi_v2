@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
+const db = require('../database/models');
 let {check, validationResult, body} = require('express-validator');
 
 const usersFilePath = path.join(__dirname, '../data/users.json');
@@ -36,35 +37,30 @@ let usersController ={
 
         res.redirect('../')
     },
-    'registerForm': function(req, res) {
+    'create': function(req, res) {
         res.render('register');
     },
-    'saveUser': function(req, res, next) {
+    'store': function(req, res, next) {
         let result = validationResult(req)
-        let search = users.find(function(user){
-            return user.email == req.body.email;
+
+        /* FALTA AGREGAR BUSQUEDA DE USUARIO EXISTENTE Y AGREGAR LA CONDICION AL IF */
+
+        if(result.isEmpty()){
+
+            db.User.create({
+                first_name: req.body.name,
+                last_name: req.body.lastName,
+                role_id: "2",
+                email: req.body.email,
+                password: bcrypt.hashSync(req.body.password, 10),
+                phone: req.body.phone,
+                city: req.body.city,
+                street_name: req.body.street,
+                street_number: req.body.stNumber,
+                cross_street_name: req.body.street2,
+                neighborhood: req.body.neighborhood,
+                image: req.files[0].filename
             })
-
-        if(result.isEmpty() && typeof search == 'undefined'){
-            let newUser = {
-                        "id": users.length,
-                        "name": req.body.name,
-                        "lastName":req.body.lastName,
-                        "email": req.body.email,
-                        "password": bcrypt.hashSync(req.body.password, 10),
-                        "street": req.body.street,
-                        "stNumber": req.body.stNumber,
-                        "street2": req.body.street2,
-                        "city": req.body.city,
-                        "phone": req.body.phone,
-                        "neighborhood": req.body.neighborhood,
-                        "image": req.files[0].filename
-                        }
-            newUser.password = bcrypt.hashSync(req.body.password, 10)
-            users.push(newUser)
-
-            let usersJSON = JSON.stringify(users)
-            fs.writeFileSync('./data/users.json', usersJSON)
 
             res.redirect('/users/login')
           

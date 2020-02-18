@@ -1,8 +1,8 @@
 module.exports = (sequelize, dataTypes) => {
-    const User = sequelize.define ('users', 
+    const User = sequelize.define ('User', 
         {
             id: {
-                type: dataTypes.autoIncrement,
+                type: dataTypes.INTEGER,
                 primaryKey: true,
                 autoIncrement: true,
                 allowNull: false
@@ -35,15 +35,20 @@ module.exports = (sequelize, dataTypes) => {
                 type: dataTypes.STRING
             },
             street_name: {
-                type: dataTypes.STRING
+                type: dataTypes.STRING,
+                allowNull: false
             },
             street_number: {
-                type: dataTypes.INTEGER
+                type: dataTypes.INTEGER,
+                allowNull: false
             },
             cross_street_name: {
                 type: dataTypes.STRING
             },
             neighborhood: {
+                type: dataTypes.STRING
+            },
+            image: {
                 type: dataTypes.STRING
             },
             created_at: {

@@ -2,25 +2,30 @@ module.exports = (sequelize, dataTypes) => {
     const Order = sequelize.define ('orders', 
         {
             id: {
-                type: dataTypes.autoIncrement,
+                type: dataTypes.INTEGER,
                 primaryKey: true,
                 autoIncrement: true,
-                allowNull: false}, 
+                allowNull: false
+            },
             order_number: {
                 type: dataTypes.INTEGER,
-                allowNull: false}, 
+                allowNull: false
+            }, 
             user_id: {
                 type: dataTypes.INTEGER,
-                allowNull: true}, 
+                allowNull: true
+            }, 
             product_id: {
-                type: dataTypes.INTEGER}, 
+                type: dataTypes.INTEGER
+            }, 
             date: {
-                type: dataTypes.date},
+                type: dataTypes.DATE
+            },
             payment_method_id:{
                 type: dataTypes.INTEGER
             },
-            order_status:{
-                type: dataTypes.string
+            order_status: {
+                type: dataTypes.STRING
             }
         }, 
         {
@@ -36,7 +41,7 @@ module.exports = (sequelize, dataTypes) => {
         })
     }
     Order.associate = function (models){
-        Order.belongsTo (models.users, {
+        Order.belongsTo (models.User, {
             as: 'users',
             foreignKey: "user_id"
         })

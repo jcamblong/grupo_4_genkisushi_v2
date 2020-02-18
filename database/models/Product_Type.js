@@ -8,14 +8,14 @@ module.exports = (sequelize, dataTypes) => {
                 allowNull: false
             }, 
             name: {
-                type: dataTypes.STRING(50),
+                type: dataTypes.STRING,
                 allowNull: false
             }, 
             quantity: {
-                type: dataTypes.TINYINTEGER(100),
+                type: dataTypes.INTEGER,
             },
             price: {
-                type: dataTypes.DECIMAL(6.2),
+                type: dataTypes.DECIMAL,
             }, 
         }, 
         {
