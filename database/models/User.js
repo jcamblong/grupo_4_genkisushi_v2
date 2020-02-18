@@ -40,7 +40,7 @@ module.exports = (sequelize, dataTypes) => {
             street_number: {
                 type: dataTypes.INTEGER
             },
-            street2: {
+            cross_street_name: {
                 type: dataTypes.STRING
             },
             neighborhood: {
