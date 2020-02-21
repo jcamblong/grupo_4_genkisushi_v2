@@ -82,6 +82,15 @@ form input, select{
     align-items: flex-end;
 }
 
+.input-group.w100 {
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-end;
+}
+
 .input-group label {
     padding: 5px;
 }

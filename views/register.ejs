@@ -6,19 +6,19 @@
   <%- include('./partials/head') %>
 
   <link rel="stylesheet" href="/css/register.css">
-  
+
 </head>
 
 <body>
 
-    <%- include('./partials/header') %>  
+  <%- include('./partials/header') %>
 
 
-    <!-- Empieza Main -->
-  
-  <div class="ct-register"> 
+  <!-- Empieza Main -->
+
+  <div class="ct-register">
     <div class="main-body row">
-        
+
       <form action="/users/register" method="POST" enctype="multipart/form-data">
         <h1>Formulario de Registro</h1>
         <% if (typeof errors !== 'undefined') {
@@ -27,54 +27,62 @@
           <li style="color:red; margin-left:30px"><%= error.msg %></li>
         </ul>
         <% }) } %>
-  
+
         <div class="input-row">
           <div class="input-group">
             <label for="name">Nombre</label>
-            <input type="text" class="form-control" id="inputName" name="name" value="<%= typeof data != 'undefined' ? data.name : '' %>">
-
+            <input type="text" class="form-control" id="inputName" name="name"
+              value="<%= typeof data != 'undefined' ? data.name : '' %>">
           </div>
           <div class="input-group">
             <label for="lastName">Apellido</label>
-            <input type="text" class="form-control" id="inputLastName" name="lastName" value="<%= typeof data != 'undefined' ? data.lastName : '' %>">
+            <input type="text" class="form-control" id="inputLastName" name="lastName"
+              value="<%= typeof data != 'undefined' ? data.lastName : '' %>">
           </div>
         </div>
 
         <div class="input-row">
           <div class="input-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="inputEmail" name="email" value="<%= typeof data != 'undefined' ? data.email : '' %>">
+            <input type="email" class="form-control" id="inputEmail" name="email"
+              value="<%= typeof data != 'undefined' ? data.email : '' %>">
           </div>
           <div class="input-group">
             <label for="phone">Telefono</label>
-            <input type="text" class="form-control" id="inputPhone" name="phone" placeholder="Cod. de area + Nro sin 15" value="<%= typeof data != 'undefined' ? data.phone : '' %>">
+            <input type="text" class="form-control" id="inputPhone" name="phone" placeholder="Cod. de area + Nro sin 15"
+              value="<%= typeof data != 'undefined' ? data.phone : '' %>">
           </div>
         </div>
 
         <div class="input-row">
           <div class="input-group">
             <label for="password">Contraseña</label>
-            <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Entre 6 y 10 caracteres">
+            <input type="password" class="form-control" id="inputPassword" name="password"
+              placeholder="Entre 6 y 10 caracteres">
           </div>
           <div class="input-group">
-            <input type="password" class="form-control" id="inputPassword2" name="repeatPassword" placeholder="Repetir contraseña">
+            <input type="password" class="form-control" id="inputPassword2" name="repeatPassword"
+              placeholder="Repetir contraseña">
           </div>
         </div>
 
         <div class="input-row">
           <div class="input-group" id="street">
             <label for="street">Domicilio</label>
-            <input type="text" class="form-control" id="inputStreet" placeholder="Calle" name="street" value="<%= typeof data != 'undefined' ? data.street : '' %>">
+            <input type="text" class="form-control" id="inputStreet" placeholder="Calle" name="street"
+              value="<%= typeof data != 'undefined' ? data.street : '' %>">
           </div>
           <div class="input-group" id="stNumber">
-            <input type="text" class="form-control" id="inputStNumber" placeholder="Altura" name="stNumber" value="<%= typeof data != 'undefined' ? data.stNumber : '' %>">
+            <input type="text" class="form-control" id="inputStNumber" placeholder="Altura" name="stNumber"
+              value="<%= typeof data != 'undefined' ? data.stNumber : '' %>">
           </div>
         </div>
 
         <div class="input-row">
           <div class="input-group" id="street2">
             <label for="inputStreet2">Entre calles</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Calle 1 y Calle 2" name="street2" value="<%= typeof data != 'undefined' ? data.street2 : '' %>">
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Calle 1 y Calle 2" name="street2"
+              value="<%= typeof data != 'undefined' ? data.street2 : '' %>">
           </div>
         </div>
 
@@ -90,39 +98,41 @@
           </div>
           <div class="input-group">
             <label for="inputNeighborhood">Barrio</label>
-            <input type="text" class="form-control" id="inputNeighborhood" name="neighborhood" value="<%= typeof data != 'undefined' ? data.neighborhood : '' %>">
+            <input type="text" class="form-control" id="inputNeighborhood" name="neighborhood"
+              value="<%= typeof data != 'undefined' ? data.neighborhood : '' %>">
           </div>
         </div>
 
         <div class="input-group" id="avatar">
           <label class="custom-file-label" for="image">Avatar</label>
-          <input type="file" class="custom-file-input" name= "image" id="validatedCustomFile">
+          <input type="file" class="custom-file-input" name="image" id="validatedCustomFile">
         </div>
-      
+
         <input type="submit">
       </form>
     </div>
   </div>
 
   <!-- pie -->
- 
+
   <%- include('./partials/footer') %>
 
   <%- include('./partials/scripts') %>
 
   <script>
-    $(function() {
-      $(".toggle").on("click", function() {
-          if ($(".item").hasClass("active")) {
-              $(".item").removeClass("active");
-              $(this).find("a").html("<i class='fas fa-bars'></i>");
-          } else {
-              $(".item").addClass("active");
-              $(this).find("a").html("<i class='fas fa-times'></i>");
-          }
+    $(function () {
+      $(".toggle").on("click", function () {
+        if ($(".item").hasClass("active")) {
+          $(".item").removeClass("active");
+          $(this).find("a").html("<i class='fas fa-bars'></i>");
+        } else {
+          $(".item").addClass("active");
+          $(this).find("a").html("<i class='fas fa-times'></i>");
+        }
       });
     });
-    </script>
+  </script>
 
-  </body>
+</body>
+
 </html>
