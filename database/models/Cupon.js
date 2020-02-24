@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    const PaymentMethod = sequelize.define ('payment_methods', 
+    const Cupon = sequelize.define ('cupons', 
         {
             id: {
                 type: dataTypes.INTEGER,
@@ -7,8 +7,20 @@ module.exports = (sequelize, dataTypes) => {
                 autoIncrement: true,
                 allowNull: false
             }, 
-            type: {
+            detail: {
                 type: dataTypes.STRING,
+                allowNull: false
+            }, 
+            discount: {
+                type: dataTypes.INTEGER,
+                allowNull: false
+            },
+            due_date: {
+                type: dataTypes.DATE,
+                allowNull: false
+            },
+            valid: {
+                type: dataTypes.INTEGER,
                 allowNull: false
             },
             created_at: {
@@ -19,16 +31,16 @@ module.exports = (sequelize, dataTypes) => {
             }
         }, 
         {
-            tableName: 'payment_methods',
+            tableName: 'cupons',
             underscored: true,
             timestamps: true
         }
     );
-    PaymentMethod.associate = function (models){
-        PaymentMethod.hasMany (models.orders, {
+    Cupon.associate = function (models){
+        Cupon.hasMany (models.orders, {
             as: 'orders',
-            foreignKey: "payment_method_id"
+            foreignKey: "cupon_id"
         })
-    }
-    return PaymentMethod;
-}
+    };
+    return Cupon;
+};

@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    const PaymentMethod = sequelize.define ('payment_methods', 
+    const OrderStatus = sequelize.define ('order_statuses', 
         {
             id: {
                 type: dataTypes.INTEGER,
@@ -7,7 +7,7 @@ module.exports = (sequelize, dataTypes) => {
                 autoIncrement: true,
                 allowNull: false
             }, 
-            type: {
+            name: {
                 type: dataTypes.STRING,
                 allowNull: false
             },
@@ -19,16 +19,16 @@ module.exports = (sequelize, dataTypes) => {
             }
         }, 
         {
-            tableName: 'payment_methods',
+            tableName: 'order_statuses',
             underscored: true,
             timestamps: true
         }
     );
-    PaymentMethod.associate = function (models){
-        PaymentMethod.hasMany (models.orders, {
+    OrderStatus.associate = function (models){
+        OrderStatus.hasMany (models.orders, {
             as: 'orders',
-            foreignKey: "payment_method_id"
+            foreignKey: "order_status_id"
         })
     }
-    return PaymentMethod;
+    return OrderStatus;
 }
