@@ -65,12 +65,12 @@ router.post('/register', upload.any(), [
                 .withMessage('Formato: Codigo de area sin cero + Numeros sin espacios ni guiones')
 ], usersController.store);
 
-router.get('/user', logged, usersController.user); //   VER ESTO!!!!
+//USER PROFILE
+router.get('/user', logged, usersController.show);
 
-//PERFIL USUARIO
 
-//edit user
-router.get('/editUser', logged, usersController.editUser)
+//USER EDIT
+router.get('/editUser', logged, usersController.edit)
 router.put('/editUser',upload.any(), [
   check('name')
                 .isLength({min:1})
@@ -88,9 +88,9 @@ router.put('/editUser',upload.any(), [
                 .isNumeric()
                 .isLength({min:10, max:10})
                 .withMessage('Formato: Codigo de area sin cero + Numeros sin espacios ni guiones')
-], usersController.updateUser);  
+], usersController.update);  
 
-//Edit password (cd)
+//EDIT PASSWORD
 router.get('/changePassword', logged, usersController.changePasswordForm);
 router.put('/changePassword',[
   check('password')
@@ -107,10 +107,6 @@ router.put('/changePassword',[
                 .withMessage('Debe confirmar la contraseña'),
 ] 
 , usersController.changePassword);
-
-
-
-
 
 
 module.exports = router;

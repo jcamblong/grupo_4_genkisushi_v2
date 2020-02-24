@@ -1,184 +1,175 @@
-const fs = require('fs');
-const path = require('path');
-const bcrypt = require('bcrypt');
-const db = require('../database/models');
-let {check, validationResult, body} = require('express-validator');
+const fs = require("fs");
+const path = require("path");
+const bcrypt = require("bcrypt");
+const db = require("../database/models");
+let { check, validationResult, body } = require("express-validator");
 
-const usersFilePath = path.join(__dirname, '../data/users.json');
-const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+const usersFilePath = path.join(__dirname, "../data/users.json");
+const users = JSON.parse(fs.readFileSync(usersFilePath, "utf-8"));
 
-let usersController ={
-    'loginForm': function(req, res) {
-        res.render('login');
-    },
-    'login': function(req, res){
-        let result = validationResult(req)
-        let username = req.body.email;
-        let password = req.body.password;
+let usersController = {
+  loginForm: function(req, res) {
+    res.render("login");
+  },
+  login: function(req, res) {
+    let result = validationResult(req);
 
-        if(result.isEmpty()){
-            let search = users.find(function(user){
-                return user.email == req.body.email;
-                })
-                        
-            if(typeof search != 'undefined'){
-                req.session.loggedin = bcrypt.compareSync(password, search.password);
-                req.session.username = username;
-                
-                res.redirect('/users/user') 
-              } else {res.render('login', {errors: [{
-                  msg:'Credenciales incorrectas'}]})}
-           
-        } else {res.render('login', {errors: result.errors, data: req.body})}
-    },
-    'logout': function(req, res){
-        req.session.loggedin = false;
-        req.session.username = '';
+    if (result.isEmpty()) {
+      db.User.findOne({ where: { email: req.body.email } }).then(query => {
+        if (bcrypt.compareSync(req.body.password, query.password)) {
+          req.session.loggedin = true;
+          req.session.username = query.email;
+          res.redirect("/users/user");
+        } else {
+          res.render("login", {
+            errors: [
+              {
+                msg: "Credenciales incorrectas"
+              }
+            ]
+          });
+        }
+      });
+    } else {
+      res.render("login", { errors: result.errors, data: req.body });
+    }
+  },
+  logout: function(req, res) {
+    req.session.loggedin = false;
+    req.session.username = "";
 
-        res.redirect('../')
-    },
-    'create': function(req, res) {
-        res.render('register');
-    },
-    'store': function(req, res, next) {
-        let result = validationResult(req)
+    res.redirect("../");
+  },
+  create: function(req, res) {
+    res.render("register");
+  },
+  store: function(req, res, next) {
+    let result = validationResult(req);
 
-        /* FALTA AGREGAR BUSQUEDA DE USUARIO EXISTENTE Y AGREGAR LA CONDICION AL IF */
+    db.User.count({ where: { email: req.body.email } }).then(count => {
+      if (count != 0) {
+        return res.render("register", {
+          errors: [{ msg: "El e-mail ya se encuentra esta regitrado!" }],
+          data: req.body
+        });
+      } else {
+        if (!result.isEmpty()) {
+          return res.render("register", {
+            errors: result.errors,
+            data: req.body
+          });
+        } else {
+          db.User.create({
+            first_name: req.body.name,
+            last_name: req.body.lastName,
+            role_id: "2",
+            email: req.body.email,
+            password: bcrypt.hashSync(req.body.password, 10),
+            phone: req.body.phone,
+            city: req.body.city,
+            street_name: req.body.street,
+            street_number: req.body.stNumber,
+            cross_street_name: req.body.street2,
+            neighborhood: req.body.neighborhood,
+            image: req.files[0].filename
+          });
+          return res.redirect("/users/login");
+        }
+      }
+    });
+  },
+  show: function(req, res) {
 
-        if(result.isEmpty()){
+    db.User.findOne({where: {email: req.session.username}})
+        .then(user => {
+            res.render('user', {user: user})
+        })
+  },
+  edit: function(req, res) {
+    db.User.findOne({where: {email: req.session.username}})
+    .then(user => {
+        res.render('editUser', {user: user})
+    })
+  },
+  update: function(req, res, next) {
+    let result = validationResult(req)
 
-            db.User.create({
+    if (result.isEmpty()) {
+        if (req.files.length != 0) {
+            db.User.update({
                 first_name: req.body.name,
                 last_name: req.body.lastName,
-                role_id: "2",
-                email: req.body.email,
-                password: bcrypt.hashSync(req.body.password, 10),
                 phone: req.body.phone,
-                city: req.body.city,
                 street_name: req.body.street,
                 street_number: req.body.stNumber,
                 cross_street_name: req.body.street2,
+                city: req.body.city,
                 neighborhood: req.body.neighborhood,
                 image: req.files[0].filename
-            })
-
-            res.redirect('/users/login')
-          
-        } else {res.render('register', {errors: result.errors, data: req.body})}
-    },
-    'user': function(req, res){
-        let user = users.find(function(user){
-            return user.email == req.session.username;
-            })
-        
-        res.render ('user', {user: user});
-    },
-    'userDetail': function(req, res) {
-        let user = users.find(function (u) {
-            return u.id == req.params.id
-        })
-        res.render('user', {user: user});
-    },
-    'editUser': function(req, res){
-        let user = users.find(function (u) {
-            return u.email == req.session.username
-        })
-        res.render('editUser', {user: user});
-    },
-    'updateUser': function(req, res, next){
-
-        let result = validationResult(req);
-        let arrayIndex;
-        let user = users.find(function (p, index) {
-            if (p.email == req.session.username){
-                arrayIndex = index;
-				return true;
-			}
-			return false;
-        });
-        
-        if (result.isEmpty()){
-            
-        let usuarioEditado;        
-
-        if(req.files.length != 0){
-
-            usuarioEditado = {
-            ...user,
-			...{                        
-                "name": req.body.name,
-                "lastName":req.body.lastName,
-                "street": req.body.street,
-                "stNumber": req.body.stNumber,
-                "street2": req.body.street2,
-                "city": req.body.city,
-                "phone": req.body.phone,
-                "neighborhood": req.body.neighborhood,
-                },
-            ...{image: req.files[0].filename}
-            }
-        } else {
-            usuarioEditado = {
-                ...user,
-                ...{                        
-                    "name": req.body.name,
-                    "lastName":req.body.lastName,
-                    "street": req.body.street,
-                    "stNumber": req.body.stNumber,
-                    "street2": req.body.street2,
-                    "city": req.body.city,
-                    "phone": req.body.phone,
-                    "neighborhood": req.body.neighborhood,
-                    },
+                },{
+                where: {
+                    email: req.session.username
                 }
-            }
-
-
-         console.log(user, usuarioEditado);
-         
-
-         users[arrayIndex] = usuarioEditado;
-
-         
-         fs.writeFileSync('./data/users.json', JSON.stringify(users));
-
-         res.redirect('/users/user');
+            })
+        } else {
+            db.User.update({
+                first_name: req.body.name,
+                last_name: req.body.lastName,
+                phone: req.body.phone,
+                street_name: req.body.street,
+                street_number: req.body.stNumber,
+                cross_street_name: req.body.street2,
+                city: req.body.city,
+                neighborhood: req.body.neighborhood
+            },{
+                where: {
+                email: req.session.username
+                }
+            })
         }
-    },
-    'changePasswordForm': function(req, res) {
-        res.render('changePassword');
-    },
+        res.redirect("/users/user")
+    } else {
+      res.render('editUser', {
+        errors: result.errors,
+        data: req.body
+      });
+    }
+  },
+  changePasswordForm: function(req, res) {
+    res.render("changePassword");
+  },
 
-    'changePassword': function(req, res, next) {
-        let result = validationResult(req);
-        let arrayIndex;
-        let user = users.find(function (p, index) {
-            if (p.email == req.session.username){
-                arrayIndex = index;
-				return true;
-			}
-			return false;
-        });
-        
-        if (result.isEmpty()){
-            
-        let usuarioEditado = {
-            ...user,
-			...{password: bcrypt.hashSync(req.body.password, 10)},
-         };
+  changePassword: function(req, res, next) {
+    let result = validationResult(req);
+    let arrayIndex;
+    let user = users.find(function(p, index) {
+      if (p.email == req.session.username) {
+        arrayIndex = index;
+        return true;
+      }
+      return false;
+    });
 
-         users[arrayIndex] = usuarioEditado;
+    if (result.isEmpty()) {
+      let usuarioEditado = {
+        ...user,
+        ...{ password: bcrypt.hashSync(req.body.password, 10) }
+      };
 
-         
-         fs.writeFileSync('./data/users.json', JSON.stringify(users));
-         req.session.loggedin = false;
-         req.session.username = '';
+      users[arrayIndex] = usuarioEditado;
 
-         res.redirect('/users/login');
-        }        
-        else {res.render('/users/changePassword', {errors: result.errors, data: req.body})}
-    },
+      fs.writeFileSync("./data/users.json", JSON.stringify(users));
+      req.session.loggedin = false;
+      req.session.username = "";
 
+      res.redirect("/users/login");
+    } else {
+      res.render('changePassword', {
+        errors: result.errors,
+        data: req.body
+      });
+    }
+  }
 };
 
 module.exports = usersController;

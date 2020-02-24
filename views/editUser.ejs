@@ -32,12 +32,12 @@
           <div class="input-group">
             <label for="inputName">Nombre</label>
             <input type="text" class="form-control" id="inputName" name="name"
-              value="<%= typeof user != 'undefined' ? user.name : '' %>">
+              value="<%= typeof user != 'undefined' ? user.first_name : '' %>">
           </div>
           <div class="input-group">
             <label for="lastName">Apellido</label>
             <input type="text" class="form-control" id="inputLastName" name="lastName"
-              value="<%= typeof user != 'undefined' ? user.lastName : '' %>">
+              value="<%= typeof user != 'undefined' ? user.last_name : '' %>">
           </div>
         </div>
 
@@ -53,18 +53,18 @@
           <div class="input-group" id="street">
             <label for="street">Domicilio</label>
             <input type="text" class="form-control" id="inputStreet" placeholder="Calle" name="street"
-              value="<%= typeof user != 'undefined' ? user.street : '' %>">
+              value="<%= typeof user != 'undefined' ? user.street_name : '' %>">
           </div>
           <div class="input-group" id="stNumber">
             <input type="text" class="form-control" id="inputStNumber" placeholder="Altura" name="stNumber"
-              value="<%= typeof user != 'undefined' ? user.stNumber : '' %>">
+              value="<%= typeof user != 'undefined' ? user.street_number : '' %>">
           </div>
         </div>
         <div class="input-row">
           <div class="input-group" id="street2">
             <label for="inputStreet2">Entre calles</label>
             <input type="text" class="form-control" id="inputStreet2" placeholder="Calle 1 y Calle 2" name="street2"
-              value="<%= typeof user != 'undefined' ? user.street2 : '' %>">
+              value="<%= typeof user != 'undefined' ? user.cross_street_name : '' %>">
           </div>
         </div>
 
