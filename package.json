@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/jcamblong/grupo_4_genkisushi#readme",
   "dependencies": {
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^3.0.8",
     "cookie-parser": "^1.4.4",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
