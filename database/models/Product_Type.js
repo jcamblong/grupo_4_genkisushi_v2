@@ -17,6 +17,12 @@ module.exports = (sequelize, dataTypes) => {
             price: {
                 type: dataTypes.DECIMAL,
             }, 
+            created_at: {
+                type: dataTypes.DATE
+            },
+            updated_at: {
+                type: dataTypes.DATE
+            }
         }, 
         {
             tableName: 'product_types',
