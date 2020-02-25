@@ -140,8 +140,28 @@ let usersController = {
   },
 
   changePassword: function(req, res, next) {
-    let result = validationResult(req);
-    let arrayIndex;
+    let result = validationResult(req)
+
+    if (result.isEmpty()) {
+      db.User.update({
+        password: bcrypt.hashSync(req.body.password, 10)
+      }, {
+        where: {
+          email: req.session.username
+        }
+      })
+      req.session.loggedin = false;
+      req.session.username = "";
+      res.redirect("/users/login")
+    } else {
+      res.render('changePassword', {
+        errors: result.errors,
+        data: req.body
+      })
+    }
+  }
+
+/*     let arrayIndex;
     let user = users.find(function(p, index) {
       if (p.email == req.session.username) {
         arrayIndex = index;
@@ -168,8 +188,7 @@ let usersController = {
         errors: result.errors,
         data: req.body
       });
-    }
-  }
+    } */
 };
 
 module.exports = usersController;

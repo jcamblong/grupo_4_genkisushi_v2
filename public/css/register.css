@@ -90,7 +90,15 @@ form input, select{
     width: 100%;
     align-items: flex-end;
 }
+.input-group.w100.info {
+    justify-content: center;
+}
 
 .input-group label {
     padding: 5px;
+}
+
+p.info {
+    font-style: italic;
+    text-align: center;
 }
