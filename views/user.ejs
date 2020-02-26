@@ -4,37 +4,75 @@
     
     <%- include('partials/head') %>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="/css/userId.css">
+    <link rel="stylesheet" href="/css/profile.css">
 
 </head>
     <body>
 
     <%- include ('partials/header') %>
 
-<!-- Empieza Main -->
+<!-- Nuevo Main -->
 
-<div class="card" style="width: 18rem;">
-    <img src="/img/users/<%= user.image %>" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title"><%= user.name %> <%= user.lastName %></h5>
+<div class="ct-profile">
+  <div class="user-info">
+    <div class="user-main">
+      <div class="avatar">
+        <img src="/img/users/<%= user.image %>" class="avatar-img">
+      </div>
+      <div class="user-name">
+        <h1><%= user.first_name %> <%= user.last_name %></h1>
+      </div>
+      <div class="main-info">
+        <div class="main-phone">
+          <i class="fas fa-phone-square-alt fa-2x"></i> <p><%= user.phone %></p>
+        </div>
+        <div class="main-email">
+          <i class="far fa-envelope fa-2x"></i><p><%= user.email %></p>
+        </div>
+      </div>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">TELEFONO <%= user.phone %></li>
-      <li class="list-group-item">DOMICILIO <%= user.street_name %> <%= user.street_number %></li>
-      <li class="list-group-item">ENTRE CALLES <%= user.cross_street_name %></li>
-      <li class="list-group-item">LOCALIDAD <%= user.city %></li>
-      <li class="list-group-item">BARRIO <%= user.neighborhood %></li>
-    </ul>
-    <div class="card-body">
-      <a href="./changepassword" class="card-link">EDITAR CONTRASEÑA</a><BR>
-      <a href="./edituser" class="card-link">EDITAR PERFIL</a><BR>
-      <a href="./logout" class="card-link">CERRAR SESION</a>
-  
+
+    <hr>
+    <div class="user-detail">
+      <ul>
+        <h2>Domicilio</h2>
+        <hr>
+        <li class=""><strong>Calle: </strong> <%= user.street_name %> <%= user.street_number %></li>
+        <li class=""><strong>Entre calles: </strong><%= user.cross_street_name %></li>
+        <li class=""><strong>Localidad: </strong><%= user.city %></li>
+        <li class=""><strong>Barrio: </strong><%= user.neighborhood %></li>
+      </ul>
+      <div class="btn-logout">
+        <a href="./logout">Cerrar Sesión</a>
+      </div>
     </div>
   </div>
+
+  <div class="account-detail">
+    <div class="account-status">
+      <div class="options-title">
+        <h2>Administrar Perfil</h2>
+        <hr>
+      </div>
+      <div class="options-list">
+        <div class="edit-profile">
+          <p>Modifica tus Datos</p>
+          <a href="./edituser">Editar</a>
+        </div>
+        <div class="edit-password">
+          <p>Cambiar Contraseña</p>
+          <a href="./changepassword">Editar</a>
+        </div>
+      </div>
+    </div>
+    <div class="orders-history">
+      <div class="orders-list">
+        <h2>Mis Pedidos</h2>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- pie -->
  
