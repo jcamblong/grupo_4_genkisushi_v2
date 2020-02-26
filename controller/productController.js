@@ -48,12 +48,19 @@ let productController ={
 		db.products.findOne({
 			where: {id: req.params.id}
 			//incluir categoria y tipo de producto
-			//include:[{association: 'categories'}]
+			/*include:[{association: 'categorie'}]*/
 		})
 		.then(products =>{
-				console.log(products);
 				//buscar todas las categorias y todo los productos para cargar el form
-				res.render('productEdit', {products: products});
+				let categorias =[];
+				let tipos =[];
+				db.categories.findAll()
+				.then(categorias => {
+						db.product_types.findAll()
+						.then(tipos => {
+							res.render('productEdit', {products: products, categorias: categorias, tipos: tipos});
+			});
+			});
 			});
 	},
 
@@ -93,14 +100,48 @@ let productController ={
 		fs.writeFileSync(productsFilePath, JSON.stringify(products));
 
 		*/
-			db.products.update({
-			name: req.body.name,
-			detail:req.body.detail,
-			image: req.files[0].filename
-		},{
-			where: {id: req.params.id}
+
+		db.categories.findOne({
+			where: {name: req.body.inputCategory}
 		})
-		.then(res.redirect('/products/detail/'+ req.params.id));
+		.then(categoria =>{
+			db.product_types.findOne({
+				where: {name: req.body.inputType}
+			})
+		.then(tipo => {
+			if(req.files.length != 0){
+				db.products.update({
+				name: req.body.name,
+				detail:req.body.detail,
+				image: req.files[0].filename,
+				//categoria, tipo
+				category_id: categoria.id,
+				type_id: tipo.id
+	
+				},{
+					where: {id: req.params.id}
+				}).then(res.redirect('/products/detail/'+ req.params.id));
+
+		} else{
+				db.products.update({
+				name: req.body.name,
+				detail:req.body.detail,
+				//image: req.files[0].filename,
+				//categoria, tipo
+				category_id: categoria.id,
+				type_id: tipo.id	
+				},{
+					where: {id: req.params.id}
+				}).then(res.redirect('/products/detail/'+ req.params.id));
+		}
+
+			
+		}
+		
+		)
+	})
+
+			
 	},
 
 	// Delete - Delete one product from DB DELETE | CGR
@@ -125,4 +166,3 @@ let productController ={
 };
 
 module.exports = productController;
-
