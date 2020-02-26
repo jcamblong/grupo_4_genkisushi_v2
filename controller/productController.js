@@ -10,33 +10,33 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 let productController ={
     'index': function(req, res) {
-        res.render('products', {products: products});
+		db.products.findAll()
+			.then(function(products){
+				res.render('products', {products: products})
+			})
     },
     'productDetail': function(req, res) {
-        let product = products.find(function (p) {
-			return p.id == req.params.id
+		db.products.findByPk(req.params.id)
+		.then(function(product){
+			res.render('productDetail', {product: product})
 		})
-		
-        res.render('productDetail',  {product: product});
     },
     'productAdd': function(req, res) {
-        res.render('productAdd');
+		db.products.findAll()
+			.then(function(products){
+				res.render('productAdd', {products: products});
+			})
     },
     'store': function(req, res, next){
-        let products = fs.readFileSync(productsFilePath , {encoding: 'utf-8'});
-		products = JSON.parse(products);
-
-		console.log(req.body);
-		
-		let newproduct = {
-						id: products.length,
-						...req.body,
-						...{image: req.files[0].filename}
-						}		
-		products.push(newproduct);
-		products = JSON.stringify(products);
-		fs.writeFileSync(productsFilePath , products);
-		res.redirect('/products/create');
+		db.products.create({
+			name: req.body.name,
+			category_id: req.body.category,
+			type_id: req.body.type,
+			detail: req.body.detail,
+			price: req.body.price,
+			image: req.files[0].filename
+		})
+		res.redirect('/products')
 	},
     'productCart': function(req, res) {
         res.render('productCart');
