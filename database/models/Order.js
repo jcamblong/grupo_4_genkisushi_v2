@@ -50,7 +50,7 @@ module.exports = (sequelize, dataTypes) => {
         })
     };
     Order.associate = function (models){
-        Order.belongsTo (models.User, {
+        Order.belongsTo (models.users, {
             as: 'users',
             foreignKey: "user_id"
         })

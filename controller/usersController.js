@@ -12,7 +12,7 @@ let usersController = {
     let result = validationResult(req);
 
     if (result.isEmpty()) {
-      db.User.findOne({ where: { email: req.body.email } }).then(query => {
+      db.users.findOne({ where: { email: req.body.email } }).then(query => {
         if (bcrypt.compareSync(req.body.password, query.password)) {
           req.session.loggedin = true;
           req.session.username = query.email;
@@ -43,7 +43,7 @@ let usersController = {
   store: function (req, res, next) {
     let result = validationResult(req);
 
-    db.User.count({ where: { email: req.body.email } }).then(count => {
+    db.users.count({ where: { email: req.body.email } }).then(count => {
       if (count != 0) {
         return res.render("register", {
           errors: [{ msg: "El e-mail ya se encuentra esta regitrado!" }],
@@ -56,7 +56,7 @@ let usersController = {
             data: req.body
           });
         } else {
-          db.User.create({
+          db.users.create({
             first_name: req.body.name,
             last_name: req.body.lastName,
             role_id: "2",
@@ -77,13 +77,13 @@ let usersController = {
   },
   show: function (req, res) {
 
-    db.User.findOne({ where: { email: req.session.username } })
+    db.users.findOne({ where: { email: req.session.username } })
       .then(user => {
         res.render('user', { user: user })
       })
   },
   edit: function (req, res) {
-    db.User.findOne({ where: { email: req.session.username } })
+    db.users.findOne({ where: { email: req.session.username } })
       .then(user => {
         res.render('editUser', { user: user })
       })
@@ -93,7 +93,7 @@ let usersController = {
 
     if (result.isEmpty()) {
       if (req.files.length != 0) {
-        db.User.update({
+        db.users.update({
           first_name: req.body.name,
           last_name: req.body.lastName,
           phone: req.body.phone,
@@ -109,7 +109,7 @@ let usersController = {
           }
         })
       } else {
-        db.User.update({
+        db.users.update({
           first_name: req.body.name,
           last_name: req.body.lastName,
           phone: req.body.phone,
@@ -140,7 +140,7 @@ let usersController = {
     let result = validationResult(req)
 
     if (result.isEmpty()) {
-      db.User.update({
+      db.users.update({
         password: bcrypt.hashSync(req.body.password, 10)
       }, {
         where: {
