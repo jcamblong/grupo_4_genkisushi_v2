@@ -1,5 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+/*agrego db al controlador*/
+const db = require("../database/models");
+
 
 
 const productsFilePath = path.join(__dirname, '../data/productos.json');
@@ -13,7 +16,6 @@ let productController ={
         let product = products.find(function (p) {
 			return p.id == req.params.id
 		})
-		console.log(product);
 		
         res.render('productDetail',  {product: product});
     },
@@ -40,18 +42,26 @@ let productController ={
         res.render('productCart');
     },
 // Update - Form to edit GET | CGR
+/*Paso de json a db el método edit por get*/
 	'edit': (req, res) => {
-		let product = products.find(function (p) {
-			return p.id == req.params.id
+		
+		db.products.findOne({
+			where: {id: req.params.id}
+			//incluir categoria y tipo de producto
+			//include:[{association: 'categories'}]
 		})
-
-		res.render('productEdit', {product: product})
+		.then(products =>{
+				console.log(products);
+				//buscar todas las categorias y todo los productos para cargar el form
+				res.render('productEdit', {products: products});
+			});
 	},
+
 
 	// Update - Method to update PUT| CGR
 	'update': (req, res, next) => {
 
-		let arrayIndex;
+	/*	let arrayIndex;
 
 		let product = products.find(function (p, index) {
 			if (p.id == req.params.id){
@@ -82,13 +92,27 @@ let productController ={
 
 		fs.writeFileSync(productsFilePath, JSON.stringify(products));
 
-		res.redirect('/products/detail/'+ req.params.id);
-
+		*/
+			db.products.update({
+			name: req.body.name,
+			detail:req.body.detail,
+			image: req.files[0].filename
+		},{
+			where: {id: req.params.id}
+		})
+		.then(res.redirect('/products/detail/'+ req.params.id));
 	},
 
 	// Delete - Delete one product from DB DELETE | CGR
+	// Delete on DB
 	'destroy': (req, res) => {
-        let products = fs.readFileSync(productsFilePath , {encoding: 'utf-8'});
+		db.products.destroy({
+			where: {id: req.params.id}
+		})
+		.then(res.redirect('/products'))
+	}
+		
+			/*let products = fs.readFileSync(productsFilePath , {encoding: 'utf-8'});
 		products = JSON.parse(products);
         
         var filtered = products.filter(function(value, index, arr){
@@ -96,10 +120,8 @@ let productController ={
                 });
 
         fs.writeFileSync(productsFilePath, JSON.stringify(filtered));
-
-		res.redirect('/products');
-	}
-   
+*/
+		
 };
 
 module.exports = productController;
