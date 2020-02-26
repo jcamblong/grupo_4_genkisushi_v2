@@ -21,6 +21,9 @@ module.exports = (sequelize, dataTypes) => {
             category_id: {
                 type: dataTypes.INTEGER
             },
+            image: {
+                type: dataTypes.STRING(50)
+            },
             created_at: {
                 type: dataTypes.DATE
             },

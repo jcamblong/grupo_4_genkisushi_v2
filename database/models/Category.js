@@ -11,6 +11,12 @@ module.exports = (sequelize, dataTypes) => {
                 type: dataTypes.STRING(45),
                 allowNull: false
             }, 
+            created_at: {
+                type: dataTypes.DATE
+            },
+            updated_at: {
+                type: dataTypes.DATE
+            }
         }, 
         {
             tableName: 'categories',
