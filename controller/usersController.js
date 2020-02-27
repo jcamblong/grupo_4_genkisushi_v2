@@ -48,7 +48,7 @@ let usersController = {
     db.users.count({ where: { email: req.body.email } }).then(count => {
       if (count != 0) {
         return res.render("register", {
-          errors: [{ msg: "El e-mail ya se encuentra esta regitrado!" }],
+          errors: [{ msg: "El e-mail ya se encuentra registrado!" }],
           data: req.body
         });
       } else {
