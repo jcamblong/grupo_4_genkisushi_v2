@@ -34,11 +34,13 @@
             <label for="inputCategory">Categoria</label>
             <select id="inputCategory" name="inputCategory">  
               <%for (let i=0; i< categorias.length; i++){ %>
-                  <option
-                  <%if (categorias[i].id == products.category_id){ %>
-                    selected=true
-                    <%}%>
-                  ><%= categorias[i].name %></option>
+                <%if (categorias[i].id == products.category_id){ %>  
+                <option value="<%=categorias[i].id%>" selected><%= categorias[i].name %></option>
+                <% } else {%>   
+                  <option value="<%= categorias[i].id %>">
+                    <%= categorias[i].name %>
+                </option>
+            <% } %>    
               <%}%>
             </select>
                
