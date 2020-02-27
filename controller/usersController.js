@@ -12,21 +12,23 @@ let usersController = {
     let result = validationResult(req);
 
     if (result.isEmpty()) {
-      db.users.findOne({ where: { email: req.body.email } }).then(query => {
-        if (bcrypt.compareSync(req.body.password, query.password)) {
-          req.session.loggedin = true;
-          req.session.username = query.email;
-          res.redirect("/users/user");
-        } else {
+      db.users.findOne({ where: { email: req.body.email } })
+        .then(query => {
+          if (bcrypt.compareSync(req.body.password, query.password)) {
+            req.session.loggedin = true;
+            req.session.username = query.email;
+            res.redirect("/users/user");
+          } else {
+            res.render("login", {
+              errors: [{msg: "Credenciales incorrectas"}]
+            });
+          }
+        })
+        .catch(function(error){
           res.render("login", {
-            errors: [
-              {
-                msg: "Credenciales incorrectas"
-              }
-            ]
-          });
-        }
-      });
+            errors: [{msg: "Credenciales incorrectas"}]
+          })
+        })
     } else {
       res.render("login", { errors: result.errors, data: req.body });
     }
