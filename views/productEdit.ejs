@@ -9,7 +9,7 @@
 
   <%- include('./partials/head') %>
 
-  <link rel="stylesheet" href="/css/productAdd.css">
+  <link rel="stylesheet" href="/css/productEdit.css">
   
 </head>
 
@@ -19,11 +19,11 @@
 
     <!-- Empieza Main -->
 
-    <div class=container>
+    <div class=ct-edit>
       <div class="main-body row">
 
         <form action="/products/edit/<%= products.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
-			
+          <h1>Formulario de Edición de Producto</h1>
           <div class="form-group">
             <label for="inputName">Nombre</label>
             <input type="text" class="form-input" id="inputNombre" name="name" value="<%= products.name %>">
@@ -69,17 +69,17 @@
             <%}%>          
           </div>
      
-          <div class="col-8">
-            <img src="/img/<%= products.image %>" alt="product image" class="product-detail-img">
+          <div class="foto">
+            <img src="/img/<%= products.image %>" alt="product image" class="product-detail-img" width="300px">
           </div>  
           
           <div class="custom-file">
             <input type="file" class="custom-file-input" name= "image" id="validatedCustomFile">
-            <label class="custom-file-label" for="validatedCustomFile">Agregar imagen...</label>
+            <label class="custom-file-label" for="validatedCustomFile">Modificar imagen...</label>
             <div class="invalid-feedback">Example invalid custom file feedback</div>
           </div>
               
-          <button type="submit" class="btn btn-primary">Guardar Producto</button>
+          <button type="submit">Guardar Producto</button>
         </form>
 
 		
