@@ -17,7 +17,9 @@
         background-color: #434346;
         padding: 10px;
         width: 100%;
-        
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
     }
         .nav-dos a {
             color: #fff;
@@ -29,40 +31,54 @@
             color: #ca3e47;
         }
 
-.card-deck .card {
-    margin-bottom: 15px;
+.main-products {
+    display: flex;
+    flex-wrap: wrap;
 }
-
-.card {
-    border: none;
-}
-
-.card a {
-    text-decoration: none;
-    color: black;
-}
-
-.card-footer {
-    background-color: white;
-    border-top: none;
-    margin-bottom: 10px;
-}
-
 h1 {
-    margin-top: 15px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     padding: 10px;
     border-bottom: solid lightgray 1px;
     position: relative;
 }
 
-.btn-primary {
- 
-    background-color:#008080 ;
-    border-color: #008080;
-    color: #fff;
+.card {
+    margin: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-
- .precio {
+img {
+    margin-bottom: 10px;
+}
+a, h3{
+    text-decoration: none;
+    color: black;
+}
+.precio {
     font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
+.btn-item {
+    width: 100%;
+    padding: 10px;
+    background-color: #ca3e47;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 12px;
+    color: #ffffff;
+    width: 100%;
+}
+.btn-item:hover {
+    background-color: #ca212c;
+    border: 1px solid #ca3e47;
+    text-decoration: none;
+    font-weight: bold;
+    color: #ffffff;
+}
+ 
 

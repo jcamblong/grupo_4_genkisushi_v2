@@ -1,23 +1,18 @@
+<div class="card">
+  <a href="/products/detail/<%= products.id %>">
+    <img src="/img/<%= products.image %>" class="card-img-top" alt="..." width="200px">
+    <h3 class="card-title"><%= products.name %></h3>
+  </a>
+          <!-- <p class="card-text"><%= products.detail %></p>  -->
+      <p class="card-text precio">$ 
+        <%for (let i=0; i< tipos.length; i++) {
+        if (tipos[i].id == products.type_id){%>
+        <%= tipos[i].price %>
+        <%}%>
+        <%}%>
+      </p>
+      <button type="submit" class="btn-item">AGREGAR AL CARRITO</button>
+      
+</div>
 
-<div class="col mb-4">
-  <div class="card">
-      <a href="/products/detail/<%= products.id %>">
-      <img src="/img/<%= products.image %>" class="card-img-top" alt="..." width="200px" height="200px">
-      <div class="card-body">
-        <h5 class="card-title"><%= products.name %></h5>
-      </a>
-        <p class="card-text"><%= products.detail %></p> 
-        <p class="card-text precio">$ 
-          <%for (let i=0; i< tipos.length; i++) {
-          if (tipos[i].id == products.type_id){%>
-          <%= tipos[i].price %>
-          <%}%>
-          <%}%>
-        </p>
-      </div>
-      <div class="card-footer">
-        <a href="/products/cart" class="btn btn-primary">AGREGAR AL CARRITO</a>
-      </div>
-    </div>
-  </div>
 
