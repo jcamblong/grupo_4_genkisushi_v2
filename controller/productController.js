@@ -30,9 +30,17 @@ let productController ={
     },
     'productAdd': function(req, res) {
 		db.products.findAll()
-			.then(function(products){
-				res.render('productAdd', {products: products});
-			})
+		.then(products =>{
+			let categorias =[];
+			let tipos =[];
+			db.categories.findAll()
+		.then(categorias => {
+			db.product_types.findAll()
+		.then(tipos => {
+			res.render('productAdd', {products: products, categorias: categorias, tipos: tipos});
+		});
+		});
+		});
     },
     'store': function(req, res, next){
 		db.products.create({
@@ -92,14 +100,14 @@ let productController ={
 					//categoria, tipo
 					category_id: categoria.id,
 					type_id: tipo.id	
-				},{where: {id: req.params.id}})
+				},  {where: {id: req.params.id}})
 			.then(res.redirect('/products/detail/'+ req.params.id));
-					}	
+				}	
 			})
 			})		
 	},
 
-		/*	let arrayIndex;
+	/*	let arrayIndex;
 		let product = products.find(function (p, index) {
 			if (p.id == req.params.id){
 				arrayIndex = index;
@@ -138,7 +146,7 @@ let productController ={
                 return value.id != req.params.id;
                 });
         fs.writeFileSync(productsFilePath, JSON.stringify(filtered));
-			*/
+		*/
 		
 };
 
