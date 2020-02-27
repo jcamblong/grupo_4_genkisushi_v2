@@ -22,30 +22,21 @@
 
       <div class="menu-dos">
 				<nav class= "nav-dos">
-					<a href="" class="item-dos">CLASICOS</a>
-					<a href="" class="item-dos">MAKIS</a>
-					<a href="" class="item-dos">FRITOS</a>
-					<a href="" class="item-dos">ARGENTOS</a>
-					<a href="" class="item-dos">ESPECIALES SIN ARROZ</a>
-					<a href="" class="item-dos">ESPECIALES CON ARROZ</a>
-					<a href="" class="item-dos">NUESTRAS TABLAS</a>
-					<a href="" class="item-dos">ENTRADAS</a>
-					<a href="" class="item-dos">SASHIMIS</a>
-					<a href="" class="item-dos">NIGUIRIS</a>
-					<a href="" class="item-dos">GEISHAS</a>
-          <a href="" class="item-dos">SALSAS</a>
+          <% for (let i= 0; i<categorias.length; i++) { %>
+            <a href="/categorias/<%=categorias[i].id%>" class="item-dos"><%= categorias[i].name %></a>
+          <% } %>
 				</nav>
 			</div>
 
       <div class="titulo-producto">
-          <h1 id="rolls">CLASICOS</h1>
+          <h1 id="rolls">Todos</h1>
       </div>
 
       <div class="main-products row row-cols-1 row-cols-md-4">
-
+        
           <% products.forEach(function(products) { %>
             
-          <%- include('partials/item', {products: products}); %>
+            <%- include('./partials/item', {products:products}) %>  
     
           <% }); %>
       
