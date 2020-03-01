@@ -15,8 +15,10 @@ let usersController = {
       db.users.findOne({ where: { email: req.body.email } })
         .then(query => {
           if (bcrypt.compareSync(req.body.password, query.password)) {
-            req.session.loggedin = true;
-            req.session.username = query.email;
+            req.session.loggedin = true
+            req.session.username = query.email
+            console.log('OK!');
+            
             res.redirect("/users/user");
           } else {
             res.render("login", {
@@ -80,8 +82,8 @@ let usersController = {
   show: function (req, res) {
 
     db.users.findOne({ where: { email: req.session.username } })
-      .then(user => {
-        res.render('user', { user: user })
+      .then(user => {        
+        res.render('user', { user: user })        
       })
   },
   edit: function (req, res) {

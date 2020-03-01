@@ -4,8 +4,8 @@ let usersController = require('../controller/usersController.js');
 let {check, validationResult, body} = require('express-validator');
 const path = require ('path');
 const multer = require ('multer');
-const logged = require('../middlewares/loggedMiddleware')
-const loggedRedirect = require('../middlewares/loggedRedirectMiddleware')
+const userRoute = require('../middlewares/userRoute');
+const guestRoute = require('../middlewares/guestRoute');
 
 
 var storage = multer.diskStorage({
@@ -19,7 +19,7 @@ var storage = multer.diskStorage({
 var upload = multer ({storage:storage})
 
 //LOGIN
-router.get('/login', loggedRedirect, usersController.loginForm);
+router.get('/login', guestRoute, usersController.loginForm);
 
 router.post('/login', [
   check('email').isEmail().withMessage('El email ingresado no es valido')
@@ -29,7 +29,7 @@ router.get('/logout', usersController.logout);
 
 
 //REGISTRO
-router.get('/register', loggedRedirect, usersController.create);
+router.get('/register', guestRoute, usersController.create);
 
 router.post('/register', upload.any(), [
   check('name')
@@ -66,11 +66,11 @@ router.post('/register', upload.any(), [
 ], usersController.store);
 
 //USER PROFILE
-router.get('/user', logged, usersController.show);
+router.get('/user', userRoute, usersController.show);
 
 
 //USER EDIT
-router.get('/editUser', logged, usersController.edit)
+router.get('/editUser', userRoute, usersController.edit)
 router.put('/editUser',upload.any(), [
   check('name')
                 .isLength({min:1})
@@ -91,7 +91,7 @@ router.put('/editUser',upload.any(), [
 ], usersController.update);  
 
 //EDIT PASSWORD
-router.get('/changePassword', logged, usersController.changePasswordForm);
+router.get('/changePassword', userRoute, usersController.changePasswordForm);
 router.put('/changePassword',[
   check('password')
                 .isLength({min:6, max:10})
