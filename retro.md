@@ -1,3 +1,17 @@
+3/03/2020
+
+Estrella de mar
+
+1.Comenzar a hacer: ponernos al día con los backlogs.
+2.Hacer más: consultas puntuales del proyecto con los profesores y tutores 
+3.Continuar haciendo: buena comunicación, meetings
+4.Hacer menos: trabajar menos tiempo sobre puntos no incluidos en el sprint
+5.Dejar de hacer: no depender de las meeting para avanzar en los puntos del sprint
+
+Conclusiones de la retro del cuarto sprint
+Logramos avanzar más individualmente para lograr los objetivos del sprint, acordando los criterios en las weeklies, y comunicación remota continua.
+
+
 11/02/2020
 
 Estrella de mar
