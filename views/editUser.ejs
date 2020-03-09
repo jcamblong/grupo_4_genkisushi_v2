@@ -1,121 +1,171 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <%- include('./partials/head') %>
 
-<head>
+    <link rel="stylesheet" href="/css/register.css" />
+  </head>
 
-  <%- include('./partials/head') %>
+  <body>
+    <%- include('./partials/header') %>
 
-  <link rel="stylesheet" href="/css/register.css">
+    <!-- Empieza Main -->
 
-</head>
+    <div class="ct-register">
+      <div class="main-body row">
+        <form
+          action="/users/edituser?_method=PUT"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <h1>Edita tus Datos</h1>
+          <% if (typeof errors !== 'undefined') { errors.map(function(error){ %>
+          <ul>
+            <li style="color:red; margin-left:30px"><%= error.msg %></li>
+          </ul>
+          <% }) } %>
 
-<body>
-
-  <%- include('./partials/header') %>
-
-
-  <!-- Empieza Main -->
-
-  <div class="ct-register">
-    <div class="main-body row">
-
-      <form action="/users/edituser?_method=PUT" method="POST" enctype="multipart/form-data">
-        <h1>Edita tus Datos</h1>
-        <% if (typeof errors !== 'undefined') {
-        errors.map(function(error){ %>
-        <ul>
-          <li style="color:red; margin-left:30px"><%= error.msg %></li>
-        </ul>
-        <% }) } %>
-
-        <div class="input-row">
-          <div class="input-group">
-            <label for="inputName">Nombre</label>
-            <input type="text" class="form-control" id="inputName" name="name"
-              value="<%= typeof user != 'undefined' ? user.first_name : '' %>">
+          <div class="input-row">
+            <div class="input-group">
+              <label for="inputName">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputName"
+                name="name"
+                value="<%= typeof user != 'undefined' ? user.first_name : '' %>"
+              />
+            </div>
+            <div class="input-group">
+              <label for="lastName">Apellido</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputLastName"
+                name="lastName"
+                value="<%= typeof user != 'undefined' ? user.last_name : '' %>"
+              />
+            </div>
           </div>
-          <div class="input-group">
-            <label for="lastName">Apellido</label>
-            <input type="text" class="form-control" id="inputLastName" name="lastName"
-              value="<%= typeof user != 'undefined' ? user.last_name : '' %>">
-          </div>
-        </div>
 
-        <div class="input-row">
-          <div class="input-group">
-            <label for="phone">Telefono</label>
-            <input type="text" class="form-control" id="inputPhone" name="phone" placeholder="Cod. de area + Nro sin 15"
-              value="<%= typeof user != 'undefined' ? user.phone : '' %>">
+          <div class="input-row">
+            <div class="input-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="inputEmail"
+                name="email"
+                value="<%= typeof user != 'undefined' ? user.email : '' %>"
+              />
+            </div>
+            <div class="input-group">
+              <label for="phone">Telefono</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputPhone"
+                name="phone"
+                placeholder="Cod. de area + Nro sin 15"
+                value="<%= typeof user != 'undefined' ? user.phone : '' %>"
+              />
+            </div>
           </div>
-        </div>
 
-        <div class="input-row">
-          <div class="input-group" id="street">
-            <label for="street">Domicilio</label>
-            <input type="text" class="form-control" id="inputStreet" placeholder="Calle" name="street"
-              value="<%= typeof user != 'undefined' ? user.street_name : '' %>">
+          <div class="input-row">
+            <div class="input-group" id="street">
+              <label for="street">Domicilio</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputStreet"
+                placeholder="Calle"
+                name="street"
+                value="<%= typeof user != 'undefined' ? user.street_name : '' %>"
+              />
+            </div>
+            <div class="input-group" id="stNumber">
+              <input
+                type="text"
+                class="form-control"
+                id="inputStNumber"
+                placeholder="Altura"
+                name="stNumber"
+                value="<%= typeof user != 'undefined' ? user.street_number : '' %>"
+              />
+            </div>
           </div>
-          <div class="input-group" id="stNumber">
-            <input type="text" class="form-control" id="inputStNumber" placeholder="Altura" name="stNumber"
-              value="<%= typeof user != 'undefined' ? user.street_number : '' %>">
+          <div class="input-row">
+            <div class="input-group" id="street2">
+              <label for="inputStreet2">Entre calles</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputStreet2"
+                placeholder="Calle 1 y Calle 2"
+                name="street2"
+                value="<%= typeof user != 'undefined' ? user.cross_street_name : '' %>"
+              />
+            </div>
           </div>
-        </div>
-        <div class="input-row">
-          <div class="input-group" id="street2">
-            <label for="inputStreet2">Entre calles</label>
-            <input type="text" class="form-control" id="inputStreet2" placeholder="Calle 1 y Calle 2" name="street2"
-              value="<%= typeof user != 'undefined' ? user.cross_street_name : '' %>">
-          </div>
-        </div>
 
-        <div class="input-row">
-          <div class="input-group">
-            <label for="city">Localidad</label>
-            <select id="inputCity" class="form-control" name="city">
-              <option selected>Ezeiza</option>
-              <option>Monte Grande</option>
-              <option>El Jaguel</option>
-              <option>Tristan Suarez</option>
-            </select>
+          <div class="input-row">
+            <div class="input-group">
+              <label for="city">Localidad</label>
+              <select id="inputCity" class="form-control" name="city">
+                <option selected>Ezeiza</option>
+                <option>Monte Grande</option>
+                <option>El Jaguel</option>
+                <option>Tristan Suarez</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="inputNeighborhood">Barrio</label>
+              <input
+                type="text"
+                class="form-control"
+                id="inputNeighborhood"
+                name="neighborhood"
+                value="<%= typeof user != 'undefined' ? user.neighborhood : '' %>"
+              />
+            </div>
           </div>
-          <div class="input-group">
-            <label for="inputNeighborhood">Barrio</label>
-            <input type="text" class="form-control" id="inputNeighborhood" name="neighborhood"
-              value="<%= typeof user != 'undefined' ? user.neighborhood : '' %>">
+
+          <div class="input-group" id="avatar">
+            <label class="custom-file-label" for="image">Avatar</label>
+            <input
+              type="file"
+              class="custom-file-input"
+              name="image"
+              id="validatedCustomFile"
+            />
           </div>
-        </div>
 
-        <div class="input-group" id="avatar">
-          <label class="custom-file-label" for="image">Avatar</label>
-          <input type="file" class="custom-file-input" name="image" id="validatedCustomFile">
-        </div>
-
-        <input type="submit">
-      </form>
+          <input type="submit" />
+        </form>
+      </div>
     </div>
-  </div>
 
+    <!-- pie -->
 
-  <!-- pie -->
+    <%- include('./partials/footer') %> <%- include('./partials/scripts') %>
 
-  <%- include('./partials/footer') %>
-
-  <%- include('./partials/scripts') %>
-
-  <script>
-    $(function () {
-      $(".toggle").on("click", function () {
-        if ($(".item").hasClass("active")) {
-          $(".item").removeClass("active");
-          $(this).find("a").html("<i class='fas fa-bars'></i>");
-        } else {
-          $(".item").addClass("active");
-          $(this).find("a").html("<i class='fas fa-times'></i>");
-        }
+    <script>
+      $(function() {
+        $(".toggle").on("click", function() {
+          if ($(".item").hasClass("active")) {
+            $(".item").removeClass("active");
+            $(this)
+              .find("a")
+              .html("<i class='fas fa-bars'></i>");
+          } else {
+            $(".item").addClass("active");
+            $(this)
+              .find("a")
+              .html("<i class='fas fa-times'></i>");
+          }
+        });
       });
-    });
-  </script>
-
-</body>
-
+    </script>
+  </body>
 </html>
