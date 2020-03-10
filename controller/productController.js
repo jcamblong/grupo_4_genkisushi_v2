@@ -31,19 +31,15 @@ let productController = {
   },
 
   productAdd: function(req, res) {
-    db.products.findAll().then(products => {
-      let categorias = [];
-      let tipos = [];
-      db.categories.findAll().then(categorias => {
-        db.product_types.findAll().then(tipos => {
-          res.render("productAdd", {
-            products: products,
-            categorias: categorias,
-            tipos: tipos
-          });
-        });
-      });
-    });
+  
+    let categorias = db.categories.findAll();
+
+    let tipos = db.product_types.findAll();
+
+    Promise.all([categorias, tipos])
+      .then(function([categoria, tipo]){
+        res.render("productAdd", {categorias: categoria, tipos: tipo})
+      })
   },
   store: function(req, res, next) {
     db.products.create({
