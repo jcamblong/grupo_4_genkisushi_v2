@@ -19,11 +19,17 @@ let productController = {
       });
     });
   },
+  
+  /*Agrego mostrar tipo de producto a detalle */
   productDetail: function(req, res) {
     db.products.findByPk(req.params.id).then(function(product) {
-      res.render("productDetail", { product: product });
+      let tipos = [];
+      db.product_types.findOne({ where: { id: product.type_id } }).then(tipo => {
+        res.render("productDetail", { product: product,  tipo: tipo });
+      });
     });
   },
+
   productAdd: function(req, res) {
     db.products.findAll().then(products => {
       let categorias = [];
@@ -78,13 +84,27 @@ let productController = {
 
   // Update - Method to update PUT| CGR
   update: (req, res, next) => {
-    db.categories
+   /* db.categories
       .findOne({ where: { name: req.body.category } })
       .then(categoria => {
         db.product_types
           .findOne({ where: { name: req.body.type } })
           .then(tipo => {
-            if (req.files.length != 0) {
+     */
+    
+      /**actualizar precio en product_types**/
+      db.product_types
+      .update(
+        {
+          price: req.body.price
+        },
+        { where: { id: req.body.type } }
+      )
+      .then(console.log("actualice precio"));
+
+
+    /*actualizo producto*/
+     if (req.files.length != 0) {
               db.products
                 .update(
                   {
@@ -113,8 +133,9 @@ let productController = {
                 )
                 .then(res.redirect("/products/detail/" + req.params.id));
             }
-          });
-      });
+       /*   });
+      });*/
+
   },
 
   /*	let arrayIndex;
