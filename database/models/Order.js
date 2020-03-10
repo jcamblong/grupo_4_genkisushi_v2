@@ -48,26 +48,18 @@ module.exports = (sequelize, dataTypes) => {
             as: 'payment_methods',
             foreignKey: "payment_methods_id"
         })
-    };
-    Order.associate = function (models){
         Order.belongsTo (models.users, {
             as: 'users',
             foreignKey: "user_id"
         })
-    };
-    Order.associate = function (models){
         Order.belongsTo (models.order_statuses, {
             as: 'order_statuses',
             foreignKey: "order_status_id"
         })
-    };
-    Order.associate = function (models){
         Order.belongsTo (models.cupons, {
             as: 'cupons',
             foreignKey: "cupon_id"
         })
-    };
-    Order.associate = function (models){
         Order.hasMany (models.order_product, {
             as: 'order_product',
             foreignKey: "order_id"
