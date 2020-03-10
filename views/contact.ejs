@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <%- include('./partials/head') %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/contact.css">
+</head>
+<body>
+<%- include ('partials/header') %>
+
+<!-- Empieza Main -->
+<div class="contact-container">
+    <h4>Contacto</h4>
+    <img src="/img/mapa.png" alt="mapa" width="654px">
+    <p><i class="fas fa-map-marker-alt"></i> Calle Falsa 1234, Ezeiza</p>
+    <p><i class="fas fa-clock"></i> Martes a Sábados de 20 a 24 hs</p>
+    <p><i class="fas fa-mobile"></i> 11-5555-5555</p>
+    <p><i class="fas fa-at"></i> genki@mail.com</p>
+    <div class="redes-conctac">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>  
+    </div>    
+</div>
+
+  <!-- pie -->
+ 
+  <%- include('./partials/footer') %>
+
+  <%- include('./partials/scripts') %>
+
+  <script>
+    $(function() {
+      $(".toggle").on("click", function() {
+          if ($(".item").hasClass("active")) {
+              $(".item").removeClass("active");
+              $(this).find("a").html("<i class='fas fa-bars'></i>");
+          } else {
+              $(".item").addClass("active");
+              $(this).find("a").html("<i class='fas fa-times'></i>");
+          }
+      });
+    });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700&display=swap');
+
+.about-container{
+    margin: 0;
+    min-height: 70vh;
+    background-image: url("../demo1-1021251770-1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.6;
+}
+.texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 700px;
+}
+.texto h4 {
+    color: #fff;
+    font-size: 24px;
+}
+
+.texto p {
+    font-family: Roboto Condensed;
+    color: #fff;
+
+    
+}
+
+
