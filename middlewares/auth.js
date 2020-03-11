@@ -5,6 +5,7 @@ const locals = (req, res, next) => {
     if (req.session.username) {        
         res.locals.isAuthenticated = true;
         res.locals.userLocal = req.session.user;
+        res.locals.role = req.session.role;
     }
 
     next();

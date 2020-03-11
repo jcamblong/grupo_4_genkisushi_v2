@@ -52,13 +52,14 @@
     </form> 
    
     <a href= "/products/cart" class="añadir">AÑADIR AL CARRITO</a>
-
+    <% if(isAuthenticated && role == 1) { %>
       <div class="edicion">
         <a href="/products/edit/<%= product.id %>" class="editar">EDITAR PRODUCTO</a>
           <form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST">
             <button type="submit" class="eliminar">ELIMINAR</button>
           </form>
       </div>
+    <% } %>
   </div> 
 </div>
 

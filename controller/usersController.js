@@ -17,7 +17,7 @@ let usersController = {
           if (bcrypt.compareSync(req.body.password, query.password)) {
             req.session.loggedin = true
             req.session.username = query.email
-            console.log('OK!');
+            req.session.role = query.role_id
             
             res.redirect("/users/user");
           } else {
