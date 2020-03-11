@@ -1,16 +1,15 @@
 
 <nav class="nav-uno">
   <ul class="menu">
-      <li class="logo"><a href="/"><img src="/img/logo-genki.png" alt="Logo Genki" height= "70px"></a></li>
-      <li class="item"><a href="/products">PRODUCTOS</a></li>
-      <li class="item"><a href="/products">NUESTRAS TABLAS</a></li>
-      <li class="item"><a href="/about-us">NOSOTROS</a></li>
-      <li class="item"><a href="/contact">CONTACTO</a></li>
-      <% if(isAuthenticated) { %>
-        <li class="item button"><a href="/users/user">MI CUENTA</a></li>
-      <% } else { %>
-        <li class="item button"><a href="/users/login"> INGRESAR</a></li>
-      <% } %>
-      <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
-  </ul>
+    <li class="logo"><a href="/"><img src="/img/logo-genki.png" alt="Logo Genki" height= "70px"></a></li>
+    <li class="item"><a href="/products">PRODUCTOS</a></li>
+    <li class="item"><a href="/products">NUESTRAS TABLAS</a></li>
+    <li class="item"><a href="/about-us">NOSOTROS</a></li>
+    <li class="item"><a href="/contact">CONTACTO</a></li>
+    <% if(isAuthenticated) { %>
+      <button class="btn btn1"><a href="/users/user">MI CUENTA</a></button>
+    <% } else { %>
+      <button class="btn btn1"><a href="/users/login"> INGRESAR</a></button>
+    <% } %>
+    </ul>
 </nav>

@@ -3,12 +3,7 @@
 
 <head>
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
   <%- include('./partials/head') %>
-
-
 
 </head>
 
@@ -17,8 +12,36 @@
       <%- include('./partials/header') %>  
 
     <!-- Empieza Main -->
+    <div class="main-body row">
 
-  <div class="main-body row">
+      <div class="slidershow">
+
+        <div class="slides">
+          <input type="radio" name="r" id="r1" checked>
+          <input type="radio" name="r" id="r2">
+          <input type="radio" name="r" id="r3">
+          <div class="slide s1">
+            <img src="./demo1-1021251770-1.jpg" alt="">
+          </div>
+          <div class="slide">
+            <img src="./demo1-1021580475-1.jpg" alt="">
+          </div>
+          <div class="slide">
+            <img src="./demo1-1021605166-1.jpg" alt="">
+          </div>
+        </div>
+
+        <div class="navigation">
+          <label for="r1" class="bar"></label>
+          <label for="r2" class="bar"></label>
+          <label for="r3" class="bar"></label>
+        </div>
+      </div>
+
+    </div>
+    
+
+<!--   <div class="main-body row">
 
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -57,7 +80,7 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
-    </div>
+    </div> -->
 
   <!-- pie -->
  

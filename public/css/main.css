@@ -30,7 +30,7 @@ nav ul {
     list-style-type: none;
     margin:0;
 }
-nav a {
+nav li a {
     color: white;
     text-decoration: none;
 }
@@ -47,18 +47,50 @@ nav a:hover {
 .toggle {
     order: 1;
 }
-.item.button {
-    order: 2;
-}
-.item.button a{
-    background-color: #ca3e47;
-    border: 1px solid #ca3e47;
-}
-
-.item.button a:hover{
-    background-color: #ca3e47;
-    border: 1px solid #ca3e47;
-}
+.btn{
+    background: none;
+    border: 2px solid #ca3e47;
+    font-family: "montserrat",sans-serif;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    min-width: 200px;
+    margin: 10px;
+    cursor: pointer;
+    transition: color 0.4s linear;
+    position: relative;
+    order: 1;
+  }
+  button.btn.btn1 a{
+    color: white;
+    text-decoration: none;
+    font-family: Roboto Condensed;
+    font-size: 1rem;
+    position: relative;
+    z-index: 3;
+  }
+  .btn:hover{
+    color: #fff;
+  }
+  .btn::before{
+    content: "";
+    position: absolute;
+    color: #fff;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #ca3e47;
+    z-index: 2;
+    transition: transform 0.5s;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(0.5,1.6,0.4,0.7);
+  }
+  .btn1::before{
+    transform: scaleX(0);
+  }
+  .btn1:hover::before{
+    transform: scaleX(1);
+  }
 
 .item {
     width: 100%;
@@ -76,6 +108,69 @@ nav a:hover {
 .button.secondary a {
     border: 1px solid #ca3e47;
 }
+
+/* INDEX CARROUSEL */
+
+.slidershow{
+    width: 100vw;
+    height: 90vh;
+    overflow: hidden;
+  }
+  .navigation{
+    position: relative;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+  }
+  .bar{
+    width: 50px;
+    height: 10px;
+    border: 2px solid #fff;
+    margin: 6px;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  .bar:hover{
+    background: #fff;
+  }
+  
+  input[name="r"]{
+      position: absolute;
+      visibility: hidden;
+  }
+  
+  .slides{
+    width: 500%;
+    height: 100%;
+    display: flex;
+  }
+  
+  .slide{
+    width: 20%;
+    transition: 0.6s;
+  }
+  .slide img{
+    width: 100%;
+    height: 100%;
+  }
+  
+  #r1:checked ~ .s1{
+    margin-left: 0;
+  }
+  #r2:checked ~ .s1{
+    margin-left: -20%;
+  }
+  #r3:checked ~ .s1{
+    margin-left: -40%;
+  }
+  #r4:checked ~ .s1{
+    margin-left: -60%;
+  }
+  #r5:checked ~ .s1{
+    margin-left: -80%;
+  }
 
 
 /* FOOTER */
