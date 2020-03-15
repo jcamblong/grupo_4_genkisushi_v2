@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700&display=swap');
 
+body {
+    font-family: Roboto Condensed;
+}
+
 .about-container{
     margin: 0;
     min-height: 70vh;
@@ -14,18 +18,22 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 700px;
+    position: absolute;
+    width: 450px;
+    right: 100px;
+    bottom: 400px;
+
 }
 .texto h4 {
     color: #fff;
     font-size: 24px;
+    padding-bottom: 20px;
+    letter-spacing: 1px;
 }
 
 .texto p {
-    font-family: Roboto Condensed;
     color: #fff;
-
-    
+    letter-spacing: 1px;
 }
 
 

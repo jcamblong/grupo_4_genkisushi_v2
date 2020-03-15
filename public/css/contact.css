@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700&display=swap');
 
+body {
+    font-family: Roboto Condensed;
+}
+
 .contact-container {
     display: flex;
     flex-direction: column;
@@ -17,9 +21,7 @@
     font-size: 24px;
     padding: 20px 0 20px 0;
 }
-.contact-container p {
-    font-family: Roboto Condensed;
-}
+
 .contact-container img {
     align-self: center;
     padding-bottom: 30px;
