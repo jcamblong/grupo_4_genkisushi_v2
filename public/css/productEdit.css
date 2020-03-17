@@ -38,8 +38,7 @@ form input, select, textarea{
     padding: 20px;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    -webkit-border-radius: 10px 10px 10px 10px;
-    border-radius: 10px 10px 10px 10px;
+    
 }
 
 .main-body h1 {
@@ -56,6 +55,7 @@ form input, select, textarea{
 .foto {
     display: flex;
     justify-content: center;
+    padding-bottom: 15px;
 }
 .ct-edit button[type="submit"] {
     width: 100%;
