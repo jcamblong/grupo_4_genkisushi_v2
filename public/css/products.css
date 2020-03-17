@@ -30,6 +30,9 @@
         .nav-dos a:hover {
             color: #ca3e47;
         }
+        .active{
+            border: solid 1px #ca3e47;
+        }
 
 .main-products {
     display: flex;
@@ -49,18 +52,21 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    -webkit-box-shadow: 0 10px 10px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.3);
 }
 img {
     margin-bottom: 10px;
 }
 a, h3{
     text-decoration: none;
-    color: black;
+    color: rgb(51, 51, 51);
 }
 .precio {
     font-weight: bold;
     margin-top: 10px;
     margin-bottom: 10px;
+    color: rgb(51, 51, 51);
 }
 .btn-item {
     width: 100%;
