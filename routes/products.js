@@ -16,6 +16,8 @@ var upload = multer({ storage: storage });
 
 //All products
 router.get("/", productController.index);
+//By Categories
+router.get("/category/:id", productController.categories);
 //Product detail
 router.get("/detail/:id", productController.productDetail);
 
