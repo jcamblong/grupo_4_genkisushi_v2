@@ -25,7 +25,7 @@
         <form action="/products/edit/<%= products.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
           <h1>Formulario de Edición de Producto</h1>
           <div class="form-group">
-            <label for="inputName">Nombre</label>
+            <label for="inputName" id="nameLabel">Nombre</label>
             <input type="text" class="form-input" id="inputNombre" name="name" value="<%= products.name %>">
           </div>
         
@@ -56,7 +56,7 @@
           </div>
      
           <div class="form-group">
-            <label for="TextareaDetalle">Detalle</label>
+            <label for="TextareaDetalle" id="detailLabel">Detalle</label>
             <textarea class="form-control" id="TextareaDetalle" rows="3" name="detail"><%= products.detail %></textarea>
           </div>
      
@@ -74,9 +74,8 @@
           </div>  
           
           <div class="custom-file">
-            <input type="file" class="custom-file-input" name= "image" id="validatedCustomFile">
-            <label class="custom-file-label" for="validatedCustomFile">Modificar imagen...</label>
-            <div class="invalid-feedback">Example invalid custom file feedback</div>
+            <label class="custom-file-label" for="validatedCustomFile" id="imageLabel">Modificar imagen...</label>
+            <input type="file" class="custom-file-input" name= "image" id="validatedCustomFile" required>
           </div>
               
           <button type="submit">Guardar Cambios</button>
@@ -104,6 +103,9 @@
       });
     });
     </script>
+
+<script defer src="/javascripts/validator.js"></script>
+<script defer src="/javascripts/validateProduct.js"></script>
   
 </body>
 </html>

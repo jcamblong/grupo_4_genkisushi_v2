@@ -31,11 +31,13 @@
         <div class="input-row">
           <div class="input-group">
             <label for="name">Nombre</label>
+            <p id="nameError" style="color:red; margin-left:30px"></p>
             <input type="text" class="form-control" id="inputName" name="name"
               value="<%= typeof data != 'undefined' ? data.name : '' %>">
           </div>
           <div class="input-group">
             <label for="lastName">Apellido</label>
+            <p id="lastNameError" style="color:red; margin-left:30px"></p>
             <input type="text" class="form-control" id="inputLastName" name="lastName"
               value="<%= typeof data != 'undefined' ? data.lastName : '' %>">
           </div>
@@ -44,6 +46,7 @@
         <div class="input-row">
           <div class="input-group">
             <label for="email">Email</label>
+            <p id="emailError" style="color:red; margin-left:30px"></p>
             <input type="email" class="form-control" id="inputEmail" name="email"
               value="<%= typeof data != 'undefined' ? data.email : '' %>">
           </div>
@@ -57,6 +60,7 @@
         <div class="input-row">
           <div class="input-group">
             <label for="password">Contraseña</label>
+            <p id="passwordError" style="color:red; margin-left:30px"></p>
             <input type="password" class="form-control" id="inputPassword" name="password"
               placeholder="Entre 6 y 10 caracteres">
           </div>
@@ -105,6 +109,7 @@
 
         <div class="input-group" id="avatar">
           <label class="custom-file-label" for="image">Avatar</label>
+          <p id="imageError" style="color:red; margin-left:30px"></p>
           <input type="file" class="custom-file-input" name="image" id="validatedCustomFile">
         </div>
 
@@ -132,6 +137,8 @@
       });
     });
   </script>
+  <script defer src="/javascripts/validator.js"></script>
+  <script defer src="/javascripts/validateRegister.js"></script>
 
 </body>
 

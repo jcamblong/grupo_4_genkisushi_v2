@@ -21,7 +21,7 @@
         <form method="POST" action="/products/create" enctype="multipart/form-data">
           <h1>Formulario de Carga de Producto</h1>
           <div class="form-group">
-            <label for="inputName">Nombre</label>
+            <label for="inputName" id="nameLabel">Nombre</label>
             <input type="text" class="form-control" id="inputNombre" name="name">
           </div>
         
@@ -44,7 +44,7 @@
           </div>
           
             <div class="form-group">
-              <label for="TextareaDetalle">Detalle</label>
+              <label for="TextareaDetalle" id="detailLabel">Detalle</label>
               <textarea class="form-control" id="TextareaDetalle" rows="3" name="detail"></textarea>
             </div>
       
@@ -55,7 +55,7 @@
         
 
           <div class="input-group" id="foto">
-            <label class="custom-file-label" for="validatedCustomFile">Agregar imagen...</label>
+            <label class="custom-file-label" for="validatedCustomFile" id="imageLabel">Agregar imagen...</label>
             <input type="file" class="custom-file-input" name= "image" id="validatedCustomFile" required>
           </div>
      
@@ -83,6 +83,11 @@
       });
     });
     </script>
+
+
+
+<script defer src="/javascripts/validator.js"></script>
+<script defer src="/javascripts/validateProduct.js"></script>
   
 </body>
 </html>
