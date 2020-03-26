@@ -16,6 +16,9 @@ const testRouter = require('./routes/test');
 const apiUsersRouter = require('./routes/api/users');
 const apiProductsRouter = require('./routes/api/products');
 
+const db = require("./database/models");
+
+
 const app = express();
 
 // view engine setup
@@ -45,6 +48,14 @@ app.use('/products', productsRouter);
 app.use('/color', testRouter);
 app.use('/api/users', apiUsersRouter);
 app.use('/api/products', apiProductsRouter);
+
+
+//Entra pero con req.body.email undefined, viene vacío
+app.post('/api/check', function (req, res) {
+  console.log("Estoy en app " + req.body.email)
+  let code = db.users.findOne({ where: { email: req.body.email } }) ? 200 : 404;
+  res.status(code), end("");
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

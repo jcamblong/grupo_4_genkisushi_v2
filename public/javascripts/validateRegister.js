@@ -1,3 +1,5 @@
+//import { json } from "sequelize/types";
+
 let form = document.querySelector('form');
 
 let nameInput = form.name;
@@ -19,13 +21,11 @@ nameInput.addEventListener('blur', function(e){
     if (validator.isLength(nameInput.value,{min:0, max:1})){
         nameInput.style.border ='1px solid red';
         nameError.innerHTML ="el campo nombre es obligatorio y debe contener al menos 2 caracteres";
-        //document.getElementById("nameLabel").innerHTML = "Nombre<br>(el campo nombre es obligatorio y debe contener al menos 5 caracteres)";
         nameInput.focus();
         errores[nameInput.name] = true;
     }else{
         nameInput.style.border ='1px solid #dddddd';
         nameError.innerHTML ="";
-        //document.getElementById("nameLabel").innerHTML = "Nombre";
         delete errores[nameInput.name];
     }
 });
@@ -34,7 +34,6 @@ lastNameInput.addEventListener('blur', function(e){
     if (validator.isLength(lastNameInput.value,{min:0, max:1})){
         lastNameInput.style.border ='1px solid red';
         lastNameError.innerHTML ="el campo apellido es obligatorio y debe contener al menos 2 caracteres";
-        //document.getElementById("nameLabel").innerHTML = "Nombre<br>(el campo nombre es obligatorio y debe contener al menos 5 caracteres)";
         lastNameInput.focus();
         errores[lastNameInput.name] = true;
     }else{
@@ -52,9 +51,40 @@ emailInput.addEventListener('blur', function(e){
         errores[emailInput.name] = true;
         emailInput.focus();
     }else{
-        emailInput.style.border ='1px solid #dddddd';       
-        emailError.innerHTML= "";
-        delete errores[emailInput.name];
+        let data = {
+                email: e.target.value};
+
+//******se muestra en consola data */                
+        console.log(data); 
+        let settings = {
+                    method: "POST",
+                    headers: {"context-Type":"application/json"},
+                    body: JSON.stringify(data)                                
+        };   
+
+        fetch('/api/check', settings)
+        
+        .then(function(response){
+            return response.json();
+        })
+        
+        .then(response => {
+            //no entra va directamente al catch con error 500 que tira el servidor
+            console.log(response.status);
+        if(response.status == 200){
+            emailInput.style.border ='1px solid red';
+            emailError.innerHTML = "el email ya existe";
+            errores[emailInput.name] = true;
+            emailInput.focus();
+        }else if (response.status == 404){
+            emailInput.style.border ='1px solid #dddddd';       
+            emailError.innerHTML= "";
+            delete errores[emailInput.name];
+            }
+        })
+        .catch(function(error){
+            console.log('Error:' + error);
+        });
     }
 });
 
