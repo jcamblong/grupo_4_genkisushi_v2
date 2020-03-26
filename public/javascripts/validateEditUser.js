@@ -1,39 +1,35 @@
+
 let form = document.querySelector('form');
 
-
 let nameInput = form.name;
+let lastNameInput = form.lastName;
+
+let ListadoErrores = form.querySelector("#Errores");
 let errores = {};
 
-//validar nombre del producto obligatorio y mayor a 5 caracteres
+ListadoErrores.innerHTML ='';
+
+//validar nombre y apellido obligatorio y al menos 2 caracteres
+//nombre
 nameInput.addEventListener('blur', function(e){
-    if (validator.isLength(nameInput.value,{min:0, max:4})){
+    if (validator.isLength(nameInput.value,{min:0, max:1})){
         nameInput.style.border ='1px solid red';
-        document.getElementById("nameLabel").innerHTML = "Nombre<br>(el campo nombre es obligatorio y debe contener al menos 5 caracteres)";
-        nameInput.focus();
-        errores[nameInput.name] = true;
+        errores[nameInput.name] = "El campo nombre debe contener al menos 2 caracteres";
     }else{
         nameInput.style.border ='1px solid #dddddd';
-        document.getElementById("nameLabel").innerHTML = "Nombre";
         delete errores[nameInput.name];
     }
 });
-
-//validar detalle al menos 20 caracteres
-let detailInput = form.detail;
-detailInput.addEventListener('blur', function(e){
-    if (!validator.isLength(detailInput.value,{min:20, max:undefined})){
-        detailInput.style.border ='1px solid red';        
-        //alert("el campo detalle debe tener al menos 20 caracteres");
-        document.getElementById("detailLabel").innerHTML = "Detalle<br>(el campo detalle debe tener al menos 20 caracteres)";
-        detailInput.focus();
-        errores[detailInput.name] = true;
+//apellido
+lastNameInput.addEventListener('blur', function(e){
+    if (validator.isLength(lastNameInput.value,{min:0, max:1})){
+        lastNameInput.style.border ='1px solid red';
+        errores[lastNameInput.name] = "El campo apellido debe contener al menos 2 caracteres";
     }else{
-        detailInput.style.border ='1px solid #dddddd';
-        document.getElementById("detailLabel").innerHTML = "Detalle";
-        delete errores[detailInput.name];
+        lastNameInput.style.border ='1px solid #dddddd';
+        delete errores[lastNameInput.name];
     }
 });
-
 
 //validar que la imagen sea jpg, jpeg,png, gif
 function openImage() {         
@@ -73,12 +69,10 @@ function openImage() {
 
         if (error.state) {
             input.value = '';
-            document.getElementById("imageLabel").innerHTML = error.msg;
             input.style.border ='1px solid red';
-            errores[input.name] = true;
+            errores[input.name] = error.msg;
             return;
         } else {
-          document.getElementById("imageLabel").innerHTML = "El archivo es válido";
           input.style.border ='1px solid #dddddd';
           delete errores[input.name];
         }
@@ -90,10 +84,23 @@ function openImage() {
 let imageInput = form.image;
 imageInput.addEventListener("change",openImage);
 
-//antes de hacer el submit, chequea que no hayan quedado campos con error
+
 form.addEventListener('submit', function (event) {
 	if (Object.keys(errores).length > 0) {
 		event.preventDefault();
-		alert('Hay campos con errores'); 
-	}
-})
+        for (let error in errores) {
+            if (errores.hasOwnProperty(error)) {
+                ListadoErrores.innerHTML += `${errores[error]}` + '<br>';
+            }
+        }
+    
+        if(validator.isEmpty(nameInput.value)){
+            ListadoErrores.innerHTML += 'el campo nombre es obligatorio' + '<br>';
+        }
+        if (validator.isEmpty(lastNameInput.value)){
+            ListadoErrores.innerHTML += 'el campo apellido es obligatorio' + '<br>';
+        }
+    }
+    
+        
+});

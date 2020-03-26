@@ -49,8 +49,8 @@ router.post(
       .isEmail()
       .withMessage("Email invallido"),
     check("password")
-      .isLength({ min: 6, max: 10 })
-      .withMessage("El password debe tener entre 6 y 10 caracteres")
+      .isLength({ min: 8, max: 10 })
+      .withMessage("El password debe tener entre 8 y 10 caracteres")
       .custom((value, { req, loc, path }) => {
         if (value !== req.body.repeatPassword) {
           // trow error if passwords do not match
@@ -115,8 +115,8 @@ router.put(
   "/changePassword",
   [
     check("password")
-      .isLength({ min: 6, max: 10 })
-      .withMessage("El password debe tener entre 6 y 10 caracteres")
+      .isLength({ min: 8, max: 10 })
+      .withMessage("El password debe tener entre 8 y 10 caracteres")
       .custom((value, { req, loc, path }) => {
         if (value !== req.body.repeatPassword) {
           // trow error if passwords do not match

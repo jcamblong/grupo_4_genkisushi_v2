@@ -1,31 +1,23 @@
-//import { json } from "sequelize/types";
-
 let form = document.querySelector('form');
 
 let nameInput = form.name;
-let nameError = form.querySelector("#nameError");
 let lastNameInput = form.lastName;
-let lastNameError = form.querySelector("#lastNameError");
-
 let emailInput = form.email;
-let emailError = form.querySelector("#emailError");
-
 let passwordInput = form.password;
-let passwordError = form.querySelector("#passwordError");
+let ListadoErrores = form.querySelector("#Errores");
 
 let errores = {};
+
+ListadoErrores.innerHTML ='';
 
 //validar nombre y apellido obligatorio y al menos 2 caracteres
 //nombre
 nameInput.addEventListener('blur', function(e){
     if (validator.isLength(nameInput.value,{min:0, max:1})){
         nameInput.style.border ='1px solid red';
-        nameError.innerHTML ="el campo nombre es obligatorio y debe contener al menos 2 caracteres";
-        nameInput.focus();
-        errores[nameInput.name] = true;
+        errores[nameInput.name] = "el campo nombre debe contener al menos 2 caracteres";
     }else{
         nameInput.style.border ='1px solid #dddddd';
-        nameError.innerHTML ="";
         delete errores[nameInput.name];
     }
 });
@@ -33,12 +25,9 @@ nameInput.addEventListener('blur', function(e){
 lastNameInput.addEventListener('blur', function(e){
     if (validator.isLength(lastNameInput.value,{min:0, max:1})){
         lastNameInput.style.border ='1px solid red';
-        lastNameError.innerHTML ="el campo apellido es obligatorio y debe contener al menos 2 caracteres";
-        lastNameInput.focus();
-        errores[lastNameInput.name] = true;
+        errores[lastNameInput.name] = "El campo apellido debe contener al menos 2 caracteres";
     }else{
         lastNameInput.style.border ='1px solid #dddddd';
-        lastNameError.innerHTML ="";
         delete errores[lastNameInput.name];
     }
 });
@@ -47,9 +36,7 @@ lastNameInput.addEventListener('blur', function(e){
 emailInput.addEventListener('blur', function(e){
     if(validator.isEmpty(emailInput.value)|| (!validator.isEmail(emailInput.value))){
         emailInput.style.border ='1px solid red';
-        emailError.innerHTML = "no es un email válido";
-        errores[emailInput.name] = true;
-        emailInput.focus();
+        errores[emailInput.name] = "no es un email válido";
     }else{
         let data = {
                 email: e.target.value};
@@ -73,12 +60,9 @@ emailInput.addEventListener('blur', function(e){
             console.log(response.status);
         if(response.status == 200){
             emailInput.style.border ='1px solid red';
-            emailError.innerHTML = "el email ya existe";
-            errores[emailInput.name] = true;
-            emailInput.focus();
+            errores[emailInput.name] = "el email ya existe";
         }else if (response.status == 404){
             emailInput.style.border ='1px solid #dddddd';       
-            emailError.innerHTML= "";
             delete errores[emailInput.name];
             }
         })
@@ -89,23 +73,20 @@ emailInput.addEventListener('blur', function(e){
 });
 
 //validar contraseña obligatoria, al menos 8 caracteres y debe contener mayúsculas, un número y un caracter especial
-//Minimo 8 caracteres, Maximo 20, Al menos una letra mayúscula, Al menos una letra minucula, Al menos un dígito, No espacios en blanco y Al menos 1 caracter especial
+//Minimo 8 caracteres, Maximo 10, Al menos una letra mayúscula, Al menos una letra minucula, Al menos un dígito, No espacios en blanco y Al menos 1 caracter especial
 
 passwordInput.addEventListener('blur', function(e){
     
-    let regex = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,20}$/);
+    let regex = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,10}$/);
 
     console.log(event.target.value);
     if (regex.test(event.target.value)){
         console.log(regex.test(event.target.value));
         passwordInput.style.border ='1px solid #dddddd';
-        passwordError.innerHTML = "";
         delete errores[passwordInput.name];
     }else{
         passwordInput.style.border ='1px solid red';
-        passwordError.innerHTML = "campo obligatorio, min 8, mayúsculas, algún número, sin espacios en blancos y algún caracter especial";
-        errores[passwordInput.name] = true;
-        passwordInput.focus();
+        errores[passwordInput.name] = "El campo password debe contener al menos 8 caracteres, mayúsculas, algún número, sin espacios en blancos y algún caracter especial";
     }
 });
 
@@ -147,9 +128,8 @@ function openImage() {
 
         if (error.state) {
             input.value = '';
-            document.getElementById("imageError").innerHTML = error.msg;
             input.style.border ='1px solid red';
-            errores[input.name] = true;
+            errores[input.name] = error.msg;;
             return;
         } else {
           document.getElementById("imageError").innerHTML = "";
@@ -169,6 +149,27 @@ imageInput.addEventListener("change",openImage);
 form.addEventListener('submit', function (event) {
 	if (Object.keys(errores).length > 0) {
 		event.preventDefault();
-		alert('Hay campos con errores'); 
-	}
-})
+        for (let error in errores) {
+            if (errores.hasOwnProperty(error)) {
+                ListadoErrores.innerHTML += `${errores[error]}` + '<br>';
+            }
+        }
+
+    
+        if(validator.isEmpty(nameInput.value)){
+            ListadoErrores.innerHTML += 'el campo nombre es obligatorio' + '<br>';
+        }
+        if (validator.isEmpty(lastNameInput.value)){
+            ListadoErrores.innerHTML += 'el campo apellido es obligatorio' + '<br>';
+        }
+        if (validator.isEmpty(emailInput.value)){
+            ListadoErrores.innerHTML += 'el campo email es obligatorio' + '<br>';
+        }
+        if (validator.isEmpty(passwordInput.value)){
+            ListadoErrores.innerHTML += 'el campo password es obligatorio' + '<br>';
+        }
+
+    }
+    
+        
+});

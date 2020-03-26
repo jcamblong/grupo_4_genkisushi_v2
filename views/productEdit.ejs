@@ -24,6 +24,9 @@
 
         <form action="/products/edit/<%= products.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
           <h1>Formulario de Edición de Producto</h1>
+
+          <p id="Errores" style="color:red; margin-left:30px"></p>
+                    
           <div class="form-group">
             <label for="inputName" id="nameLabel">Nombre</label>
             <input type="text" class="form-input" id="inputNombre" name="name" value="<%= products.name %>">
