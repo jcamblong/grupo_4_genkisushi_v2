@@ -21,10 +21,11 @@ body {
 
 .column{
     display: flex;
-    flex: 1;
+    flex: 1.2;
 }
 .texto {
     display: flex;
+    flex:1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
