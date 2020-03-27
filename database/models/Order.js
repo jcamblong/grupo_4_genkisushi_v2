@@ -46,7 +46,7 @@ module.exports = (sequelize, dataTypes) => {
     Order.associate = function (models){
         Order.belongsTo (models.payment_methods, {
             as: 'payment_methods',
-            foreignKey: "payment_methods_id"
+            foreignKey: "payment_method_id"
         })
         Order.belongsTo (models.users, {
             as: 'users',

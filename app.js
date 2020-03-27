@@ -15,6 +15,7 @@ const productsRouter = require('./routes/products');
 const testRouter = require('./routes/test');
 const apiUsersRouter = require('./routes/api/users');
 const apiProductsRouter = require('./routes/api/products');
+const apiOrdersRouter = require('./routes/api/orders');
 
 const db = require("./database/models");
 
@@ -48,6 +49,7 @@ app.use('/products', productsRouter);
 app.use('/color', testRouter);
 app.use('/api/users', apiUsersRouter);
 app.use('/api/products', apiProductsRouter);
+app.use('/api/orders', apiOrdersRouter);
 
 
 //Entra pero con req.body.email undefined, viene vacío

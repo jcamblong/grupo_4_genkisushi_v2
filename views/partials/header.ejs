@@ -7,9 +7,9 @@
     <li class="item"><a href="/about-us">NOSOTROS</a></li>
     <li class="item"><a href="/contact">CONTACTO</a></li>
     <% if(isAuthenticated) { %>
-      <button class="btn btn1"><a href="/users/user">MI CUENTA</a></button>
+      <a href="/users/user"><button class="btn btn1"><p>MI CUENTA</p></button></a>
     <% } else { %>
-      <button class="btn btn1"><a href="/users/login"> INGRESAR</a></button>
+      <a href="/users/login"><button class="btn btn1"><p>INGRESAR</p></button></a>
     <% } %>
     </ul>
 </nav>

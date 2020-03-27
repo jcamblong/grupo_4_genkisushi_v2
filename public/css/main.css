@@ -47,6 +47,10 @@ nav a:hover {
 .toggle {
     order: 1;
 }
+
+ul.menu a{
+    order:2;
+}
 .btn{
     background: none;
     border: 2px solid #ca3e47;
@@ -58,15 +62,16 @@ nav a:hover {
     cursor: pointer;
     transition: color 0.4s linear;
     position: relative;
-    order: 1;
+    order: 4;
+    z-index: 1;
   }
-  button.btn.btn1 a{
+  a button.btn.btn1{
     color: white;
     text-decoration: none;
     font-family: Roboto Condensed;
     font-size: 1rem;
     position: relative;
-    z-index: 3;
+    z-index: 0;
   }
   .btn:hover{
     color: #fff;
