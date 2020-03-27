@@ -47,10 +47,6 @@ nav a:hover {
 .toggle {
     order: 1;
 }
-
-ul.menu a{
-    order:2;
-}
 .btn{
     background: none;
     border: 2px solid #ca3e47;
@@ -62,16 +58,15 @@ ul.menu a{
     cursor: pointer;
     transition: color 0.4s linear;
     position: relative;
-    order: 4;
-    z-index: 1;
+    order: 1;
   }
-  a button.btn.btn1{
+  button.btn.btn1{
     color: white;
     text-decoration: none;
     font-family: Roboto Condensed;
     font-size: 1rem;
     position: relative;
-    z-index: 0;
+    z-index: 3;
   }
   .btn:hover{
     color: #fff;
@@ -85,7 +80,7 @@ ul.menu a{
     width: 100%;
     height: 100%;
     background: #ca3e47;
-    z-index: 2;
+    z-index: -1;
     transition: transform 0.5s;
     transform-origin: 0 0;
     transition-timing-function: cubic-bezier(0.5,1.6,0.4,0.7);
