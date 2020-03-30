@@ -4,13 +4,25 @@ let usersController = {
 
 list: function (req, res) {
 
-    db.users.findAll({attributes: ['id', 'first_name', 'last_name', 'email']})
+    db.users.findAll({
+        attributes: ['id', 'first_name', 'last_name', 'email'],
+        include: [
+            {association: 'orders', attributes: {exclude: ['createdAt','updatedAt']}}, 
+            {association: 'roles', attributes: {exclude: ['createdAt','updatedAt']}}],
+        order: [
+                ['id', 'ASC']
+            ]
+        })
       .then(users => {
           for(let i = 0; i < users.length; i++) {
               users[i].setDataValue("detail", "/api/users/" + users[i].id)
           }
         let respuesta = {
-            count: users.length,
+            meta: {
+                status: 200,
+                count: users.length,
+                url: "/api/users"
+            },
             users
             }
         res.json(respuesta)        

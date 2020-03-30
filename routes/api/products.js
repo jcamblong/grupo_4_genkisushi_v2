@@ -4,6 +4,10 @@ let productsController = require("../../controller/api/productsController.js");
 
 router.get("/", productsController.list);
 
+router.get("/categories", productsController.categories);
+
 router.get("/:id", productsController.find);
+
+
 
 module.exports = router;

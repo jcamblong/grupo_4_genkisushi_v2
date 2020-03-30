@@ -19,7 +19,10 @@ let productsController = {
         })
             .then( (products) => {
                 for(let i = 0; i < products.length; i++) {
-                products[i].setDataValue("endpoint", "/api/products/" + products[i].id)
+                products[i].setDataValue(("endpoint", "/api/products/" + products[i].id))
+                };
+                for(let i = 0; i < products.length; i++) {
+                products[i].setDataValue("image", "http://localhost:3000/img/products/" + products[i].image)
                 }
             let respuesta = {
                 meta: {
@@ -31,6 +34,24 @@ let productsController = {
                 }
             res.json(respuesta)        
             })
+    },
+    categories: function (req, res){
+        db.categories.findAll ({
+            attributes: {exclude: ['created_at','updated_at','createdAt','updatedAt']},
+            include: [
+                {association: 'products', attributes: {exclude: ['created_at', 'updated_at','createdAt','updatedAt']}}]
+        })
+            .then ( (categorias) => {
+                let categories = {
+                    meta: {
+                        status: 200,
+                        count: categorias.length,
+                        url: "/api/products/categorias"
+                    },
+                    categorias
+                }
+            res.json (categories)
+            })  
     },
     find: function (req, res) {
         db.products.findByPk(req.params.id, {attributes: {exclude: [
@@ -50,6 +71,7 @@ let productsController = {
         res.json(producto)        
         })
     }
+    
 }
 
 module.exports = productsController;

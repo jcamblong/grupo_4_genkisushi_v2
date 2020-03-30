@@ -10,7 +10,11 @@ list: function (req, res) {
               orders[i].setDataValue("detail", "/api/orders/" + orders[i].id)
           }
         let respuesta = {
-            count: orders.length,
+            meta: {
+                status: 200,
+                count: orders.length,
+                url: "/api/orders"
+            },
             orders
             }
         res.json(respuesta)        
