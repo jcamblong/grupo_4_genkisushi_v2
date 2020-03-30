@@ -2,7 +2,7 @@ const user = (req, res, next) => {
 
     if (!res.locals.isAuthenticated) {
         
-        res.redirect('/usuarios/ingresar');
+        res.redirect('/users/login');
     }    
     next();
 }
