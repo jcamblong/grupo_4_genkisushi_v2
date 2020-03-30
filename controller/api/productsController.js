@@ -3,18 +3,31 @@ const db = require("../../database/models");
 let productsController = {
 
     list: function (req, res) {
-        db.products.findAll({attributes: ['id', 'name', 'detail', 'type_id', 'category_id', 'categories.name']}, {association: "categories"}, {association: "product_types"})
-            .then(products => {
+        let products = db.products.findAll({
+            attributes: {exclude: [
+                'created_at', 
+                'updated_at',
+                'createdAt',
+                'updatedAt',
+                'category_id',
+                'type_id'
+                ]},
+            include: [
+                {association: 'categories', attributes: {exclude: ['id','created_at', 'updated_at','createdAt','updatedAt']}}, 
+                {association: 'product_types', attributes: {exclude: ['id','created_at', 'updated_at','createdAt','updatedAt']}}
+            ]
+        })
+            .then( (products) => {
                 for(let i = 0; i < products.length; i++) {
                 products[i].setDataValue("endpoint", "/api/products/" + products[i].id)
                 }
-                let respuesta = {
-                    meta: {
-                        status: 200,
-                        count: products.length,
-                        url: "/api/products"
-                    },
-                    data: products
+            let respuesta = {
+                meta: {
+                    status: 200,
+                    count: products.length,
+                    url: "/api/products"
+                },
+                data: products
                 }
             res.json(respuesta)        
             })
