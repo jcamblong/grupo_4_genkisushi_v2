@@ -12,17 +12,30 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    opacity: 0.6;
+    opacity: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.column{
+    display: flex;
+    flex: 1.2;
 }
 .texto {
     display: flex;
+    flex:1;
     flex-direction: column;
-    justify-content: space-around;
-    position: absolute;
-    width: 450px;
-    right: 100px;
-    bottom: 400px;
-
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+.detalle-about{
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    padding: 30px;
+    margin-right: 30px;
 }
 .texto h4 {
     color: #fff;

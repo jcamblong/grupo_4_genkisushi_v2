@@ -3,8 +3,10 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 //const logger = require('morgan');
+const cors = require ('cors');
 const session = require('express-session');
 const auth = require('./middlewares/auth');
+
 
 //para poder usar los metodos PUT Y DELETE | CGR
 const methodOverride = require('method-override');
@@ -16,6 +18,9 @@ const testRouter = require('./routes/test');
 const apiUsersRouter = require('./routes/api/users');
 const apiProductsRouter = require('./routes/api/products');
 const apiChecksRouter = require('./routes/api/checks');
+const apiOrdersRouter = require('./routes/api/orders');
+
+const db = require("./database/models");
 
 
 const app = express();
@@ -26,6 +31,7 @@ app.set('view engine', 'ejs');
 
 //app.use(logger('dev'));
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -48,6 +54,7 @@ app.use('/color', testRouter);
 app.use('/api/users', apiUsersRouter);
 app.use('/api/products', apiProductsRouter);
 app.use('/api/checks', apiChecksRouter);
+app.use('/api/orders', apiOrdersRouter);
 
 
 // catch 404 and forward to error handler
