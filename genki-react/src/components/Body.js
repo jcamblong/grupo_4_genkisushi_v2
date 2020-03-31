@@ -18,7 +18,7 @@ function Body (){
                 <div id="content">
                     <NavBar />
                 <div className="container-fluid py-4">
-                <div className="row">
+                <div className="row ">
                     <CardUsers />
                     <CardProducts />
                     <CardOrders />

@@ -5,13 +5,11 @@ let usersController = {
 list: function (req, res) {
 
     db.users.findAll({
-        attributes: ['id', 'first_name', 'last_name', 'email'],
+        attributes: { exclude: ['created_at', 'updated_at','createdAt','updatedAt']},
         include: [
             {association: 'orders', attributes: {exclude: ['createdAt','updatedAt']}}, 
-            {association: 'roles', attributes: {exclude: ['createdAt','updatedAt']}}],
-        order: [
-                ['id', 'ASC']
-            ]
+            {association: 'roles', attributes: {exclude: ['createdAt','updatedAt']}}
+        ]
         })
       .then(users => {
           for(let i = 0; i < users.length; i++) {
@@ -29,7 +27,6 @@ list: function (req, res) {
         })
   },
 find: function (req, res) {
-
     db.users.findByPk(req.params.id, {attributes: {exclude: [
         'role_id', 
         'password', 

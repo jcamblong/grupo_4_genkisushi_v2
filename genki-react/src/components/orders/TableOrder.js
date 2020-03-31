@@ -55,11 +55,11 @@ class TableOrder extends Component {
                       {orders.map ((o, i) => (
                         <tr>
                           <td key={o.id + i}>{o.id}</td>
-                          <td key={o + i}>{o.user_id}</td>
+                          <td key={o + i}>{o.users.first_name + " " + o.users.last_name}</td>
                           <td key={o + i}>{o.purchase_date}</td>
-                          <td key={o + i}>{o.payment_method_id}</td>
-                          <td key={o + i}>{o.order_status_id}</td>
-                          <td key={o + i}>{o.cupon_id}</td>
+                          <td key={o + i}>{o.payment_methods.type}</td>
+                          <td key={o + i}>{o.order_statuses.name}</td>
+                          <td key={o + i}>{o.cupons.detail}</td>
                           <td key={o + i}>{o.purchase_total}</td>
                         </tr>))}   
                     </tbody>

@@ -52,13 +52,13 @@ class TableUser extends Component {
                     <tbody>
                       {users.map ((u, i) => (
                         <tr>
-                          <td key={u.id}>{u.id}</td>
+                          <td key={u + i}>{u.id}</td>
                           <td key={u.first_name + i}>{u.first_name}</td>
-                          <td key={u.last_name}>{u.last_name}</td>
-                          <td key={u.email}>{u.email}</td>
-                          <td key={u.roles.name}>{u.roles.name}</td>
-                          <td key={u.orders.id}>{u.orders.id}</td>
-                          <td key={u.orders.purchase_total}>{u.orders.purchase_total}</td>
+                          <td key={u + i}>{u.last_name}</td>
+                          <td key={u + i}>{u.email}</td>
+                          <td key={u + i}>{u.roles.name}</td>
+                          <td key={u + i}>{u.orders.id}</td>
+                          <td key={u + i}>{u.orders.purchase_total}</td>
                         </tr>))}   
                     </tbody>
                 </table>
