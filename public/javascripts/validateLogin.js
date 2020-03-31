@@ -9,7 +9,7 @@ let ListadoErrores = form.querySelector("#Errores");
 let errores = {};
 
 
-ListadoErrores.innerHTML ='';
+
 
 //validar emial obligatorio
 emailInput.addEventListener('blur', function(e){
@@ -36,6 +36,7 @@ passwordInput.addEventListener('blur', function(e){
 
 //antes de hacer el submit, chequea que no hayan quedado campos con error
 form.addEventListener('submit', function (event) {
+    ListadoErrores.innerHTML ='';
 	if (Object.keys(errores).length > 0) {
 		event.preventDefault();
         for (let error in errores) {
@@ -43,15 +44,14 @@ form.addEventListener('submit', function (event) {
                 ListadoErrores.innerHTML += `${errores[error]}` + '<br>';
             }
         }
-
+    }else{
         if (validator.isEmpty(emailInput.value)){
+            event.preventDefault();
             ListadoErrores.innerHTML += 'el campo email es obligatorio' + '<br>';
         }
         if (validator.isEmpty(passwordInput.value)){
+            event.preventDefault();
             ListadoErrores.innerHTML += 'el campo password es obligatorio' + '<br>';
         }
-
-    }
-    
-        
+    }       
 });

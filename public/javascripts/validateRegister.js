@@ -8,15 +8,18 @@ let ListadoErrores = form.querySelector("#Errores");
 
 let errores = {};
 
-ListadoErrores.innerHTML ='';
+
 
 //validar nombre y apellido obligatorio y al menos 2 caracteres
 //nombre
 nameInput.addEventListener('blur', function(e){
     if (validator.isLength(nameInput.value,{min:0, max:1})){
+        //nameInput.classList.add('invalid-input');
         nameInput.style.border ='1px solid red';
         errores[nameInput.name] = "el campo nombre debe contener al menos 2 caracteres";
     }else{
+        //nameInput.classList.remove('invalid-input');
+        //nameInput.classList.add('valid-input');
         nameInput.style.border ='1px solid #dddddd';
         delete errores[nameInput.name];
     }
@@ -38,36 +41,20 @@ emailInput.addEventListener('blur', function(e){
         emailInput.style.border ='1px solid red';
         errores[emailInput.name] = "no es un email válido";
     }else{
-        let data = {
-                email: e.target.value};
-
-//******se muestra en consola data */                
-        console.log(data); 
-        let settings = {
-                    method: "POST",
-                    headers: {"context-Type":"application/json"},
-                    body: JSON.stringify(data)                                
-        };   
-
-        fetch('/api/check', settings)
+        delete errores[emailInput.name];
+          
+        let url = `/api/checks/${e.target.value}`
         
-        .then(function(response){
-            return response.json();
-        })
-        
+        fetch(url)
+        .then(response => response.json())
         .then(response => {
-            //no entra va directamente al catch con error 500 que tira el servidor
-            console.log(response.status);
-        if(response.status == 200){
-            emailInput.style.border ='1px solid red';
-            errores[emailInput.name] = "el email ya existe";
-        }else if (response.status == 404){
-            emailInput.style.border ='1px solid #dddddd';       
-            delete errores[emailInput.name];
+            if(response.meta.status == 302){
+                emailInput.style.border ='1px solid red';
+                errores[emailInput.name] = "el email ya existe";
+            }else{
+                emailInput.style.border ='1px solid #dddddd';       
+                delete errores[emailInput.name];
             }
-        })
-        .catch(function(error){
-            console.log('Error:' + error);
         });
     }
 });
@@ -79,14 +66,14 @@ passwordInput.addEventListener('blur', function(e){
     
     let regex = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,10}$/);
 
-    console.log(event.target.value);
+    //console.log(event.target.value);
     if (regex.test(event.target.value)){
         console.log(regex.test(event.target.value));
         passwordInput.style.border ='1px solid #dddddd';
         delete errores[passwordInput.name];
     }else{
         passwordInput.style.border ='1px solid red';
-        errores[passwordInput.name] = "El campo password debe contener al menos 8 caracteres, mayúsculas, algún número, sin espacios en blancos y algún caracter especial";
+        errores[passwordInput.name] = "El campo password debe contener al menos 8 caracteres, mayúsculas, <br>algún número, sin espacios en blancos y algún caracter especial";
     }
 });
 
@@ -132,7 +119,6 @@ function openImage() {
             errores[input.name] = error.msg;;
             return;
         } else {
-          document.getElementById("imageError").innerHTML = "";
           input.style.border ='1px solid #dddddd';
           delete errores[input.name];
         }
@@ -147,29 +133,32 @@ imageInput.addEventListener("change",openImage);
 
 //antes de hacer el submit, chequea que no hayan quedado campos con error
 form.addEventListener('submit', function (event) {
-	if (Object.keys(errores).length > 0) {
+    ListadoErrores.innerHTML ='';
+    if (Object.keys(errores).length > 0) {
 		event.preventDefault();
         for (let error in errores) {
             if (errores.hasOwnProperty(error)) {
                 ListadoErrores.innerHTML += `${errores[error]}` + '<br>';
             }
         }
-
+    }else{
     
         if(validator.isEmpty(nameInput.value)){
+            event.preventDefault();
             ListadoErrores.innerHTML += 'el campo nombre es obligatorio' + '<br>';
         }
         if (validator.isEmpty(lastNameInput.value)){
+            event.preventDefault();
             ListadoErrores.innerHTML += 'el campo apellido es obligatorio' + '<br>';
         }
         if (validator.isEmpty(emailInput.value)){
+            event.preventDefault();
             ListadoErrores.innerHTML += 'el campo email es obligatorio' + '<br>';
         }
         if (validator.isEmpty(passwordInput.value)){
+            event.preventDefault();
             ListadoErrores.innerHTML += 'el campo password es obligatorio' + '<br>';
         }
 
-    }
-    
-        
+    }        
 });

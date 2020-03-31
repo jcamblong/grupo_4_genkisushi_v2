@@ -102,3 +102,10 @@ p.info {
     font-style: italic;
     text-align: center;
 }
+
+.invalid-input input{
+    border : 1px solid #ca3e47 
+}
+.valid-input input{
+    border : 1px solid #dddddd 
+}

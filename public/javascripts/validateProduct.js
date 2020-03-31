@@ -6,7 +6,7 @@ let errores = {};
 
 let ListadoErrores = form.querySelector("#Errores");
 
-ListadoErrores.innerHTML ='';
+
 
 //validar nombre del producto obligatorio y mayor a 5 caracteres
 nameInput.addEventListener('blur', function(e){
@@ -24,7 +24,6 @@ let detailInput = form.detail;
 detailInput.addEventListener('blur', function(e){
     if (!validator.isLength(detailInput.value,{min:20, max:undefined})){
         detailInput.style.border ='1px solid red';        
-        //alert("el campo detalle debe tener al menos 20 caracteres");
         errores[detailInput.name] = "el campo detalle debe tener al menos 20 caracteres";
     }else{
         detailInput.style.border ='1px solid #dddddd';
@@ -75,7 +74,7 @@ function openImage() {
             errores[input.name] = error.msg;
             return;
         } else {
-          document.getElementById("imageLabel").innerHTML = "El archivo es válido";
+         // document.getElementById("imageLabel").innerHTML = "El archivo es válido";
           input.style.border ='1px solid #dddddd';
           delete errores[input.name];
         }
@@ -89,6 +88,7 @@ imageInput.addEventListener("change",openImage);
 
 
 form.addEventListener('submit', function (event) {
+    ListadoErrores.innerHTML ='';
 	if (Object.keys(errores).length > 0) {
 		event.preventDefault();
         for (let error in errores) {
@@ -96,11 +96,11 @@ form.addEventListener('submit', function (event) {
                 ListadoErrores.innerHTML += `${errores[error]}` + '<br>';
             }
         }
-    
+    }else{    
         if(validator.isEmpty(nameInput.value)){
+            event.preventDefault();
             ListadoErrores.innerHTML += 'el campo nombre es obligatorio' + '<br>';
         }
-    }
-            
+    }      
 });
 

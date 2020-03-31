@@ -7,7 +7,7 @@ let lastNameInput = form.lastName;
 let ListadoErrores = form.querySelector("#Errores");
 let errores = {};
 
-ListadoErrores.innerHTML ='';
+
 
 //validar nombre y apellido obligatorio y al menos 2 caracteres
 //nombre
@@ -86,6 +86,7 @@ imageInput.addEventListener("change",openImage);
 
 
 form.addEventListener('submit', function (event) {
+    ListadoErrores.innerHTML ='';
 	if (Object.keys(errores).length > 0) {
 		event.preventDefault();
         for (let error in errores) {
@@ -93,14 +94,14 @@ form.addEventListener('submit', function (event) {
                 ListadoErrores.innerHTML += `${errores[error]}` + '<br>';
             }
         }
-    
+    }else{
         if(validator.isEmpty(nameInput.value)){
+            event.preventDefault();
             ListadoErrores.innerHTML += 'el campo nombre es obligatorio' + '<br>';
         }
         if (validator.isEmpty(lastNameInput.value)){
+            event.preventDefault();
             ListadoErrores.innerHTML += 'el campo apellido es obligatorio' + '<br>';
         }
-    }
-    
-        
+    }       
 });
