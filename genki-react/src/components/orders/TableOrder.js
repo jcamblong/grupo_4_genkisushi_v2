@@ -23,12 +23,22 @@ class TableOrder extends Component {
     }
     
     render () {
-      const { error, orders, meta} = this.state;
+      const { error, orders} = this.state;
       if (error) {
         return <div>Error: {error.message}</div>;
       } else {
             return (
-                <table className="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <div class="col-lg-4 mb-4">	
+              <div className= "card shadow mb-4">
+                <div className="card-header py-3">
+				          <h6 className="m-0 font-weight-bold text-primary">Ordenes en la Base de Datos</h6>
+			          </div>
+             
+              <div className="card-body">
+											
+								<div className= "table-responsive">		
+                <table className="table table-hover" id="dataTable" width="100%" cellspacing="0">
+                   
                     <thead>
                         <tr>
                           <th>Id</th>
@@ -42,18 +52,23 @@ class TableOrder extends Component {
                     </thead>
 
                     <tbody>
-                      {orders.map (o => (
+                      {orders.map ((o, i) => (
                         <tr>
-                          <td key={o.id}>{o.id}</td>
-                          <td key={o.id}>{o.user_id}</td>
-                          <td key={o.id}>{o.purchase_date}</td>
-                          <td key={o.id}>{o.payment_method_id}</td>
-                          <td key={o.id}>{o.order_status_id}</td>
-                          <td key={o.id}>{o.cupon_id}</td>
-                          <td key={o.id}>{o.purchase_total}</td>
+                          <td key={o.id + i}>{o.id}</td>
+                          <td key={o + i}>{o.user_id}</td>
+                          <td key={o + i}>{o.purchase_date}</td>
+                          <td key={o + i}>{o.payment_method_id}</td>
+                          <td key={o + i}>{o.order_status_id}</td>
+                          <td key={o + i}>{o.cupon_id}</td>
+                          <td key={o + i}>{o.purchase_total}</td>
                         </tr>))}   
                     </tbody>
                 </table>
+                </div>
+                </div>	
+                </div>
+                </div>
+               
             )
 }
     }   

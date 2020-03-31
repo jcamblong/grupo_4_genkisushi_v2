@@ -23,25 +23,32 @@ class Last extends Component {
     }
     
     render () {
-      const { error, data, meta } = this.state;
+      const { error, data} = this.state;
+
       if (error) {
         return <div>Error: {error.message}</div>;
       } else {
         return (
-        <div className="card shadow mb-4">	    
-        <div className="card-body">
-			<div className="text-center">
-				<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" src={"http://localhost:3000/img/products/prueba.jpg"} alt="product image"/>
-			</div>
-                <p>{"prueba, prueba, prueba, prueba"}</p>
-                <p>{"prueba, prueba, prueba, prueba"}</p>
-				
-		</div>
-        </div>
-	
-    );
-}
+          <div class="col-lg-6 mb-4">
+            <div className="card shadow mb-4">	 
+              <div className="card-header py-3">
+		            <h6 className="m-0 font-weight-bold text-primary">Ultimo producto agregado a la Base de Datos</h6>
+		          </div>   
+              <div className="card-body">
+			          <div className="text-center">
+				          <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" src={"http://localhost:3000/img/products/prueba.jpg"} alt="product"/>
+                    <div className="card-footer text-muted">
+                      <h5 className="card-title">{"prueba"}</h5>
+                      <p className="card-text">{"Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}</p>
+                      <p className="card-text">{"Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}</p>
+                    </div> 
+                </div>
+		          </div>
+            </div>
+          </div>
+        );
+      }
     }
-}
+  }
 
 export default Last;

@@ -4,19 +4,15 @@ import logoGenki from './logoGenki.png';
 
 function Navbar (){
     return (
-        <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-					
+        <nav className="navbar navbar-dark bg-dark">
+			<a className="navbar-brand" href="http://localhost:3000/">
+			<img src={logoGenki} height="50" className="d-inline-block align-center" alt= "logo"/>
+			</a>
+			<div>
+				<h3 className= "h3 text-white-800-center">DASHBOARD</h3>
+			</div>
 
-					<ul className="navbar-nav ml-auto">
-						<div className="topbar-divider d-none d-sm-block"></div>
-						<li className="nav-item dropdown no-arrow">
-							<a className="nav-link dropdown-toggle" href="/" id="userDropdown">
-								<span className="mr-2 d-none d-lg-inline text-gray-600 small">Genki Sushi</span>
-								<img className="img-profile rounded-circle" src={logoGenki} width="60"/>
-							</a>
-						</li>
-					</ul>
-				</nav>
+		</nav>
     );
 }
 

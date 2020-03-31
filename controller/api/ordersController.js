@@ -3,8 +3,20 @@ const db = require("../../database/models");
 let ordersController = {
 
 list: function (req, res) {
-
-    db.orders.findAll()
+    db.orders.findAll({ 
+        attributes: {exclude: [
+            'created_at', 
+            'updated_at',
+            'createdAt',
+            'updatedAt']},
+        include: [
+            {association: 'payment_methods', attributes: {exclude: ['created_at', 'updated_at','createdAt','updatedAt']}}, 
+            {association: 'users', attributes: {exclude: ['created_at', 'updated_at','createdAt','updatedAt']}},
+            {association: 'order_statuses', attributes: {exclude: ['created_at', 'updated_at','createdAt','updatedAt']}},
+            {association: 'cupons', attributes: {exclude: ['created_at', 'updated_at','createdAt','updatedAt']}},
+            {association: 'order_product', attributes: {exclude: ['created_at', 'updated_at','createdAt','updatedAt']}},
+        ]
+    })
       .then(orders => {
           for(let i = 0; i < orders.length; i++) {
               orders[i].setDataValue("detail", "/api/orders/" + orders[i].id)

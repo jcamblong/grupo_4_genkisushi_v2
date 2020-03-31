@@ -22,7 +22,7 @@ class CardUser extends Component {
     }
     
     render () {
-      const { error, users, meta } = this.state;
+      const { error, meta } = this.state;
       if (error) {
         return <div>Error: {error.message}</div>;
       } else {

@@ -23,13 +23,13 @@ class CardOrders extends Component {
     }
     
     render () {
-      const { error, orders, meta } = this.state;
+      const { error, meta } = this.state;
       if (error) {
         return <div>Error: {error.message}</div>;
       } else {
       return (
         <div className="col-md-4 mb-4" >
-            <div className=  "card border-left-primaryshadow h-100 py-2" >
+            <div className=  "card border-left-warning shadow h-100 py-2" >
                 <div className="card-body">
                     <div className="row no-gutters align-items-center">
                         <div className="col mr-2">

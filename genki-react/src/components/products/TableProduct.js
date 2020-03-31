@@ -22,12 +22,20 @@ class TableProduct extends Component {
     }
     
     render () {
-      const { error, data, meta} = this.state;
+      const { error, data} = this.state;
       if (error) {
         return <div>Error: {error.message}</div>;
       } else {
             return (
-                <table className="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <div class="col-lg-4 mb-4">	
+              <div className= "card shadow mb-4">
+                <div className="card-header py-3">
+				          <h6 className="m-0 font-weight-bold text-primary">Productos en la Base de Datos</h6>
+			          </div>
+             
+              <div className="card-body">		
+								<div className= "table-responsive">	
+                <table className="table table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                           <th>Id</th>
@@ -43,14 +51,19 @@ class TableProduct extends Component {
                       {data.map (p => (
                         <tr>
                           <td key={p.id}>{p.id}</td>
-                          <td key={p.id}>{p.name}</td>
-                          <td key={p.id}>{p.categories.name}</td>
-                          <td key={p.id}>{p.product_types.name}</td>
-                          <td key={p.id}>{p.product_types.quantity}</td>
-                          <td key={p.id}>{p.product_types.price}</td>
+                          <td key={p.name}>{p.name}</td>
+                          <td key={p.categories.name}>{p.categories.name}</td>
+                          <td key={p.product_types.name}>{p.product_types.name}</td>
+                          <td key={p.product_types.quantity}>{p.product_types.quantity}</td>
+                          <td key={p.product_types.price}>{p.product_types.price}</td>
                         </tr>))}   
                     </tbody>
                 </table>
+                </div>
+				
+            </div>
+					</div>
+				</div>
             )
 }
     }   
