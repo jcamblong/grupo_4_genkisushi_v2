@@ -29,7 +29,7 @@ class Last extends Component {
         return <div>Error: {error.message}</div>;
       } else {
         return (
-          <div class="col-lg-6 mb-4">
+          <div className="col-lg-6 mb-4">
             <div className="card shadow mb-4">	 
               <div className="card-header py-3">
 		            <h6 className="m-0 font-weight-bold text-primary">Ultimo producto agregado a la Base de Datos</h6>

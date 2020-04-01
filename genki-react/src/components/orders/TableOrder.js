@@ -28,7 +28,7 @@ class TableOrder extends Component {
         return <div>Error: {error.message}</div>;
       } else {
             return (
-              <div class="col-lg-4 mb-4">	
+              <div className="col-lg-4 mb-4">	
               <div className= "card shadow mb-4">
                 <div className="card-header py-3">
 				          <h6 className="m-0 font-weight-bold text-primary">Ordenes en la Base de Datos</h6>
@@ -37,7 +37,7 @@ class TableOrder extends Component {
               <div className="card-body">
 											
 								<div className= "table-responsive">		
-                <table className="table table-hover" id="dataTable" width="100%" cellspacing="0">
+                <table className="table table-hover" id="dataTable" width="100%" cellSpacing="0">
                    
                     <thead>
                         <tr>
@@ -54,13 +54,13 @@ class TableOrder extends Component {
                     <tbody>
                       {orders.map ((o, i) => (
                         <tr>
-                          <td key={o.id + i}>{o.id}</td>
-                          <td key={o + i}>{o.users.first_name + " " + o.users.last_name}</td>
-                          <td key={o + i}>{o.purchase_date}</td>
-                          <td key={o + i}>{o.payment_methods.type}</td>
-                          <td key={o + i}>{o.order_statuses.name}</td>
-                          <td key={o + i}>{o.cupons.detail}</td>
-                          <td key={o + i}>{o.purchase_total}</td>
+                          <td key={i}>{o.id}</td>
+                          <td key={i}>{o.users.first_name + " " + o.users.last_name}</td>
+                          <td key={i}>{o.purchase_date}</td>
+                          <td key={i}>{o.payment_methods.type}</td>
+                          <td key={i}>{o.order_statuses.name}</td>
+                          <td key={i}>{o.cupons.detail}</td>
+                          <td key={i}>{o.purchase_total}</td>
                         </tr>))}   
                     </tbody>
                 </table>

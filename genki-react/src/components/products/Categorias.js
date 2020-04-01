@@ -35,22 +35,18 @@ class Categorias extends Component {
 			          </div>
 
                 <div className= "row text-center py-3">
-                    <div className="col-md-4 mb-4 center mx-auto">
-                      {categorias.map (c => (
-                      <div className="card bg-info text-white mt-2">
-                      <div className="card-body">{c.name}</div>
+                  {categorias.map ((c, i) => (
+                    <React.Fragment>
+                      <div className="col-lg-5 mb-4 center mx-auto">
+                        <div className="card-body card bg-info text-white mt-2" key={i}>{c.name}</div>
                       </div>
-                      ))}
-                    </div>
 
-                    <div className="col-md-4 mb-4 center mx-auto">
-                      {categorias.map (c => (
-                      <div className="card bg-info text-white mt-2">
-                      <div className="card-body">{"Cantidad de Productos: "}{c.products.length}</div>
+                      <div className="col-md-5 mb-4 center mx-auto">
+                        <div className="card-body card bg-info text-white mt-2" key= {i}>{"Cantidad de Productos: "}{c.products.length}</div>
                       </div>
-                      ))}  
-			              </div>
-                  </div>  
+                    </React.Fragment>
+                  ))} 
+                </div>    
               </div>
             </div>
           )

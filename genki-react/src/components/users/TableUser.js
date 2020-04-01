@@ -27,7 +27,7 @@ class TableUser extends Component {
         return <div>Error: {error.message}</div>;
       } else {
             return (
-              <div class="col-lg-4 mb-4">	
+              <div className="col-lg-4 mb-4">	
               <div className= "card shadow mb-4">
                 <div className="card-header py-3">
 				          <h6 className="m-0 font-weight-bold text-primary">Usuarios en la Base de Datos</h6>
@@ -36,7 +36,7 @@ class TableUser extends Component {
               <div className="card-body">
 											
 								<div className= "table-responsive">	
-                <table className="table table-hover" id="dataTable" width="100%" cellspacing="0">
+                <table className="table table-hover" id="dataTable" width="100%" cellSpacing="0">
                     <thead>
                         <tr>
                           <th>Id</th>
@@ -52,14 +52,15 @@ class TableUser extends Component {
                     <tbody>
                       {users.map ((u, i) => (
                         <tr>
-                          <td key={u + i}>{u.id}</td>
-                          <td key={u.first_name + i}>{u.first_name}</td>
-                          <td key={u + i}>{u.last_name}</td>
-                          <td key={u + i}>{u.email}</td>
-                          <td key={u + i}>{u.roles.name}</td>
-                          <td key={u + i}>{u.orders.id}</td>
-                          <td key={u + i}>{u.orders.purchase_total}</td>
-                        </tr>))}   
+                          <td key={i}>{u.id}</td>
+                          <td key={i}>{u.first_name}</td>
+                          <td key={i}>{u.last_name}</td>
+                          <td key={i}>{u.email}</td>
+                          <td key={i}>{u.roles.name}</td>
+                          <td key={i}>{u.orders.id}</td>
+                          <td key={i}>{u.orders.purchase_total}</td>
+                        </tr>
+                        ))}   
                     </tbody>
                 </table>
                 </div>
