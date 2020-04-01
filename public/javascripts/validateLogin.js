@@ -24,28 +24,6 @@ emailInput.addEventListener('blur', function(e){
     }
 });
 
-passwordInput.addEventListener('click', function(e){
-    passwordInput.classList.remove('invalid-input');
-    passwordInput.classList.add('valid-input');        
-});
-
-//validar contraseña válida
-passwordInput.addEventListener('blur', function(e){
-    
-    let regex = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$#!%*?&])([A-Za-z\d$@$#!%*?&]|[^ ]){8,10}$/);
-    if (regex.test(event.target.value)){
-       //passwordInput.classList.remove('invalid-input');
-       //passwordInput.classList.add('valid-input');
-       passwordInput.style.border ='1px solid #dddddd';
-       delete errores[passwordInput.name];
-    }else{
-       // passwordInput.classList.remove('valid-input');
-       // passwordInput.classList.add('invalid-input');
-        passwordInput.style.border ='1px solid red';
-        errores[passwordInput.name] = "El campo contraseña debe contener al menos 8 caracteres, mayúsculas, <br>algún número, sin espacios en blancos y algún caracter especial";
-    }
-});
-
 
 //antes de hacer el submit, chequea que no hayan quedado campos con error
 form.addEventListener('submit', function (event) {
