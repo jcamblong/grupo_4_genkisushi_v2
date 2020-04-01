@@ -60,10 +60,16 @@ module.exports = (sequelize, dataTypes) => {
             as: 'cupons',
             foreignKey: "cupon_id"
         })
-        Order.hasMany (models.order_product, {
+       /*  Order.hasMany (models.order_product, {
             as: 'order_product',
             foreignKey: "order_id"
-        })
+        }) */
+             Order.belongsToMany(models.products, {
+            as: "productos",
+            through: "order_product",
+            foreignKey: "order_id",
+            otherkey: "product_id"
+        }) 
     };
 
     return Order;
