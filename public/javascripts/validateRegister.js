@@ -9,37 +9,55 @@ let ListadoErrores = form.querySelector("#Errores");
 let errores = {};
 
 
+nameInput.addEventListener('click', function(e){
+    nameInput.classList.remove('invalid-input');
+    nameInput.classList.add('valid-input');     
+});
+
 
 //validar nombre y apellido obligatorio y al menos 2 caracteres
 //nombre
 nameInput.addEventListener('blur', function(e){
     if (validator.isLength(nameInput.value,{min:0, max:1})){
-        //nameInput.classList.add('invalid-input');
-        nameInput.style.border ='1px solid red';
+        nameInput.classList.remove('valid-input');
+        nameInput.classList.add('invalid-input');
         errores[nameInput.name] = "el campo nombre debe contener al menos 2 caracteres";
     }else{
-        //nameInput.classList.remove('invalid-input');
-        //nameInput.classList.add('valid-input');
-        nameInput.style.border ='1px solid #dddddd';
+        nameInput.classList.remove('invalid-input');
+        nameInput.classList.add('valid-input');
         delete errores[nameInput.name];
     }
 });
+
+lastNameInput.addEventListener('click', function(e){
+    lastNameInput.classList.remove('invalid-input');
+    lastNameInput.classList.add('valid-input');     
+});
+
 //apellido
 lastNameInput.addEventListener('blur', function(e){
     if (validator.isLength(lastNameInput.value,{min:0, max:1})){
-        lastNameInput.style.border ='1px solid red';
+        lastNameInput.classList.remove('valid-input');
+        lastNameInput.classList.add('invalid-input');        
         errores[lastNameInput.name] = "El campo apellido debe contener al menos 2 caracteres";
     }else{
-        lastNameInput.style.border ='1px solid #dddddd';
+        lastNameInput.classList.remove('invalid-input');
+        lastNameInput.classList.add('valid-input');
         delete errores[lastNameInput.name];
     }
+});
+
+emailInput.addEventListener('click', function(e){
+    emailInput.classList.remove('invalid-input');
+    emailInput.classList.add('valid-input');     
 });
 
 //validar email obligatorio, ser válido y no debe existir dentro de los ya registrados
 emailInput.addEventListener('blur', function(e){
     if(validator.isEmpty(emailInput.value)|| (!validator.isEmail(emailInput.value))){
-        emailInput.style.border ='1px solid red';
-        errores[emailInput.name] = "no es un email válido";
+        emailInput.classList.remove('valid-input');
+        emailInput.classList.add('invalid-input');    
+        errores[emailInput.name] = "El email no es válido.";
     }else{
         delete errores[emailInput.name];
           
@@ -49,10 +67,12 @@ emailInput.addEventListener('blur', function(e){
         .then(response => response.json())
         .then(response => {
             if(response.meta.status == 302){
-                emailInput.style.border ='1px solid red';
+                emailInput.classList.remove('valid-input');
+                emailInput.classList.add('invalid-input');    
                 errores[emailInput.name] = "el email ya existe";
             }else{
-                emailInput.style.border ='1px solid #dddddd';       
+                emailInput.classList.remove('invalid-input');
+                emailInput.classList.add('valid-input');    
                 delete errores[emailInput.name];
             }
         });
@@ -62,17 +82,23 @@ emailInput.addEventListener('blur', function(e){
 //validar contraseña obligatoria, al menos 8 caracteres y debe contener mayúsculas, un número y un caracter especial
 //Minimo 8 caracteres, Maximo 10, Al menos una letra mayúscula, Al menos una letra minucula, Al menos un dígito, No espacios en blanco y Al menos 1 caracter especial
 
+passwordInput.addEventListener('click', function(e){
+    passwordInput.classList.remove('invalid-input');
+    passwordInput.classList.add('valid-input');     
+});
+
 passwordInput.addEventListener('blur', function(e){
     
-    let regex = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,10}$/);
+    let regex = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$#!%*?&])([A-Za-z\d$@$#!%*?&]|[^ ]){8,10}$/);
 
     //console.log(event.target.value);
     if (regex.test(event.target.value)){
-        console.log(regex.test(event.target.value));
-        passwordInput.style.border ='1px solid #dddddd';
+        passwordInput.classList.remove('invalid-input');
+        passwordInput.classList.add('valid-input');    
         delete errores[passwordInput.name];
     }else{
-        passwordInput.style.border ='1px solid red';
+        passwordInput.classList.remove('valid-input');
+        passwordInput.classList.add('invalid-input');   
         errores[passwordInput.name] = "El campo password debe contener al menos 8 caracteres, mayúsculas, <br>algún número, sin espacios en blancos y algún caracter especial";
     }
 });
@@ -115,12 +141,14 @@ function openImage() {
 
         if (error.state) {
             input.value = '';
-            input.style.border ='1px solid red';
+            input.classList.remove('valid-input');
+            input.classList.add('invalid-input'); 
             errores[input.name] = error.msg;;
             return;
         } else {
-          input.style.border ='1px solid #dddddd';
-          delete errores[input.name];
+                input.classList.remove('invalid-input');
+                input.classList.add('valid-input');    
+                delete errores[input.name];
         }
        
       };

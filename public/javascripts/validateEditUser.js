@@ -13,20 +13,24 @@ let errores = {};
 //nombre
 nameInput.addEventListener('blur', function(e){
     if (validator.isLength(nameInput.value,{min:0, max:1})){
-        nameInput.style.border ='1px solid red';
+        nameInput.classList.remove('valid-input');
+        nameInput.classList.add('invalid-input');
         errores[nameInput.name] = "El campo nombre debe contener al menos 2 caracteres";
     }else{
-        nameInput.style.border ='1px solid #dddddd';
+        nameInput.classList.remove('invalid-input');
+        nameInput.classList.add('valid-input');
         delete errores[nameInput.name];
     }
 });
 //apellido
 lastNameInput.addEventListener('blur', function(e){
     if (validator.isLength(lastNameInput.value,{min:0, max:1})){
-        lastNameInput.style.border ='1px solid red';
+        lastNameInput.classList.remove('valid-input');
+        lastNameInput.classList.add('invalid-input');
         errores[lastNameInput.name] = "El campo apellido debe contener al menos 2 caracteres";
     }else{
-        lastNameInput.style.border ='1px solid #dddddd';
+        lastNameInput.classList.remove('invalid-input');
+        lastNameInput.classList.add('valid-input');
         delete errores[lastNameInput.name];
     }
 });
@@ -69,12 +73,14 @@ function openImage() {
 
         if (error.state) {
             input.value = '';
-            input.style.border ='1px solid red';
+            input.classList.remove('valid-input');
+            input.classList.add('invalid-input');
             errores[input.name] = error.msg;
             return;
         } else {
-          input.style.border ='1px solid #dddddd';
-          delete errores[input.name];
+            input.classList.remove('invalid-input');
+            input.classList.add('valid-input');  
+            delete errores[input.name];
         }
        
       };

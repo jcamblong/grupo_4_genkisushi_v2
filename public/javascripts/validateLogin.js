@@ -9,27 +9,40 @@ let ListadoErrores = form.querySelector("#Errores");
 let errores = {};
 
 
-
-
-//validar emial obligatorio
+//validar email 
 emailInput.addEventListener('blur', function(e){
-    if(validator.isEmpty(emailInput.value)|| (!validator.isEmail(emailInput.value))){
-        emailInput.style.border ='1px solid red';
-        errores[emailInput.name] = "no es un email válido";
-    }else{
-        emailInput.style.border ='1px solid #dddddd';       
+    if(validator.isEmail(emailInput.value)){
+        //emailInput.classList.remove('invalid-input');
+        //emailInput.classList.add('valid-input');
+        emailInput.style.border ='1px solid #dddddd';
         delete errores[emailInput.name];
+    }else{
+        //emailInput.classList.remove('valid-input');
+        //emailInput.classList.add('invalid-input');
+        emailInput.style.border ='1px solid red';
+        errores[emailInput.name] = "No es un email válido.";       
     }
 });
 
-//validar contraseña obligatoria
+passwordInput.addEventListener('click', function(e){
+    passwordInput.classList.remove('invalid-input');
+    passwordInput.classList.add('valid-input');        
+});
+
+//validar contraseña válida
 passwordInput.addEventListener('blur', function(e){
-    if(validator.isEmpty(passwordInput.value)){
-        passwordInput.style.border ='1px solid red';
-        errores[passwordInput.name] = "campo obligatorio";
+    
+    let regex = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$#!%*?&])([A-Za-z\d$@$#!%*?&]|[^ ]){8,10}$/);
+    if (regex.test(event.target.value)){
+       //passwordInput.classList.remove('invalid-input');
+       //passwordInput.classList.add('valid-input');
+       passwordInput.style.border ='1px solid #dddddd';
+       delete errores[passwordInput.name];
     }else{
-        passwordInput.style.border ='1px solid #dddddd';
-        delete errores[passwordInput.name];
+       // passwordInput.classList.remove('valid-input');
+       // passwordInput.classList.add('invalid-input');
+        passwordInput.style.border ='1px solid red';
+        errores[passwordInput.name] = "El campo contraseña debe contener al menos 8 caracteres, mayúsculas, <br>algún número, sin espacios en blancos y algún caracter especial";
     }
 });
 
@@ -47,11 +60,12 @@ form.addEventListener('submit', function (event) {
     }else{
         if (validator.isEmpty(emailInput.value)){
             event.preventDefault();
-            ListadoErrores.innerHTML += 'el campo email es obligatorio' + '<br>';
+            ListadoErrores.innerHTML += 'El campo email es obligatorio.' + '<br>';
         }
         if (validator.isEmpty(passwordInput.value)){
             event.preventDefault();
-            ListadoErrores.innerHTML += 'el campo password es obligatorio' + '<br>';
+            ListadoErrores.innerHTML += 'El campo password es obligatorio.' + '<br>';
         }
+  
     }       
 });

@@ -5,7 +5,10 @@
 
     <%- include('./partials/head') %>
 
+    <link rel="stylesheet" href="/css/validate.css">
     <link rel="stylesheet" href="/css/login.css">
+    
+
 </head>
 <body>
 <%- include ('partials/header') %>
@@ -24,9 +27,9 @@
 
     <p id="Errores" style="color:red; margin-left:30px"></p>
 
-    <input type="text" name="email" id="email" placeholder="Username" required>
+    <input type="text" name="email" id="email" placeholder="Username">
     
-    <input type="password" name="password" placeholder="Password" required>
+    <input type="password" name="password" placeholder="Password">
  
     <input type="submit">
     <p>No tenes cuenta? <a href="./register" class="card-link"><b>Registrate</b></a></p> 

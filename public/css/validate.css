@@ -1,0 +1,6 @@
+.invalid-input{
+    border : 1px solid red 
+}
+.valid-input{
+    border : 1px solid #dddddd 
+}

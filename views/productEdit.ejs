@@ -9,6 +9,7 @@
 
   <%- include('./partials/head') %>
 
+  <link rel="stylesheet" href="/css/validate.css">
   <link rel="stylesheet" href="/css/productEdit.css">
   
 </head>
@@ -76,11 +77,12 @@
             <img src="/img/products/<%= products.image %>" alt="product image" class="product-detail-img" width="200px" height="150px">
           </div>  
           
+          
           <div class="custom-file">
             <label class="custom-file-label" for="validatedCustomFile" id="imageLabel">Modificar imagen...</label>
-            <input type="file" class="custom-file-input" name= "image" id="validatedCustomFile" required>
+            <input type="file" class="custom-file-input" name= "image" id="validatedCustomFile">
           </div>
-              
+             
           <button type="submit">Guardar Cambios</button>
         </form>
 
