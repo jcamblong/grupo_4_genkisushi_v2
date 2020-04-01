@@ -69,6 +69,34 @@
       <div class="orders-list">
         <h2>Mis Pedidos</h2>
         <hr>
+        <div class="pedidos">
+            <div class="order-item">
+              <div class="order-date">
+                <p class="row-header">Fecha de Compra</p>
+                <% orders.forEach( order => { %>
+                <p><%= moment(order.purchase_date).format( 'DD/MM/YYYY') %></p>
+                <% }) %>
+              </div>
+              <div class="product-name">
+                <p class="row-header">Producto</p>
+                <% orders.forEach( order => { %>
+                <p><%= order.id %></p>
+                <% }) %>
+              </div>
+              <div class="product-detail">
+                <p class="row-header">Detalle</p>
+                <% orders.forEach( order => { %>
+                <p>DETALLE DE PRODUCTO</p>
+                <% }) %>
+              </div>
+              <div class="purchase-price">
+                <p class="row-header">Precio</p>
+                <% orders.forEach( order => { %>
+                <p><%= order.purchase_total %></p>
+                <% }) %>
+              </div>
+            </div>
+        </div>
       </div>
     </div>
   </div>

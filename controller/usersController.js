@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const bcrypt = require("bcrypt");
 const db = require("../database/models");
+const moment = require('moment');
 let { check, validationResult, body } = require("express-validator");
 
 let usersController = {
@@ -84,7 +85,14 @@ let usersController = {
 
     db.users.findOne({ where: { email: req.session.username } })
       .then(user => {        
-        res.render('user', { user: user })        
+        db.orders.findAll({where: {user_id: user.id}}, {
+          include: [{association: 'productos'}]
+        })
+          .then(function(orders){  
+            console.log(orders.products);
+                      
+            res.render('user', { user: user, orders: orders, moment: moment })        
+          })
       })
   },
   edit: function (req, res) {
