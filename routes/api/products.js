@@ -6,6 +6,8 @@ router.get("/", productsController.list);
 
 router.get("/categories", productsController.categories);
 
+router.get("/last", productsController.last);
+
 router.get("/:id", productsController.find);
 
 

@@ -6,25 +6,25 @@ class Last extends Component {
       super (props);
       this.state = {
         meta: "",
-        data: []
+        data: "",
       };
     }
   
     componentDidMount () {
-      fetch ("http://localhost:3000/api/products")
+      fetch ("http://localhost:3000/api/products/last")
         .then (res => res.json())
         .then ((result) => {this.setState (
           {
-          data: result.data,
-          meta: result.meta
+          meta: result.meta,
+          data: result.data
           }
           )})
         .catch ( error => console.log (error))
     }
     
     render () {
-      const { error, data} = this.state;
-
+      const { error, data, meta} = this.state;
+      
       if (error) {
         return <div>Error: {error.message}</div>;
       } else {
@@ -36,11 +36,11 @@ class Last extends Component {
 		          </div>   
               <div className="card-body">
 			          <div className="text-center">
-				          <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" src={"http://localhost:3000/img/products/prueba.jpg"} alt="product"/>
+				          <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" src={data.image} alt="product"/>
                     <div className="card-footer text-muted">
-                      <h5 className="card-title">{"prueba"}</h5>
-                      <p className="card-text">{"Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}</p>
-                      <p className="card-text">{"Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}</p>
+                      <h5 className="card-title">{data.name}</h5>
+                      <p className="card-text">{data.detail}</p>
+                      <p className="card-text">{meta.url}</p>
                     </div> 
                 </div>
 		          </div>

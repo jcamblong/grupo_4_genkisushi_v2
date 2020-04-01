@@ -53,6 +53,21 @@ let productsController = {
             res.json (categories)
             })  
     },
+    last: function (req, res) {
+        db.products.findOne({
+            order: [["id", "DESC"]], 
+            attributes: {exclude: ['created_at','updated_at','createdAt','updatedAt']}
+        }).then( (product) => { product.setDataValue("image", "http://localhost:3000/img/products/" + product.image)
+            let last = {
+                meta: {
+                    status: 200,
+                    url: "/api/products/last" 
+                },
+                data: product
+            }
+        res.json(last)        
+        })
+    },
     find: function (req, res) {
         db.products.findByPk(req.params.id, {attributes: {exclude: [
             'created_at', 
