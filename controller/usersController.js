@@ -86,11 +86,11 @@ let usersController = {
     db.users.findOne({ where: { email: req.session.username } })
       .then(user => {        
         db.orders.findAll({where: {user_id: user.id}}, {
-          include: [{association: 'productos'}]
+          include: [
+            {association: 'productos', attributes: {exclude: ['created_at', 'updated_at','createdAt','updatedAt']}}, 
+            {association: 'users', attributes: {exclude: ['created_at', 'updated_at','createdAt','updatedAt']}}]
         })
           .then(function(orders){  
-            console.log(orders.products);
-                      
             res.render('user', { user: user, orders: orders, moment: moment })        
           })
       })
