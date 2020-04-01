@@ -3,6 +3,8 @@ const router = express.Router();
 let productController = require("../controller/productController.js");
 const path = require("path");
 const multer = require("multer");
+const userRoute = require("../middlewares/userRoute");
+const guestRoute = require("../middlewares/guestRoute");
 
 var storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -38,6 +40,8 @@ router.put("/edit/:id", upload.any(), productController.update);
 router.delete("/delete/:id", productController.destroy);
 
 //CART
-router.get("/cart", productController.productCart);
+router.get("/checkout/:id", userRoute, productController.productCart);
+
+router.post('/checkout/:id', userRoute, productController.checkout);
 
 module.exports = router;
