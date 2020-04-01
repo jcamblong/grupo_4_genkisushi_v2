@@ -63,6 +63,12 @@
           <p>Cambiar Contraseña</p>
           <a href="./changepassword">Editar</a>
         </div>
+        <% if(isAuthenticated && role == 1) { %>
+        <div class="create-product">
+          <p>Agregar un Producto</p>
+          <a href="/products/create">Crear</a>
+        </div>
+        <% } %>
       </div>
     </div>
     <div class="orders-history">

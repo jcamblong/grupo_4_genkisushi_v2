@@ -149,6 +149,12 @@
     align-items: center;
     justify-content: space-between;
 }
+.create-product {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+}
 
 .account-status {
     background-color: #e8edf3;
