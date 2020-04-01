@@ -60,7 +60,18 @@ let productController = {
     res.redirect("/products");
   },
   productCart: function(req, res) {
-    res.render("productCart");
+    db.products.findByPk(req.params.id, {
+      include: [{association: 'categories'}, {association: 'product_types'}]
+    })
+    .then(function (product){
+      res.render("productCart", {
+        product: product
+        });
+      })
+      .catch(err => {
+        console.log(err)
+        res.send('ERROR')
+      })
   },
   edit: (req, res) => {
     
@@ -124,6 +135,30 @@ let productController = {
     db.products
       .destroy({ where: { id: req.params.id } })
       .then(res.redirect("/products"));
+  },
+  checkout: function(req, res, next){
+
+    db.products.findByPk(req.params.id, {
+      include: [{association: 'categories'}, {association: 'product_types'}]
+    })
+    .then(function (product){
+      db.orders.create({
+        user_id: req.session.user_id,
+        payment_method_id: 2,
+        order_status_id: 1,
+        cupon_id: 1,
+        purchase_total: product.product_types.price
+      })
+      .then(function(createdProduct){
+        db.order_product.create({
+          order_id: createdProduct.id,
+          product_id: product.id,
+          quantity: product.product_types.quantity,
+          purchase_price: product.product_types.price
+        })
+      })
+      res.redirect('/products')
+      })
   }
 };
 

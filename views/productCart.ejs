@@ -15,99 +15,65 @@
 
     <!-- Empieza Main -->
     <div class="contenedor-padre">
-
-        <div class="cart">
-          <h1>TU PEDIDO</h1>
     
-            <div class= "pedido-1">
-              <div class="imagen">
-                <img src="/img/combo-premium.jpg" alt="" height= "150px">
-              </div>
-              <div class="descripcion">
-                <div class="producto ">
-                  <h2 class="col-12">Tabla de Salmón</h2>
-                  <p>Descripcion: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, aut.</p>
-                </div>
-                <div class="cantidad">
-                    <form>
-                        <p>QUERES MODIFICAR LA CANTIDAD?</p>
-                        <div>
-                          <input type="radio" id="contactChoice1"
-                           name="contact" value="email">
-                          <label for="contactChoice1">8 PIEZAS</label>
-                          <input type="radio" id="contactChoice2"
-                           name="contact" value="phone" checked>
-                          <label for="contactChoice2">16 PIEZAS</label>
-                          <input type="radio" id="contactChoice3"
-                           name="contact" value="tel">
-                          <label for="contactChoice3">32 PIEZAS</label>
-                        </div>
-                      </form>  
-                <div class="eliminar-precio">
-                    <button type="button" class="btn btn-danger">x</button>
-                    <span>$1699</span>
-                </div>
-                </div>
-              </div>
-            </div>
+      <div class="cart">
+        <h1>TU PEDIDO</h1>
     
-            <div class= "pedido-2">
-                <div class="imagen">
-                  <img src="/img/demo1-1030239026-1.jpg" alt="" height= "150px">
-                </div>
-                <div class="descripcion">
-                  <div class="producto ">
-                    <h2 class="col-12">New York Phila</h2>
-                    <p>Descripcion: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda, aut.</p>
-                  </div>
-                  <div class="cantidad">
-                      <form>
-                          <p>QUERES MODIFICAR LA CANTIDAD?</p>
-                          <div>
-                            <input type="radio" id="contactChoice1"
-                             name="contact" value="email" checked>
-                            <label for="contactChoice1">8 PIEZAS</label>
-                        
-                            <input type="radio" id="contactChoice2"
-                             name="contact" value="phone">
-                            <label for="contactChoice2">16 PIEZAS</label>
-                          </div>
-                        </form>  
-                  <div class="eliminar-precio">
-                      <button type="button" class="btn btn-danger">x</button>
-                      <span>$699</span>
-                  </div>
-                  </div>
-                </div>
-              </div>
-        </div>
-    
-        <div class="resumen">
-          <h3>RESUMEN DE COMPRA</h3>
-          <div class="datos">
-            <div class="subtotal">
-              <h4>SUBTOTAL</h4>
-              <p>$ 2398</p>
+        <div class="pedido-1">
+          <div class="imagen">
+            <img src="/img/products/<%= product.image %>" alt="imagen-producto" width="250px" height="200px">
+          </div>
+          <div class="descripcion">
+            <div class="producto ">
+              <h2 class="col-12"><%= product.name %></h2>
+              <p>Descripcion: <%= product.detail %></p>
             </div>
-            <div class="envio">
-              <h4>ENVIO</h4>
-              <p>$ 0</p>
-            </div>
-            <div class="promocion">
-              <h4>Código Promocional</h4>
+            <div class="cantidad">
               <form>
+                <p>QUERES MODIFICAR LA CANTIDAD?</p>
+                <div class="seleccion">
+                  <div class="seleccion-1">
+                    <input type="radio" id="qtyChoice" name="qty" checked>
+                    <label for="qty"> <%= product.product_types.quantity %> PIEZAS</label>
+                  </div>
+                </div>
+              </form>
+              <div class="precio">
+                <span>$<%= product.product_types.price %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="resumen">
+        <h3>RESUMEN DE COMPRA</h3>
+        <div class="datos">
+          <div class="subtotal">
+            <h4>SUBTOTAL</h4>
+            <p>$<%= product.product_types.price %></p>
+          </div>
+          <div class="envio">
+            <h4>ENVIO</h4>
+            <p>$ 0</p>
+          </div>
+          <div class="promocion">
+            <h4>Código Promocional</h4>
+            <form>
               <input type="text" name="codigo" placeholder="Ingresa tu código">
               <input type="submit" value="Aplicar">
-              </form>
-            </div>
-            <div class="total">
-              <h4>TOTAL</h4>
-              <p>$ 2398</p>
-            </div>
-            <button>FINALIZAR COMPRA</button>
+            </form>
           </div>
+          <div class="total">
+            <h4>TOTAL</h4>
+            <p>$<%= product.product_types.price %></p>
+          </div>
+          <form action="/products/checkout/<%= product.id %>" method="POST">
+            <button type="submit">FINALIZAR COMPRA</button>
+          </form>
+        </div>
       </div>
-      </div>
+    </div>
   
 
     <!-- pie -->

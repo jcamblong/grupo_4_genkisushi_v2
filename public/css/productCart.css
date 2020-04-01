@@ -27,7 +27,7 @@ h1 {
 }
 .cart {
   margin: 10px;
-  flex: 2 1 auto;
+  flex: 2;
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
@@ -47,13 +47,15 @@ h1 {
   }
   .producto {
     display: flex;
-    flex-flow: row wrap;
-    align-items: center;
+    flex-flow: column;
+    flex-wrap: nowrap;
+    align-items: left;
     padding-bottom: 10px;
   }
     .producto h2 {
       font-size: 20px;
       padding: 0;
+      display: block;
     }
     .producto p {
       font-size: 16px;
@@ -65,22 +67,14 @@ h1 {
     padding-top: 10px;
     font-size: 14px;
   }
-    
-
-    .btn-danger{
-      color: red;
-      background-color: transparent;
-      border-color: transparent;
-    }
   
 .resumen {
   display: flex;
+  flex: 1;
   flex-flow: row wrap;
   margin: 10px;
   padding: 20px;
   background-color: white;
-  flex-basis: 800px;
-
 }
   .resumen h3 {
     width: 100%;
