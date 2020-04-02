@@ -149,6 +149,12 @@
     align-items: center;
     justify-content: space-between;
 }
+.create-product {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+}
 
 .account-status {
     background-color: #e8edf3;
@@ -173,4 +179,23 @@
     padding: 20px;
     -webkit-box-shadow: 20 10px 20px 0 rgba(0,0,0,0.3);
     box-shadow: 20px 10px 20px 0 rgba(0,0,0,0.3);
+}
+
+.pedidos{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+.order-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 0 10px 0;
+    text-align: center;
+}
+.order-item p{
+    padding: 10px 0 10px 0;
+}
+.row-header{
+    font-weight: bolder;
 }

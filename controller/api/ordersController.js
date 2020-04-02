@@ -14,7 +14,7 @@ list: function (req, res) {
             {association: 'users', attributes: {exclude: ['created_at', 'updated_at','createdAt','updatedAt']}},
             {association: 'order_statuses', attributes: {exclude: ['created_at', 'updated_at','createdAt','updatedAt']}},
             {association: 'cupons', attributes: {exclude: ['created_at', 'updated_at','createdAt','updatedAt']}},
-            {association: 'order_product', attributes: {exclude: ['created_at', 'updated_at','createdAt','updatedAt']}},
+            {association: 'productos', attributes: {exclude: ['created_at', 'updated_at','createdAt','updatedAt']}},
         ]
     })
       .then(orders => {
