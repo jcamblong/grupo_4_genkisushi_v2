@@ -28,8 +28,7 @@ body {
 .contact-container p i{
     text-decoration: none;
     color: #555;
-    padding-left: 45px;
-    padding-right: 15px;
+    padding: 10px 0 0 45px;
 }
 .redes-conctac {
     display: inline-flex;
