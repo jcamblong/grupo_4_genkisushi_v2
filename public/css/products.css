@@ -11,18 +11,15 @@
     margin: 20px 20px;
     -webkit-box-shadow: 0 10px 10px 0 rgba(0,0,0,0.3);
     box-shadow: 0 10px 10px 0 rgba(0,0,0,0.3);
-    height: 75vh;
+    height: 650px;
     width: auto;
-    background-color: rgb(245, 245, 245);
-    
+    background-color: rgb(245, 245, 245);  
 }
     .nav-dos {
         display: flex;
         flex-direction: column;
         padding: 10px;
         border-top: #ca3e47 solid 50px;
-        
-        
     }
         .nav-dos a {
             color: #333;
@@ -47,6 +44,7 @@
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .card {
