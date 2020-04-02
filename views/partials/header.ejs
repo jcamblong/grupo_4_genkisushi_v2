@@ -7,9 +7,10 @@
     <li class="item"><a href="/about-us">NOSOTROS</a></li>
     <li class="item"><a href="/contact">CONTACTO</a></li>
     <% if(isAuthenticated) { %>
-      <button class="btn btn1" onclick="location.href='/users/user'" type="button">MI CUENTA</button>
+      <button class="btn btn1 item" onclick="location.href='/users/user'" type="button">MI CUENTA</button>
     <% } else { %>
-      <button class="btn btn1" onclick="location.href='/users/login'" type="button">INGRESAR</button>
+      <button class="btn btn1 item" onclick="location.href='/users/login'" type="button">INGRESAR</button>
     <% } %>
+    <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
     </ul>
 </nav>
