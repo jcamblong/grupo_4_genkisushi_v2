@@ -102,7 +102,7 @@ CREATE TABLE `order_product` (
 
 LOCK TABLES `order_product` WRITE;
 /*!40000 ALTER TABLE `order_product` DISABLE KEYS */;
-INSERT INTO `order_product` VALUES (1,1,1,2,200.00,'2020-02-24 17:51:08','2020-02-24 17:51:08'),(2,1,2,3,300.00,'2020-02-24 17:51:08','2020-02-24 17:51:08'),(3,2,38,10,100.00,'2020-04-01 21:26:52','2020-04-01 21:26:52'),(4,3,35,1,1500.00,'2020-04-01 21:27:08','2020-04-01 21:27:08'),(5,4,10,10,800.00,'2020-04-01 21:28:20','2020-04-01 21:28:20');
+INSERT INTO `order_product` VALUES (3,2,38,10,100.00,'2020-04-01 21:26:52','2020-04-01 21:26:52'),(4,3,35,1,1500.00,'2020-04-01 21:27:08','2020-04-01 21:27:08'),(5,4,10,10,800.00,'2020-04-01 21:28:20','2020-04-01 21:28:20');
 /*!40000 ALTER TABLE `order_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +169,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,4,'2020-02-24 00:00:00',2,2,1,400.00,'2020-02-24 17:51:08','2020-02-24 17:51:08'),(2,10,'2020-04-01 21:26:51',2,1,1,100.00,'2020-04-01 21:26:51','2020-04-01 21:26:51'),(3,10,'2020-04-01 21:27:08',2,1,1,1500.00,'2020-04-01 21:27:08','2020-04-01 21:27:08'),(4,10,'2020-04-01 21:28:20',2,1,1,800.00,'2020-04-01 21:28:20','2020-04-01 21:28:20');
+INSERT INTO `orders` VALUES (2,10,'2020-04-01 21:26:51',2,1,1,100.00,'2020-04-01 21:26:51','2020-04-01 21:26:51'),(3,10,'2020-04-01 21:27:08',2,1,1,1500.00,'2020-04-01 21:27:08','2020-04-01 21:27:08'),(4,10,'2020-04-01 21:28:20',2,1,1,800.00,'2020-04-01 21:28:20','2020-04-01 21:28:20');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,7 +328,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (4,'KENYI','KENYI',3,'kenyi@gmail.com','b551712167ab944360d9e2bd0b667ed324b8a075','1156454025','VICENTE LÓPEZ','AVELLANEDA','1781','HIPÓLITO YRIGOYEN','FLORIDA','image-1581993530720.jpeg','2020-02-24 17:49:19','2020-02-24 17:49:19'),(5,'Dueño','Dueño',2,'duenio@gmail.com','cb067fa0c7dec805daf0bfad510cc921514278ed','1156454025','VICENTE LÓPEZ','AVELLANEDA','1781','HIPÓLITO YRIGOYEN','FLORIDA','image-1579182441877.png','2020-02-24 17:49:19','2020-02-24 17:49:19'),(7,'Cecilia','Denaro',1,'ckpd84@gmail.com','$2b$10$NBfcOWyGC8M2EUvWYQg.BewAztmGIfKJPqvg3ebW.1e0G5cySrakG','1155664433','Monte Grande','Alvarado','5641','Güemes','','ckpd84@gmail.com.jpg','2020-04-01 19:47:57','2020-04-01 16:58:19'),(8,'María Carolina','Guzmán Rodríguez',1,'guzmanrodriguez@yahoo.com.ar','$2b$10$rzk7cCEltilLf7QGOOU2GOlE8BU.jA04485AH45/AuBvbib34j2kW','1156454025','El Jaguel','Avellaneda','1781','Libertad','Florida','guzmanrodriguez@yahoo.com.ar.jpg','2020-04-01 19:52:14','2020-04-01 16:58:19'),(9,'José','Camblong',1,'jcamblong@teco.com.ar','$2b$10$lOiWrhVsE41C4.SFBWWeeeCG99upWBSEB9343GrSRgAtPrnX9y9em','1155664433','Ezeiza','Libertad','333','Rivadavia','','jcamblong@teco.com.ar.jpg','2020-04-01 19:57:12','2020-04-01 16:58:19'),(10,'Thomas','Alabart',3,'thomas.alabart@gmail.com','$2b$10$L/Q6izzrwotgL1UEpADRJueKHYzsXahRSQjXOunZ0On2hoIdS40ii','1155664433','Ezeiza','Avellaneda','1781','Libertad','','thomas.alabart@gmail.com.jpg','2020-04-01 21:25:50','2020-04-01 20:29:37');
+INSERT INTO `users` VALUES (5,'Dueño','Dueño',2,'duenio@gmail.com','cb067fa0c7dec805daf0bfad510cc921514278ed','1156454025','VICENTE LÓPEZ','AVELLANEDA','1781','HIPÓLITO YRIGOYEN','FLORIDA','image-1579182441877.png','2020-02-24 17:49:19','2020-02-24 17:49:19'),(7,'Cecilia','Denaro',1,'ckpd84@gmail.com','$2b$10$NBfcOWyGC8M2EUvWYQg.BewAztmGIfKJPqvg3ebW.1e0G5cySrakG','1155664433','Monte Grande','Alvarado','5641','Güemes','','ckpd84@gmail.com.jpg','2020-04-01 19:47:57','2020-04-01 16:58:19'),(8,'María Carolina','Guzmán Rodríguez',1,'guzmanrodriguez@yahoo.com.ar','$2b$10$rzk7cCEltilLf7QGOOU2GOlE8BU.jA04485AH45/AuBvbib34j2kW','1156454025','El Jaguel','Avellaneda','1781','Libertad','Florida','guzmanrodriguez@yahoo.com.ar.jpg','2020-04-01 19:52:14','2020-04-01 16:58:19'),(9,'José','Camblong',1,'jcamblong@teco.com.ar','$2b$10$lOiWrhVsE41C4.SFBWWeeeCG99upWBSEB9343GrSRgAtPrnX9y9em','1155664433','Ezeiza','Libertad','333','Rivadavia','','jcamblong@teco.com.ar.jpg','2020-04-01 19:57:12','2020-04-01 16:58:19'),(10,'Thomas','Alabart',3,'thomas.alabart@gmail.com','$2b$10$L/Q6izzrwotgL1UEpADRJueKHYzsXahRSQjXOunZ0On2hoIdS40ii','1155664433','Ezeiza','Avellaneda','1781','Libertad','','thomas.alabart@gmail.com.jpg','2020-04-01 21:25:50','2020-04-02 13:41:24');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -341,4 +341,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-01 20:30:43
+-- Dump completed on 2020-04-02 13:33:47
