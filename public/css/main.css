@@ -157,8 +157,9 @@ nav a:hover {
 	transition: all .3s ease-in-out;
 }
 .banner-content a:hover{
-	background-color: #fff;
-	color: #333;
+	background-color: #ca3e47;
+    color: #FFF;
+    font-weight: bold;
 }
 @keyframes banner{
 	0%{
