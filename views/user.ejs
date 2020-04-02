@@ -91,9 +91,9 @@
               </div>
               <div class="product-detail">
                 <p class="row-header">Detalle</p>
-                <% orders.forEach( order => { %>
-                <p>DETALLE DE PRODUCTO</p>
-                <% }) %>
+            <%orders.forEach( o => { %>
+              <% console.log(o.toJSON())%>
+            <% }) %>
               </div>
               <div class="purchase-price">
                 <p class="row-header">Precio</p>

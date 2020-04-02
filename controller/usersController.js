@@ -82,16 +82,14 @@ let usersController = {
     });
   },
   show: function (req, res) {
-
-    db.users.findOne({ where: { email: req.session.username } })
+    db.users.findOne({ where: { email: req.session.username },
+      include: [ 
+        {association: 'orders', include: [ {association: 'productos'}]}
+      ]})
       .then(user => {        
-        db.orders.findAll({where: {user_id: user.id}}, {
-          include: [
-            {association: 'productos', attributes: {exclude: ['created_at', 'updated_at','createdAt','updatedAt']}}, 
-            {association: 'users', attributes: {exclude: ['created_at', 'updated_at','createdAt','updatedAt']}}]
-        })
-          .then(function(orders){  
-            res.render('user', { user: user, orders: orders, moment: moment })        
+        db.orders.findAll({where: {user_id: user.id}, include: [ {association: 'productos'}]})
+          .then(function(orders){ 
+              res.render('user', { user: user, orders: orders, moment: moment})        
           })
       })
   },
