@@ -11,8 +11,8 @@
     margin: 20px 20px;
     -webkit-box-shadow: 0 10px 10px 0 rgba(0,0,0,0.3);
     box-shadow: 0 10px 10px 0 rgba(0,0,0,0.3);
-    height: 50vh;
-    width: 65vw;
+    height: 75vh;
+    width: auto;
     background-color: rgb(245, 245, 245);
     
 }
@@ -21,13 +21,18 @@
         flex-direction: column;
         padding: 10px;
         border-top: #ca3e47 solid 50px;
+        
+        
     }
         .nav-dos a {
             color: #333;
             letter-spacing: 1px;
             font-size: 18px bold;
-            padding: 10px 20px;
+            padding-right: 90px;
+            padding-left: 10px;
             border-bottom: lightgrey  solid 1px;
+            padding-bottom: 20px;
+            padding-top: 20px;
         }
         .nav-dos a:hover {
             color: #ca3e47;
