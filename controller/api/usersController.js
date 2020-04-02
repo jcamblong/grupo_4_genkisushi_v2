@@ -9,6 +9,9 @@ list: function (req, res) {
         include: [
             {association: 'orders', attributes: {exclude: ['createdAt','updatedAt']}}, 
             {association: 'roles', attributes: {exclude: ['createdAt','updatedAt']}}
+        ],
+        order: [
+            ["id", "ASC"]
         ]
         })
       .then(users => {

@@ -1,17 +1,17 @@
-<div class="card">
-  <a href="/products/detail/<%= products.id %>">
-    <img src="/img/products/<%= products.image %>" class="card-img-top" alt="..." width="200px">
-    <h3 class="card-title"><%= products.name %></h3>
-  </a>
-          <!-- <p class="card-text"><%= products.detail %></p>  -->
+
+  <div class="card">
+    <a href="/products/detail/<%= products.id %>">
+      <img src="/img/products/<%= products.image %>" class="card-img" alt="..." width="200px">
+      <h3 class="card-title"><%= products.name %></h3>
+    </a>
       <p class="card-text precio">$ 
-        <%for (let i=0; i< tipos.length; i++) {
-        if (tipos[i].id == products.type_id){%>
-        <%= tipos[i].price %>
-        <%}%>
-        <%}%>
+          <%for (let i=0; i< tipos.length; i++) {
+          if (tipos[i].id == products.type_id){%>
+          <%= tipos[i].price %>
+          <%}%>
+          <%}%>
       </p>
       <button class="btn-item" onclick="location.href='/products/detail/<%= products.id %>'" type="button">+ INFO</button>
-</div>
+  </div>
 
 

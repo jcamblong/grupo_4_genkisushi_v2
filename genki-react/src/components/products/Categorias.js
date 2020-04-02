@@ -22,7 +22,7 @@ class Categorias extends Component {
     }
     
     render () {
-      const { error, categorias} = this.state;
+      const { error, isLoaded, categorias} = this.state;
       if (error) {
         return <div>Error: {error.message}</div>;
       } else {
@@ -39,10 +39,7 @@ class Categorias extends Component {
                     <React.Fragment>
                       <div className="col-lg-5 mb-4 center mx-auto">
                         <div className="card-body card bg-info text-white mt-2" key={i}>{c.name}</div>
-                      </div>
-
-                      <div className="col-md-5 mb-4 center mx-auto">
-                        <div className="card-body card bg-info text-white mt-2" key= {i}>{"Cantidad de Productos: "}{c.products.length}</div>
+                        <div className="card-body card bg-secondary text-white mt-2" key= {i}>{"Cantidad de Productos: "}{c.products.length}</div>
                       </div>
                     </React.Fragment>
                   ))} 

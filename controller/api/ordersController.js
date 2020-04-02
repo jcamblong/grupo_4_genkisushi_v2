@@ -38,7 +38,7 @@ recent: function (req, res) {
         order: [
             ['purchase_date', 'DESC']
         ],
-        limit: 5
+        limit: 1
     })
         .then(order => {
         res.json(order)

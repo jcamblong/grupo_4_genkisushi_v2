@@ -16,29 +16,21 @@
 
 <!-- Empieza Main -->
 
-    <div class="productos col-12">
-
-      <div class="menu-dos">
-				<nav class= "nav-dos">
-          <% for (let i= 0; i<categorias.length; i++) { %>
-            <a href="/products/category/<%=categorias[i].id%>" class="item-dos" category="<%=categorias[i].id%>"><%= categorias[i].name %></a>
-          <% } %>
-				</nav>
-			</div>
-
-
-      <div class="main-products">
-        
-          <% products.forEach(function(products) { %>
-            
-            <%- include('./partials/item', {products:products}) %>  
-    
-          <% }); %>
+<div class="productos">
+    <!-- Navegación -->
+    <aside class="menu-dos">
+      <%- include('./partials/nav-products') %>
+    </aside>  
+    <!-- Productos -->
+    <div class="main-products">
+        <% products.forEach(function(products) { %>
+              
+          <%- include('./partials/item', {products:products}) %>  
       
-      </div>
+        <% }); %>
     </div>
 
-
+  </div>
   <!-- pie -->
  
   <%- include('./partials/footer') %>

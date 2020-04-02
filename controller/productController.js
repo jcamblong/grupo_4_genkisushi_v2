@@ -22,7 +22,7 @@ let productController = {
     db.products.findAll ( { where: {category_id: req.params.id} }).then(products => { 
       let categorias = db.categories.findAll().then(categorias => {
       let tipos = db.product_types.findAll().then(tipos => {
-          res.render ("byCategory", {products: products, categorias: categorias, tipos: tipos})
+          res.render ("products", {products: products, categorias: categorias, tipos: tipos})
       })
       })
     })

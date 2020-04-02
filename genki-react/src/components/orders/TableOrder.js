@@ -5,6 +5,7 @@ class TableOrder extends Component {
       super (props);
       this.state = {
         error: null,
+        isLoaded: false,
         meta: "",
         orders: []
     };
@@ -13,22 +14,30 @@ class TableOrder extends Component {
     componentDidMount () {
       fetch ("http://localhost:3000/api/orders")
         .then (res => res.json())
-        .then ((result) => { this.setState (
-          {
+        .then ((result) => { this.setState ({
           meta: result.meta,
-          orders: result.orders
-          }
-          )})
-        .catch ( error => console.log (error))
+          orders: result.orders,
+          isLoaded: true
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
     }
     
     render () {
      
 
-      const { error, orders} = this.state;
+      const { error, isLoaded, orders} = this.state;
       
       if (error) {
         return <div>Error: {error.message}</div>;
+      }else if (!isLoaded) {
+        return <div>Loading...</div>;
       } else {
             return (
               <div className="col-lg-4 mb-4">	

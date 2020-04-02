@@ -14,7 +14,7 @@
     <%- include('./partials/header') %> 
 
 <!-- Detalle de producto -->
-<div class="contenedor-padre">
+<div class="container-product-detail">
 
   <h1><%= product.name %></h1>
   <div class="imagen">
@@ -23,16 +23,17 @@
   <div class="info">
     <p class="descripcion">Descripción: <%= product.detail %></p>
     <form>
-      <p>¿Qué Cantidad?</p>
+      <p class="cantidad">¿Qué Cantidad?</p>
       <div class="seleccion"> 
         <div class="seleccion-1">
           <input type="radio" id="contactChoice1"
           name="contact" value="email" checked>
-          <label for="contactChoice1"> <%= tipo.quantity %> PIEZAS ⎮ $ <%= tipo.price %></label>
+          <label for="contactChoice1"> <%= tipo.quantity %> PIEZAS</label>
         </div>
+          <p>$ <%= tipo.price %></p>
       </div>
     </form> 
-   
+  </div>
     <a href= "/products/checkout/<%= product.id %>" class="añadir">COMPRAR</a>
     <% if(isAuthenticated && role == 1) { %>
       <div class="edicion">
@@ -42,7 +43,7 @@
           </form>
       </div>
     <% } %>
-  </div> 
+   
 </div>
 
   <!-- pie -->

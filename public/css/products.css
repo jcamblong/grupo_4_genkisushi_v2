@@ -2,35 +2,37 @@
 
 .productos {
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row nowrap;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 .menu-dos{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-flow: row wrap;
+    margin: 20px 20px;
+    -webkit-box-shadow: 0 10px 10px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.3);
+    height: 50vh;
+    width: 65vw;
+    background-color: rgb(245, 245, 245);
+    
 }
     .nav-dos {
-        background-color: #434346;
-        padding: 10px;
-        width: 100%;
         display: flex;
-        flex-direction: row;
-        justify-content: center;
+        flex-direction: column;
+        padding: 10px;
+        border-top: #ca3e47 solid 50px;
     }
         .nav-dos a {
-            color: #fff;
-            letter-spacing: 2px;
-            font-size: 14px;
+            color: #333;
+            letter-spacing: 1px;
+            font-size: 18px bold;
             padding: 10px 20px;
+            border-bottom: lightgrey  solid 1px;
         }
         .nav-dos a:hover {
             color: #ca3e47;
         }
-        .active{
+        a:active{
             border: solid 1px #ca3e47;
         }
 
