@@ -23,7 +23,10 @@ class TableOrder extends Component {
     }
     
     render () {
+     
+
       const { error, orders} = this.state;
+      
       if (error) {
         return <div>Error: {error.message}</div>;
       } else {
@@ -44,6 +47,7 @@ class TableOrder extends Component {
                           <th>Id</th>
                           <th>Usuario</th>
                           <th>Fecha de Compra</th>
+                          <th>Producto</th>
                           <th>Método de Pago</th>
                           <th>Estado de la Orden</th>
                           <th>Cupón</th>
@@ -57,6 +61,11 @@ class TableOrder extends Component {
                           <td key={i}>{o.id}</td>
                           <td key={i}>{o.users.first_name + " " + o.users.last_name}</td>
                           <td key={i}>{o.purchase_date}</td>
+                        
+                          {
+                            o.productos.map((p, i) => (
+                              <td key={i}>{p.name}</td>
+                            ))}
                           <td key={i}>{o.payment_methods.type}</td>
                           <td key={i}>{o.order_statuses.name}</td>
                           <td key={i}>{o.cupons.detail}</td>

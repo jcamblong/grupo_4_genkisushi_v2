@@ -1,9 +1,9 @@
 import React from 'react';
 import './Body.css';
 import NavBar from './Navbar';
-import CardProducts from './products/CardProducts';
-import CardUsers from './users/CardUsers';
-import CardOrders from './orders/CardOrders';
+import ApiCallProducts from './ApiCallProducts';
+import ApiCallUsers from './ApiCallUsers';
+import ApiCallOrders from './ApiCallOrders';
 import Categorias from './products/Categorias';
 import Last from './products/Last';
 import TableUser from './users/TableUser';
@@ -19,9 +19,9 @@ function Body (){
                     <NavBar />
                 <div className="container-fluid py-4">
                 <div className="row ">
-                    <CardUsers />
-                    <CardProducts />
-                    <CardOrders />
+                    <ApiCallProducts />
+                    <ApiCallUsers />
+                    <ApiCallOrders />
                     <Last />
                     <Categorias />
                     <TableProduct />

@@ -57,8 +57,16 @@ class TableUser extends Component {
                           <td key={i}>{u.last_name}</td>
                           <td key={i}>{u.email}</td>
                           <td key={i}>{u.roles.name}</td>
-                          <td key={i}>{u.orders.id}</td>
-                          <td key={i}>{u.orders.purchase_total}</td>
+                          {
+                            u.orders.map((o, i) => (
+                              <td key={i}>{o.id}</td>
+                            ))
+                          }
+                          {
+                            u.orders.map((o, i) => (
+                              <td key={i}>{o.purchase_total}</td>
+                            ))
+                          }
                         </tr>
                         ))}   
                     </tbody>
